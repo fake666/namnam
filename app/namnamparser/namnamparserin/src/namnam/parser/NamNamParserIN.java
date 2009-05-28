@@ -6,10 +6,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.OutputKeys;
@@ -33,6 +31,9 @@ import namnam.parser.util.MutableNamespaceContext;
 import org.w3c.dom.NodeList;
 
 /**
+ * parser for ingolstadt mensa. uses code fragments and the general approac
+ * for tag soup using xpath from http://blog.oroup.com/2006/11/05/the-joys-of-screenscraping/
+ * thanks to oliver roup!
  *
  * @author fake
  */
