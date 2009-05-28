@@ -10,8 +10,7 @@ import namnam.parser.NamNamParser;
 import namnam.parser.NamNamParserIN;
 import winterwell.jtwitter.Twitter;
 
-/**
- *
+/*
  * @author fake
  */
 public class Main {
@@ -19,7 +18,7 @@ public class Main {
     private static NamNamParser myParser;
     private static DecimalFormat nf;
 
-    private static final boolean doTwitter = true;
+    private static final boolean doTwitter = false;
 
     /**
      * @param args the command line arguments
@@ -64,6 +63,8 @@ public class Main {
 
                 if(doTwitter)
                     twitter.updateStatus(new String(up.getBytes("ISO-8859-15"),"ISO-8859-15"));
+                
+                System.out.println(new String(up.getBytes("ISO-8859-15"),"ISO-8859-15"));
             }
         } catch (Exception ex) {
             System.err.println("Error twittering menues for today: " + ex);
