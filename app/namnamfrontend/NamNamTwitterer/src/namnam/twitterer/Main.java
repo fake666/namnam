@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import namnam.parser.NamNamParser;
-import namnam.parser.NamNamParserIN;
+import namnam.parser.erlangennuernberg.NamNamParserIN;
 import winterwell.jtwitter.Twitter;
 
 /*
