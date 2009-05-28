@@ -41,7 +41,7 @@ public class Main {
             Map<Date,Map<String,Integer[]>> result = myParser.getCurrentMenues();
 
             Calendar now = Calendar.getInstance();
-            now.add(Calendar.DAY_OF_MONTH, 6);
+            now.add(Calendar.DAY_OF_MONTH, 7);
             now.set(Calendar.HOUR_OF_DAY, 0);
             now.set(Calendar.MINUTE, 0);
             now.set(Calendar.SECOND, 0);
