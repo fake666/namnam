@@ -1,6 +1,5 @@
 package namnam.parser.erlangennuernberg;
 
-import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -8,6 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import namnam.model.Mensaessen;
+import namnam.model.Tagesmenue;
 import namnam.parser.NamNamParser;
 import namnam.parser.util.MutableNamespaceContext;
 import namnam.parser.util.XPathUtil;
@@ -34,8 +35,8 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
         this.df.setDecimalFormatSymbols(this.decf);
     }
 
-    public Map<Date, Map<String, Integer[]>> getCurrentMenues() throws Exception {
-        HashMap<Date, Map<String, Integer[]>> ret = new HashMap<Date, Map<String, Integer[]>>();
+    public Map<Date, Tagesmenue> getCurrentMenues() throws Exception {
+        HashMap<Date,Tagesmenue> map = new HashMap<Date,Tagesmenue>();
 
         Node node = XPathUtil.getHtmlUrlNode(theURL, "latin1");
         MutableNamespaceContext nc = new MutableNamespaceContext();
@@ -78,15 +79,16 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
             Date d = getDateFromString(date);
             if(d == null) continue;
             
-            Map<String, Integer[]> mealMap = ret.get(d);
-            if (mealMap == null) {
-                mealMap = new HashMap<String, Integer[]>();
-                ret.put(d, mealMap);
+            Tagesmenue daymeal = map.get(d);
+            if (daymeal == null) {
+                daymeal = new Tagesmenue(d);
+                map.put(d, daymeal);
             }
-            mealMap.put(desc, new Integer[]{getPriceInCents(sPrice), getPriceInCents(bPrice)});
+            Mensaessen me = new Mensaessen(desc, getPriceInCents(bPrice), getPriceInCents(sPrice));
+            daymeal.addMensaessen(me);
         }
 
-        return ret;
+        return map;
     }
 
     protected Integer getPriceInCents(String s) throws Exception {
@@ -96,6 +98,7 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
 
     protected Date getDateFromString(String d) throws Exception {
         if(d == null || "".equals(d.trim())) return null;
-        return sdf.parse(d.substring(3));
+        Date date = sdf.parse(d.substring(3));
+        return date;
     }
 }
