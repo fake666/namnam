@@ -1,60 +1,81 @@
 package namnam.twitterer;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import namnam.importer.NamNamImporter;
+import namnam.model.Mensa;
 import namnam.model.Mensaessen;
 import namnam.model.Tagesmenue;
-import namnam.parser.NamNamParser;
 import winterwell.jtwitter.Twitter;
 
 /**
  * base class for twittering daily menues
  * @author fake
  */
-public abstract class NamNamTwitterer {
+public class NamNamTwitterer {
 
-    protected static NamNamParser myParser;
     protected static SimpleDateFormat df;
 
-    protected static boolean doTwitter = false;
+    protected boolean doTwitter = false;
 
     protected Twitter myTwitter;
+    protected File    xmlFile;
 
     public static final Logger logger = Logger.getLogger(NamNamTwitterer.class.getName());
 
-    public NamNamTwitterer() {
+    public NamNamTwitterer(String fileName, String twitterUser, String twitterPw) throws IOException {
         df = new SimpleDateFormat("E dd.MM.", Locale.GERMAN);
+
+        xmlFile = new File(fileName);
+        if(!xmlFile.canRead()) {
+            throw new IOException("unable to read file!");
+        }
+
+        myTwitter = new Twitter(twitterUser,twitterPw);
     }
 
-    public static void setDoTwitter(boolean yesno) {
+    public void setDoTwitter(boolean yesno) {
         doTwitter = yesno;
     }
-    public static boolean isDoTwitter() {
+    public boolean isDoTwitter() {
         return doTwitter;
     }
 
     public void sendMenue(Date theDate) {
 
         try {
-            Map<Date,Tagesmenue> result = myParser.getCurrentMenues();
-            if(result == null || result.isEmpty()) {
-                logger.log(Level.SEVERE,"NO menues found for any day!");
+            Mensa result = NamNamImporter.loadMensa(xmlFile);
+            if(result == null || result.getDayMenues() == null || result.getDayMenues().isEmpty()) {
+                logger.log(Level.SEVERE,"@fake666 Gar kein Happa gefunden! Irgendwas stimmt nicht! Hilfe!");
                 if(doTwitter)
                     myTwitter.updateStatus("@fake666 Gar kein Happa gefunden! Irgendwas stimmt nicht! Hilfe!");
+
+                return;
             }
 
-            Tagesmenue t = result.get(theDate);
-            if(t == null) {
-                logger.log(Level.SEVERE,"Konnte leider kein happa finden!");
+            if(!result.hasMenuForDate(theDate)) {
+                logger.log(Level.SEVERE,"Konnte leider kein Happa für "+df.format(theDate)+" finden :(");
                 if(doTwitter)
                     myTwitter.updateStatus("Konnte leider kein Happa für "+df.format(theDate)+" finden :(");
+
+                return;
             }
-            Iterator<Mensaessen> mIt = t.getMensaessen().iterator();
+
+
+            Tagesmenue t = result.getMenuForDate(theDate);
+            if(t == null) {
+                logger.log(Level.SEVERE,"@fake666 Leider ist Happa für "+df.format(theDate)+" kaputt :(");
+                if(doTwitter)
+                    myTwitter.updateStatus("@fake666 Leider ist Happa für "+df.format(theDate)+" kaputt :(");
+            }
+            
+            Iterator<Mensaessen> mIt = t.getMenues().iterator();
             while(mIt.hasNext()) {
                 Mensaessen me = mIt.next();
                 String date = df.format(theDate) + ": ";
