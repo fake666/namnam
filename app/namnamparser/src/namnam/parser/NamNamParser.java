@@ -1,14 +1,12 @@
 package namnam.parser;
 
-import java.util.Date;
-import java.util.Map;
-import namnam.model.Tagesmenue;
+import namnam.model.Mensa;
 
 /**
  * @author fake
  */
 public interface NamNamParser {
 
-    public Map<Date, Tagesmenue> getCurrentMenues() throws Exception;
+    public Mensa getCurrentMenues() throws Exception;
 
 }

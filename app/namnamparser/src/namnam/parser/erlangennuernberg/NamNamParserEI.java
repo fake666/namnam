@@ -8,8 +8,14 @@ package namnam.parser.erlangennuernberg;
  */
 public class NamNamParserEI extends NamNamParserErlangenNuernbergBase {
 
+    public static final String name = "Studiwerk-Erlangen-Nuernberg-Mensa-EI";
+
     public NamNamParserEI() {
         super();
         this.theURL = "http://www.studentenwerk.uni-erlangen.de/verpflegung/de/sp-eichstaett.shtml";
+    }
+
+    protected String getMensaName() {
+        return NamNamParserEI.name;
     }
 }

@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
+import namnam.model.Mensa;
 import namnam.model.Mensaessen;
 import namnam.model.Tagesmenue;
 import namnam.parser.NamNamParser;
@@ -35,8 +35,10 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
         this.df.setDecimalFormatSymbols(this.decf);
     }
 
-    public Map<Date, Tagesmenue> getCurrentMenues() throws Exception {
-        HashMap<Date,Tagesmenue> map = new HashMap<Date,Tagesmenue>();
+    abstract protected String getMensaName();
+
+    public Mensa getCurrentMenues() throws Exception {
+        Mensa mensa = new Mensa(this.getMensaName());
 
         Node node = XPathUtil.getHtmlUrlNode(theURL, "latin1");
         MutableNamespaceContext nc = new MutableNamespaceContext();
@@ -79,16 +81,16 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
             Date d = getDateFromString(date);
             if(d == null) continue;
             
-            Tagesmenue daymeal = map.get(d);
+            Tagesmenue daymeal = mensa.getMenuForDate(d);
             if (daymeal == null) {
                 daymeal = new Tagesmenue(d);
-                map.put(d, daymeal);
+                mensa.addDayMenue(daymeal);
             }
             Mensaessen me = new Mensaessen(desc, getPriceInCents(bPrice), getPriceInCents(sPrice));
-            daymeal.addMensaessen(me);
+            daymeal.addMenu(me);
         }
 
-        return map;
+        return mensa;
     }
 
     protected Integer getPriceInCents(String s) throws Exception {

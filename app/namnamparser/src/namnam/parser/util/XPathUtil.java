@@ -1,7 +1,8 @@
 package namnam.parser.util;
 
-import java.io.ByteArrayInputStream;
 import java.io.StringWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
@@ -16,10 +17,6 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.ccil.cowan.tagsoup.Parser;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -45,7 +42,7 @@ public class XPathUtil {
      * @throws Exception if something goes wrong. No error handling at all
      * for brevity.
      */
-    public static Node getHtmlUrlNode(String url, String encoding) throws Exception {
+    public static Node getHtmlUrlNode(String sUrl, String encoding) throws Exception {
 
         SAXTransformerFactory stf =
                 (SAXTransformerFactory) TransformerFactory.newInstance();
@@ -58,6 +55,9 @@ public class XPathUtil {
         Parser parser = new Parser();
         parser.setContentHandler(th);
 
+        URL url = new URL(sUrl);
+        URLConnection con = url.openConnection();
+        /*
         HttpClient client = new HttpClient();
         HttpMethod method = new GetMethod(url);
 
@@ -67,14 +67,15 @@ public class XPathUtil {
             System.err.println("Method failed: " + method.getStatusLine());
             return null;
         }
-        
+        */
         //InputStream foo = method.getResponseBodyAsStream();
         // This is where the magic happens to convert HTML to XML
-        InputSource src = new InputSource(method.getResponseBodyAsStream());
+        //InputSource src = new InputSource(method.getResponseBodyAsStream());
+        InputSource src = new InputSource(con.getInputStream());
         src.setEncoding(encoding);
         parser.parse(src);
 
-        method.releaseConnection();
+        //method.releaseConnection();
 
         return dr.getNode();
     }

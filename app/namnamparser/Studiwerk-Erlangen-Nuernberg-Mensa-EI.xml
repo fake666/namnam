@@ -1,0 +1,1865 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_16" class="java.beans.XMLDecoder"> 
+ <object class="namnam.model.Mensa"> 
+  <void property="dayMenues"> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Schupfnudeln mit Hackfleisch in Waldpilzsoße</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Puten Cordon Bleu mit Zitrone </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Spaghetti mit Soja-Bolognese und Reibekäse</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1243893600000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Hacksteak &quot;Provencalische Art&quot;  mit Reis</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Farfalle mit Lachs in Dillsahne </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Pfannkuchen mit Gemüseragout </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1243980000000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Paella mit Hühnerfleisch und Meeresfrüchten </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Lammkeule mit Rosmarinjus </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>300</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>220</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Tipp des Tages</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1244066400000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Alaska Seelachs gebr. m. Kräuterdip u.Kartoffeln</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Kängururagout in Cocos-Currysoße </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Germknödel mit Zimt-Zucker und Vanillesoße</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1244152800000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Feuerspieß mit Schaschliksoße auf Curryreis</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Hähnchennuggets mit Cocktailsoße</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Rahmchampign. m. Wurzelgemüse u. Semmelkloß</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1244412000000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Nasi Goreng (Schweinefleisch, Asiagemüse/Reis)</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Putenbruststeak &quot;Mediter.&quot; m. Schafskäse u.Paprika</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Zwiebel-Käse-Rösti mit Dip </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1244498400000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beef"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="beschreibung"> 
+         <string>Rindergeschnetzeltes &quot;Stroganoff&quot; mit Reis </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>290</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>210</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Schweineschnitzel &quot;Wiener Art&quot; mit Zitrone </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Käsespätzle mit Röstzwiebeln</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1244584800000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Zwetschgenknödel mit Vanillesoße</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Lammragout &quot;Mazedonische Art&quot; </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>MSC Seelachsfilet paniert mit Remoulade</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>290</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>210</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1244757600000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Krautwickel mit Zwiebelsoße und Püree</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Hähnchenschnitzel geback. m. Pfeffer-Quark-Dip</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Camembert  gebacken mit Preiselbeeren </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245016800000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Penne mit Gemüse und Käse-Kräutersoße</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Gyrospfanne v. Schwein m. Tzaziki u. Weißkrautsalat</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Pizza Speciale </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>290</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>210</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245103200000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Gemüsecurry mit Sojawürfeln im Reisrand </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Tandoori Chicken </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Lachsfilet mit Estragon-Dillsoße</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245189600000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beef"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="beschreibung"> 
+         <string>Pasta asciutta mit Reibekäse</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Putensteak Allgäuer Art</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>270</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>190</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Feta gebacken mit Dip</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245276000000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Farfalle mit Kapern, Peperoni und Oliven </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Schollenfilet gebacken mit Dillmayonaise </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>3 Karotten-Käse-Medaillons mit Dip</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245362400000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Kartoffel-Gemüsepuffer auf Rahmgemüse</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beef"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="beschreibung"> 
+         <string>Rinderroulade &quot;Bürgerlich&quot; </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>290</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>210</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Tipp des Tages</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245621600000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Gef.Paprikaschote (Hackfl.) in Tomatensoße m. Reis</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>290</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>210</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Kalbsrollbraten mit Estragonsoße </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>300</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>220</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Feta gebacken mit Dip  </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245708000000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Halbes Hähnchen mit Kartoffelsalat </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>290</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>210</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Canneloni al forno</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Blumenkohlnuggets mit Dip </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245794400000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Köttbullar m. Preiselbeeren, Rahmsoße u. Kartoffeln</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>290</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>210</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Putengeschnetzeltes &quot;Indisch&quot;</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Chinakohlauflauf mit Champignons</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245880800000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>MSC Fischnuggets mit Kartoffeln und Dip </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>310</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>229</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Tipp des Tages</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Apfelküchle mit Vanillesoße </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1245967200000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Hackbraten &quot;Italienische Art&quot; mit Nudeln</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Coq au vin (Hähnchenschenkel in Rotweinsoße)</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Soja-Mais Chili </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>229</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>150</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1246226400000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Putengulasch Napoli mit Nudeln </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Jägerschnitzel mit Champignonsoße</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Kartoffelreibekuchen mit Salsagemüse </string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1246312800000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Pasta mit Garnelen</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Schinkenkrustenbraten vom Schwein und Jus</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Kohlrabi-Kartoffelauflauf mit Kräutersoße</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1246399200000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Spätzlepfanne mit Geflügelstreifen </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>260</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>180</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Grillteller (1 Schweinesteak u. 1 fränk.Bratwurst)</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>300</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>220</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Eipatty mit Spinat und Kartoffeln</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>250</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>170</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1246485600000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="add"> 
+    <object class="namnam.model.Tagesmenue"> 
+     <void property="menues"> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Pangasiusfilet mit Zitronensoße und Kartoffeln</string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>280</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>200</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Hähnchenragout süß-sauer </string> 
+        </void> 
+        <void property="moslem"> 
+         <boolean>true</boolean> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>250</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>170</int> 
+          </void> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="namnam.model.Mensaessen"> 
+        <void property="beschreibung"> 
+         <string>Zwetschgenknödel mit Zimtsoße</string> 
+        </void> 
+        <void property="preis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>240</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="studentenPreis"> 
+         <object class="namnam.model.Preis"> 
+          <void property="cents"> 
+           <int>160</int> 
+          </void> 
+         </object> 
+        </void> 
+        <void property="vegetarian"> 
+         <boolean>true</boolean> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="tag"> 
+      <object class="java.util.Date"> 
+       <long>1246572000000</long> 
+      </object> 
+     </void> 
+    </object> 
+   </void> 
+  </void> 
+  <void property="name"> 
+   <string>Studiwerk-Erlangen-Nuernberg-Mensa-EI</string> 
+  </void> 
+ </object> 
+</java> 
