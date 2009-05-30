@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,14 +19,16 @@ import namnam.model.Tagesmenue;
  */
 public class NamNamJSONExporter extends NamNamExporter {
 
-     private Logger logger = Logger.getLogger(NamNamJSONExporter.class.getName());
+    private Logger logger = Logger.getLogger(NamNamJSONExporter.class.getName());
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 
     protected void doExport(OutputStream os) throws NamNamExportException{
         try {
             JSONObject jmensa = new JSONObject();
             jmensa.put("name",mensa.getName());
-            jmensa.put("firstDate", "Date("+mensa.getFirstDate().getTime()+")");
-            jmensa.put("lastDate", "Date("+mensa.getLastDate().getTime()+")");
+            jmensa.put("firstDate", sdf.format(mensa.getFirstDate()));
+            jmensa.put("lastDate", sdf.format(mensa.getLastDate()));
 
             Iterator<Tagesmenue> dMit = mensa.getDayMenues().iterator();
             JSONArray dayMenueAr = new JSONArray();
@@ -33,7 +36,7 @@ public class NamNamJSONExporter extends NamNamExporter {
             while(dMit.hasNext()) {
                 Tagesmenue t = dMit.next();
                 JSONObject jtm = new JSONObject();
-                jtm.put("day", "Date("+t.getTag().getTime()+")");
+                jtm.put("day", sdf.format(t.getTag()));
 
                 JSONArray foodAr = new JSONArray();
                 Iterator<Mensaessen> eIt = t.getMenues().iterator();
