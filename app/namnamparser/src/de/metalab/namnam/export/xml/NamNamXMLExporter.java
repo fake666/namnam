@@ -41,6 +41,11 @@ public class NamNamXMLExporter extends NamNamExporter {
     private static Logger logger = Logger.getLogger(NamNamXMLExporter.class.getName());
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // ISO
 
+    public NamNamXMLExporter(String path) {
+        super(path);
+    }
+
+
     protected void doExport(OutputStream os) throws NamNamExportException {
         try {
 

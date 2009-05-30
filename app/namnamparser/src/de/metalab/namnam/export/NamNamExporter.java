@@ -28,6 +28,19 @@ public abstract class NamNamExporter {
     public NamNamExporter() {
     }
 
+    /**
+     * @param path the base dir where all generated files should be stored.
+     */
+    public NamNamExporter(String path) {
+        if(path != null) {
+            File baseDir = new File(path);
+            if(!baseDir.canRead() || !baseDir.isDirectory()) {
+                throw new RuntimeException("Invalid base directory!");
+            }
+            this.path = path;
+        }
+    }
+
     public NamNamExporter(Mensa mensa) {
         this.mensa = mensa;
     }
@@ -45,8 +58,8 @@ public abstract class NamNamExporter {
             if(path == null || path.trim().equals(""))
                 fos = new FileOutputStream(this.getFileName());
             else {
-                if(!path.endsWith(File.pathSeparator)) path = path + File.pathSeparator;
-                fos = new FileOutputStream(path+this.getFileName());
+                File dir = new File(path);
+                fos = new FileOutputStream(dir.getAbsolutePath() + File.separator + this.getFileName());
             }
 
             doExport(fos);

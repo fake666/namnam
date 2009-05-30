@@ -11,6 +11,10 @@ import de.metalab.namnam.export.NamNamExporter;
  */
 public class NamNamJXMLExporter extends NamNamExporter {
 
+    public NamNamJXMLExporter(String path) {
+        super(path);
+    }
+
     protected void doExport(OutputStream os) throws NamNamExportException{
         XMLEncoder xenc = new XMLEncoder(os);
         xenc.writeObject(mensa);

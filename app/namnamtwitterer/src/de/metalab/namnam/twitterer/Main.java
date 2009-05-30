@@ -36,15 +36,15 @@ public class Main {
 				usage();
 				return;
             } else if (arg.startsWith("--date=")) {
-                theDate = arg.substring(arg.indexOf('='+1,arg.length()));
+                theDate = arg.substring(arg.indexOf('=')+1,arg.length());
             } else if (arg.equals("--no-twitter")) {
                 doTwitter = false;
             } else if (arg.startsWith("--tu=")) {
-                twitterUser = arg.substring(arg.indexOf('='+1,arg.length()));
+                twitterUser = arg.substring(arg.indexOf('=')+1,arg.length());
             } else if (arg.startsWith("--tp=")) {
-                twitterPass = arg.substring(arg.indexOf('='+1,arg.length()));
+                twitterPass = arg.substring(arg.indexOf('=')+1,arg.length());
             } else if (arg.startsWith("--file=")) {
-                file = arg.substring(arg.indexOf('='+1,arg.length()));
+                file = arg.substring(arg.indexOf('=')+1,arg.length());
             }
         }
 

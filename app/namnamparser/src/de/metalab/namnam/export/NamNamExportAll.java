@@ -21,13 +21,36 @@ public class NamNamExportAll {
 
     public static void main(String[] args) {
 
+        if(args.length < 1) {
+            usage();
+            return;
+        }
+
+        String baseDir = null;
+
+        String arg = null;
+        for(int i = 0; i < args.length; i++) {
+            arg = args[i];
+            if(arg.equals("--help")) {
+				usage();
+				return;
+            } else if (arg.startsWith("--basedir=")) {
+                baseDir = arg.substring(arg.indexOf('=')+1,arg.length());
+            }
+        }
+
+        if(baseDir == null) {
+            usage();
+            return;
+        }
+
         NamNamParser inParser = new NamNamParserIN();
         NamNamParser eiParser = new NamNamParserEI();
 
-        NamNamExporter nnjex = new NamNamJXMLExporter();
-        NamNamExporter nnjsonex = new NamNamJSONExporter();
-        NamNamExporter nnxmlex = new NamNamXMLExporter();
-        NamNamExporter nnicalex = new NamNamICALExporter();
+        NamNamExporter nnjex = new NamNamJXMLExporter(baseDir);
+        NamNamExporter nnjsonex = new NamNamJSONExporter(baseDir);
+        NamNamExporter nnxmlex = new NamNamXMLExporter(baseDir);
+        NamNamExporter nnicalex = new NamNamICALExporter(baseDir);
 
         Mensa in = null;
         try {
@@ -44,7 +67,7 @@ public class NamNamExportAll {
 
         Mensa ei = null;
         try {
-            ei = inParser.getCurrentMenues();
+            ei = eiParser.getCurrentMenues();
             nnjex.export(ei);
             nnjsonex.export(ei);
             nnxmlex.export(ei);
@@ -54,7 +77,21 @@ public class NamNamExportAll {
         } catch (Exception ex) {
             logger.log(Level.SEVERE,"Error fetching eichstaett menues!",ex);
         }
+    }
 
-
+    public static void usage() {
+        System.out.println( "NamNamParser - (C) 2009 Thomas 'fake' Jakobi");
+        System.out.println( "A meta-lab.de project");
+		System.out.println();
+		System.out.println("Usage:");
+		System.out.println();
+		System.out.println("java -jar namnamparser.jar --basedir=<directory> ");
+		System.out.println();
+		System.out.println("Options:");
+		System.out.println(" --help         This help text");
+		System.out.println();
+		System.out.println("Examples:");
+		System.out.println(" java -jar namnamparser.jar --basedir=/tmp");
+		System.out.println();
     }
 }

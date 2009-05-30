@@ -23,6 +23,10 @@ public class NamNamJSONExporter extends NamNamExporter {
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 
+    public NamNamJSONExporter(String path) {
+        super(path);
+    }
+
     protected void doExport(OutputStream os) throws NamNamExportException{
         try {
             JSONObject jmensa = new JSONObject();

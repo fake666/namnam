@@ -37,6 +37,9 @@ public class NamNamICALExporter extends NamNamExporter {
     private static Logger logger = Logger.getLogger(NamNamICALExporter.class.getName());
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+    public NamNamICALExporter(String path) {
+        super(path);
+    }
 
     protected void doExport(OutputStream os) throws NamNamExportException{
         try {
