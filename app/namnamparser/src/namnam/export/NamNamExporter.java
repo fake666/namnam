@@ -1,53 +1,81 @@
 package namnam.export;
 
-import java.beans.XMLEncoder;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import namnam.model.Mensa;
-import namnam.parser.NamNamParser;
-import namnam.parser.erlangennuernberg.NamNamParserEI;
-import namnam.parser.erlangennuernberg.NamNamParserIN;
 
 /**
  *
  * @author fake
  */
-public class NamNamExporter {
+public abstract class NamNamExporter {
 
-    public static void main(String[] args) {
+    private Logger logger = Logger.getLogger(NamNamExporter.class.getName());
 
-        NamNamParser inParser = new NamNamParserIN();
-        NamNamParser eiParser = new NamNamParserEI();
+    protected Mensa mensa = null;
+    protected String path = null;
+
+    // returns the filename of the file that will be created
+    public abstract String getFileName();
+    // do the actual export
+    protected abstract void doExport(OutputStream os) throws NamNamExportException;
+
+    public NamNamExporter() {
+    }
+
+    public NamNamExporter(Mensa mensa) {
+        this.mensa = mensa;
+    }
+
+    public void export(Mensa m) throws NamNamExportException {
+        this.setMensa(m);
+        this.export();
+    }
+
+    public void export() throws NamNamExportException {
+        if(mensa == null) throw new NamNamExportException("Set a mensa first!");
 
         try {
-            Mensa in = inParser.getCurrentMenues();
+            FileOutputStream fos = null;
+            if(path == null || path.trim().equals(""))
+                fos = new FileOutputStream(this.getFileName());
+            else {
+                if(!path.endsWith(File.pathSeparator)) path = path + File.pathSeparator;
+                fos = new FileOutputStream(path+this.getFileName());
+            }
 
-            FileOutputStream fos = new FileOutputStream(in.getName()+".xml");
-            XMLEncoder xenc = new XMLEncoder(fos);
-            xenc.writeObject(in);
-            xenc.close();
+            doExport(fos);
+            
             fos.close();
-
-        } catch (Exception ex) {
-            System.err.println("Error fetching ingolstadt menues!");
-            ex.printStackTrace(System.err);
+        } catch (FileNotFoundException fnfe) {
+            logger.log(Level.SEVERE,"File not found while trying to open it for output", fnfe);
+            throw new NamNamExportException("File not found while trying to open it for output",fnfe);
+        } catch (IOException ioex) {
+            logger.log(Level.SEVERE,"Error flushing/closing file after output", ioex);
+            throw new NamNamExportException("Error flushing/closing file after output",ioex);
         }
+        
+    }
 
-        try {
-            Mensa ei = eiParser.getCurrentMenues();
+    public Mensa getMensa() {
+        return mensa;
+    }
 
-            FileOutputStream fos = new FileOutputStream(ei.getName()+".xml");
-            XMLEncoder xenc = new XMLEncoder(fos);
-            xenc.writeObject(ei);
-            xenc.close();
-            fos.close();
+    public void setMensa(Mensa mensa) {
+        this.mensa = mensa;
+    }
 
-        } catch (Exception ex) {
-            System.err.println("Error fetching eichstaett menues!");
-            ex.printStackTrace(System.err);
-        }
+    public String getPath() {
+        return path;
+    }
 
-
-
+    public void setPath(String path) {
+        this.path = path;
     }
 
 }
