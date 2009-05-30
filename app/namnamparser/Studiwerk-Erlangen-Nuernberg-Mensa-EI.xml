@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mensa xmlns="http://namnam.f4k3.net/schema/NamNamXML" name="Studiwerk-Erlangen-Nuernberg-Mensa-EI">
+<firstDate>2009-06-02</firstDate>
+<lastDate>2009-07-03</lastDate>
+<Tagesmenue>
+<tag>2009-06-02</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Schupfnudeln mit Hackfleisch in Waldpilzsoße</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Puten Cordon Bleu mit Zitrone </beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Spaghetti mit Soja-Bolognese und Reibekäse</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-03</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Hacksteak "Provencalische Art"  mit Reis</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Farfalle mit Lachs in Dillsahne </beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Pfannkuchen mit Gemüseragout </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-04</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Paella mit Hühnerfleisch und Meeresfrüchten </beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Lammkeule mit Rosmarinjus </beschreibung>
+<studentenPreis>220</studentenPreis>
+<normalerPreis>300</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Tipp des Tages</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-05</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Alaska Seelachs gebr. m. Kräuterdip u.Kartoffeln</beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Kängururagout in Cocos-Currysoße </beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Germknödel mit Zimt-Zucker und Vanillesoße</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-08</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Feuerspieß mit Schaschliksoße auf Curryreis</beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Hähnchennuggets mit Cocktailsoße</beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Rahmchampign. m. Wurzelgemüse u. Semmelkloß</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-09</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Nasi Goreng (Schweinefleisch, Asiagemüse/Reis)</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Putenbruststeak "Mediter." m. Schafskäse u.Paprika</beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Zwiebel-Käse-Rösti mit Dip </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-10</tag>
+<Mensaessen moslem="false" rind="true" vegetarisch="false">
+<beschreibung>Rindergeschnetzeltes "Stroganoff" mit Reis </beschreibung>
+<studentenPreis>210</studentenPreis>
+<normalerPreis>290</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Schweineschnitzel "Wiener Art" mit Zitrone </beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Käsespätzle mit Röstzwiebeln</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-12</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Zwetschgenknödel mit Vanillesoße</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Lammragout "Mazedonische Art" </beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>MSC Seelachsfilet paniert mit Remoulade</beschreibung>
+<studentenPreis>210</studentenPreis>
+<normalerPreis>290</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-15</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Krautwickel mit Zwiebelsoße und Püree</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Hähnchenschnitzel geback. m. Pfeffer-Quark-Dip</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Camembert  gebacken mit Preiselbeeren </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-16</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Penne mit Gemüse und Käse-Kräutersoße</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Gyrospfanne v. Schwein m. Tzaziki u. Weißkrautsalat</beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Pizza Speciale </beschreibung>
+<studentenPreis>210</studentenPreis>
+<normalerPreis>290</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-17</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Gemüsecurry mit Sojawürfeln im Reisrand </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Tandoori Chicken </beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Lachsfilet mit Estragon-Dillsoße</beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-18</tag>
+<Mensaessen moslem="false" rind="true" vegetarisch="false">
+<beschreibung>Pasta asciutta mit Reibekäse</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Putensteak Allgäuer Art</beschreibung>
+<studentenPreis>190</studentenPreis>
+<normalerPreis>270</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Feta gebacken mit Dip</beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-19</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Farfalle mit Kapern, Peperoni und Oliven </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Schollenfilet gebacken mit Dillmayonaise </beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>3 Karotten-Käse-Medaillons mit Dip</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-22</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Kartoffel-Gemüsepuffer auf Rahmgemüse</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="true" vegetarisch="false">
+<beschreibung>Rinderroulade "Bürgerlich" </beschreibung>
+<studentenPreis>210</studentenPreis>
+<normalerPreis>290</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Tipp des Tages</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-23</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Gef.Paprikaschote (Hackfl.) in Tomatensoße m. Reis</beschreibung>
+<studentenPreis>210</studentenPreis>
+<normalerPreis>290</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Kalbsrollbraten mit Estragonsoße </beschreibung>
+<studentenPreis>220</studentenPreis>
+<normalerPreis>300</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Feta gebacken mit Dip  </beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-24</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Halbes Hähnchen mit Kartoffelsalat </beschreibung>
+<studentenPreis>210</studentenPreis>
+<normalerPreis>290</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Canneloni al forno</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Blumenkohlnuggets mit Dip </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-25</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Köttbullar m. Preiselbeeren, Rahmsoße u. Kartoffeln</beschreibung>
+<studentenPreis>210</studentenPreis>
+<normalerPreis>290</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Putengeschnetzeltes "Indisch"</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Chinakohlauflauf mit Champignons</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-26</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>MSC Fischnuggets mit Kartoffeln und Dip </beschreibung>
+<studentenPreis>229</studentenPreis>
+<normalerPreis>310</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Tipp des Tages</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Apfelküchle mit Vanillesoße </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-29</tag>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Hackbraten "Italienische Art" mit Nudeln</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Coq au vin (Hähnchenschenkel in Rotweinsoße)</beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Soja-Mais Chili </beschreibung>
+<studentenPreis>150</studentenPreis>
+<normalerPreis>229</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-06-30</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Putengulasch Napoli mit Nudeln </beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Jägerschnitzel mit Champignonsoße</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Kartoffelreibekuchen mit Salsagemüse </beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-07-01</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Pasta mit Garnelen</beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Schinkenkrustenbraten vom Schwein und Jus</beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Kohlrabi-Kartoffelauflauf mit Kräutersoße</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-07-02</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Spätzlepfanne mit Geflügelstreifen </beschreibung>
+<studentenPreis>180</studentenPreis>
+<normalerPreis>260</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="false">
+<beschreibung>Grillteller (1 Schweinesteak u. 1 fränk.Bratwurst)</beschreibung>
+<studentenPreis>220</studentenPreis>
+<normalerPreis>300</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Eipatty mit Spinat und Kartoffeln</beschreibung>
+<studentenPreis>170</studentenPreis>
+<normalerPreis>250</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+<Tagesmenue>
+<tag>2009-07-03</tag>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Pangasiusfilet mit Zitronensoße und Kartoffeln</beschreibung>
+<studentenPreis>200</studentenPreis>
+<normalerPreis>280</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="true" rind="false" vegetarisch="false">
+<beschreibung>Hähnchenragout süß-sauer </beschreibung>
+<studentenPreis>170</studentenPreis>
+<normalerPreis>250</normalerPreis>
+</Mensaessen>
+<Mensaessen moslem="false" rind="false" vegetarisch="true">
+<beschreibung>Zwetschgenknödel mit Zimtsoße</beschreibung>
+<studentenPreis>160</studentenPreis>
+<normalerPreis>240</normalerPreis>
+</Mensaessen>
+</Tagesmenue>
+</Mensa>

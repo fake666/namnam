@@ -15,7 +15,7 @@ import namnam.model.Mensa;
  */
 public abstract class NamNamExporter {
 
-    private Logger logger = Logger.getLogger(NamNamExporter.class.getName());
+    private static Logger logger = Logger.getLogger(NamNamExporter.class.getName());
 
     protected Mensa mensa = null;
     protected String path = null;

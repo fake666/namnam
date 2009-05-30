@@ -19,7 +19,7 @@ import namnam.model.Tagesmenue;
  */
 public class NamNamJSONExporter extends NamNamExporter {
 
-    private Logger logger = Logger.getLogger(NamNamJSONExporter.class.getName());
+    private static Logger logger = Logger.getLogger(NamNamJSONExporter.class.getName());
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 
@@ -36,25 +36,31 @@ public class NamNamJSONExporter extends NamNamExporter {
             while(dMit.hasNext()) {
                 Tagesmenue t = dMit.next();
                 JSONObject jtm = new JSONObject();
-                jtm.put("day", sdf.format(t.getTag()));
+                jtm.put("tag", sdf.format(t.getTag()));
 
                 JSONArray foodAr = new JSONArray();
                 Iterator<Mensaessen> eIt = t.getMenues().iterator();
                 while(eIt.hasNext()) {
                     Mensaessen m = eIt.next();
                     JSONObject jm = new JSONObject();
-                    jm.put("description", m.getBeschreibung());
-                    jm.put("studentPrice", m.getStudentenPreis().getCents());
-                    jm.put("normalPrice", m.getPreis().getCents());
+                    jm.put("beschreibung", m.getBeschreibung());
+                    jm.put("studentenPreis", m.getStudentenPreis().getCents());
+                    jm.put("normalerPreis", m.getPreis().getCents());
+                    jm.put("moslem",m.isMoslem());
+                    jm.put("rind",m.isBeef());
+                    jm.put("vegetarisch",m.isVegetarian());
                     foodAr.put(jm);
                 }
-                jtm.put("menues", foodAr);
+                jtm.put("Mensaessen", foodAr);
                 dayMenueAr.put(jtm);
             }
-            jmensa.put("dayMenues", dayMenueAr);
+            jmensa.put("Tagesmenue", dayMenueAr);
+
+            JSONObject parent = new JSONObject();
+            parent.put("Mensa",jmensa);
 
             Writer w = new OutputStreamWriter(os);
-            jmensa.write(w);
+            parent.write(w);
             w.flush();
             w.close();
         } catch  (JSONException jsex) {

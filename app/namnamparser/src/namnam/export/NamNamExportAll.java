@@ -1,7 +1,10 @@
 package namnam.export;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import namnam.export.json.NamNamJSONExporter;
 import namnam.export.jxml.NamNamJXMLExporter;
+import namnam.export.xml.NamNamXMLExporter;
 import namnam.model.Mensa;
 import namnam.parser.NamNamParser;
 import namnam.parser.erlangennuernberg.NamNamParserEI;
@@ -13,6 +16,8 @@ import namnam.parser.erlangennuernberg.NamNamParserIN;
  */
 public class NamNamExportAll {
 
+    private static Logger logger = Logger.getLogger(NamNamExportAll.class.getName());
+
     public static void main(String[] args) {
 
         NamNamParser inParser = new NamNamParserIN();
@@ -20,25 +25,31 @@ public class NamNamExportAll {
 
         NamNamExporter nnjex = new NamNamJXMLExporter();
         NamNamExporter nnjsonex = new NamNamJSONExporter();
+        NamNamExporter nnxmlex = new NamNamXMLExporter();
 
+        Mensa in = null;
         try {
-            Mensa in = inParser.getCurrentMenues();
+            in = inParser.getCurrentMenues();
             nnjex.export(in);
             nnjsonex.export(in);
+            nnxmlex.export(in);
+        } catch (NamNamExportException nneex) {
+            logger.log(Level.SEVERE,"Error exporting ingolstadt menues!",nneex);
         } catch (Exception ex) {
-            System.err.println("Error fetching ingolstadt menues!");
-            ex.printStackTrace(System.err);
+            logger.log(Level.SEVERE,"Error fetching ingolstadt menues!",ex);
         }
 
+        Mensa ei = null;
         try {
-            Mensa ei = eiParser.getCurrentMenues();
+            ei = inParser.getCurrentMenues();
             nnjex.export(ei);
             nnjsonex.export(ei);
+            nnxmlex.export(ei);
+        } catch (NamNamExportException nneex) {
+            logger.log(Level.SEVERE,"Error exporting eichstaett menues!",nneex);
         } catch (Exception ex) {
-            System.err.println("Error fetching eichstaett menues!");
-            ex.printStackTrace(System.err);
+            logger.log(Level.SEVERE,"Error fetching eichstaett menues!",ex);
         }
-
 
 
     }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://namnam.f4k3.net/schema/NamNamXML"
+    xmlns:tns="http://namnam.f4k3.net/schema/NamNamXML"
+    elementFormDefault="qualified">
+        
+    <xsd:annotation>
+        <xsd:documentation>
+            Schema for the namnam-format xml mensa menu plan
+            See http://blog.f4k3.net/fake and search for namnam
+            Copyright 2009 Thomas 'fake' Jakobi
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="Mensa" type="tns:MensaType"/>
+
+    <xsd:complexType name="MensaType">
+        <xsd:sequence>
+            <xsd:element name="firstDate" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="lastDate" type="xsd:date"  minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Tagesmenue" type="tns:TagesmenueType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="TagesmenueType">
+        <xsd:sequence>
+            <xsd:element name="tag" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Mensaessen" type="tns:MensaessenType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="MensaessenType">
+        <xsd:sequence>
+            <xsd:element name="beschreibung" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="studentenPreis" type="xsd:positiveInteger" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="normalerPreis" type="xsd:positiveInteger" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="moslem" type="xsd:boolean"/>
+        <xsd:attribute name="vegetarisch" type="xsd:boolean"/>
+        <xsd:attribute name="rind" type="xsd:boolean"/>
+    </xsd:complexType>
+    
+</xsd:schema>
