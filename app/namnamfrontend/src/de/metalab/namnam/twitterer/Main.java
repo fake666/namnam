@@ -89,26 +89,6 @@ public class Main {
         } catch (IOException ioex) {
             logger.log(Level.SEVERE,"IOException while loading mensa",ioex);
         }
-        /*
-        String base = "/Users/fake/NetBeansProjects/app/namnamparser/";
-
-        try {
-            logger.log(Level.INFO, "twittering ingolstadt");
-            NamNamTwitterer in = new NamNamTwitterer(base + "Studiwerk-Erlangen-Nuernberg-Mensa-IN.xml", "hsin_mensa","toppas123");
-            in.sendMenue(date.getTime());
-        } catch (IOException ioex) {
-            logger.log(Level.SEVERE,"IOException while loading mensa",ioex);
-        }
-
-        try {
-            logger.log(Level.INFO, "twittering eichstaett");
-            NamNamTwitterer in = new NamNamTwitterer(base + "Studiwerk-Erlangen-Nuernberg-Mensa-EI.xml", "kuei_mensa","toppas123");
-            in.sendMenue(date.getTime());
-        } catch (IOException ioex) {
-            logger.log(Level.SEVERE,"IOException while loading mensa",ioex);
-        }
-        */
-
     }
 
     public static void usage() {
