@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import namnam.importer.NamNamImporter;
+import de.metalab.namnam.importer.jxml.NamNamJXMLImporter;
 import namnam.model.Mensa;
 import namnam.model.Mensaessen;
 import namnam.model.Tagesmenue;
@@ -48,9 +48,10 @@ public class NamNamTwitterer {
     }
 
     public void sendMenue(Date theDate) {
-
+        NamNamJXMLImporter imp = new NamNamJXMLImporter();
+        
         try {
-            Mensa result = NamNamImporter.loadMensa(xmlFile);
+            Mensa result = imp.loadFromFile(xmlFile);
             if(result == null || result.getDayMenues() == null || result.getDayMenues().isEmpty()) {
                 logger.log(Level.SEVERE,"@fake666 Gar kein Happa gefunden! Irgendwas stimmt nicht! Hilfe!");
                 if(doTwitter)
