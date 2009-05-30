@@ -1,4 +1,4 @@
-package namnam.importer;
+package de.metalab.namnam.importer;
 
 /**
  *

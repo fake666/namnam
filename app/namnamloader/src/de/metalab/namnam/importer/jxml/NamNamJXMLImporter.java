@@ -1,9 +1,9 @@
-package namnam.importer.jxml;
+package de.metalab.namnam.importer.jxml;
 
 import java.beans.XMLDecoder;
 import java.io.InputStream;
-import namnam.importer.NamNamImportException;
-import namnam.importer.NamNamImporter;
+import de.metalab.namnam.importer.NamNamImportException;
+import de.metalab.namnam.importer.NamNamImporter;
 import namnam.model.Mensa;
 
 /**
