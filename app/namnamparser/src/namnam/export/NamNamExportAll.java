@@ -2,6 +2,7 @@ package namnam.export;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import namnam.export.ical.NamNamICALExporter;
 import namnam.export.json.NamNamJSONExporter;
 import namnam.export.jxml.NamNamJXMLExporter;
 import namnam.export.xml.NamNamXMLExporter;
@@ -26,6 +27,7 @@ public class NamNamExportAll {
         NamNamExporter nnjex = new NamNamJXMLExporter();
         NamNamExporter nnjsonex = new NamNamJSONExporter();
         NamNamExporter nnxmlex = new NamNamXMLExporter();
+        NamNamExporter nnicalex = new NamNamICALExporter();
 
         Mensa in = null;
         try {
@@ -33,6 +35,7 @@ public class NamNamExportAll {
             nnjex.export(in);
             nnjsonex.export(in);
             nnxmlex.export(in);
+            nnicalex.export(in);
         } catch (NamNamExportException nneex) {
             logger.log(Level.SEVERE,"Error exporting ingolstadt menues!",nneex);
         } catch (Exception ex) {
@@ -45,6 +48,7 @@ public class NamNamExportAll {
             nnjex.export(ei);
             nnjsonex.export(ei);
             nnxmlex.export(ei);
+            nnicalex.export(ei);
         } catch (NamNamExportException nneex) {
             logger.log(Level.SEVERE,"Error exporting eichstaett menues!",nneex);
         } catch (Exception ex) {
