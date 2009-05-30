@@ -1,4 +1,4 @@
-package namnam.twitterer;
+package de.metalab.namnam.twitterer;
 
 import java.io.File;
 import java.io.IOException;
