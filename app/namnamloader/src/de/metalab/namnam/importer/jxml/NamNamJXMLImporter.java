@@ -4,7 +4,7 @@ import java.beans.XMLDecoder;
 import java.io.InputStream;
 import de.metalab.namnam.importer.NamNamImportException;
 import de.metalab.namnam.importer.NamNamImporter;
-import namnam.model.Mensa;
+import de.metalab.namnam.model.Mensa;
 
 /**
  * load a mensa object saved as java xml serialisation

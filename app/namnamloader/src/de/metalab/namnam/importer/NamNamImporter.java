@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import namnam.model.Mensa;
+import de.metalab.namnam.model.Mensa;
 
 /**
  * read in nam nam xml file and deserialize it

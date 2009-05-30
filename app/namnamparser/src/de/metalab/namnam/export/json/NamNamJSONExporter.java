@@ -10,8 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import de.metalab.namnam.export.NamNamExportException;
 import de.metalab.namnam.export.NamNamExporter;
-import namnam.model.Mensaessen;
-import namnam.model.Tagesmenue;
+import de.metalab.namnam.model.Mensaessen;
+import de.metalab.namnam.model.Tagesmenue;
 
 /**
  * module to export a mensa object to json format

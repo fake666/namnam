@@ -6,7 +6,7 @@ import de.metalab.namnam.export.ical.NamNamICALExporter;
 import de.metalab.namnam.export.json.NamNamJSONExporter;
 import de.metalab.namnam.export.jxml.NamNamJXMLExporter;
 import de.metalab.namnam.export.xml.NamNamXMLExporter;
-import namnam.model.Mensa;
+import de.metalab.namnam.model.Mensa;
 import de.metalab.namnam.parser.NamNamParser;
 import de.metalab.namnam.parser.erlangennuernberg.NamNamParserEI;
 import de.metalab.namnam.parser.erlangennuernberg.NamNamParserIN;

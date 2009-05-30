@@ -1,4 +1,4 @@
-package namnam.model;
+package de.metalab.namnam.model;
 
 /**
  * happa happa! yummy!

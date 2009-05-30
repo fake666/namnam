@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import namnam.model.Mensa;
+import de.metalab.namnam.model.Mensa;
 
 /**
  *

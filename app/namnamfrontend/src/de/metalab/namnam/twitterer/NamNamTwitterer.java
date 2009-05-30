@@ -9,9 +9,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import de.metalab.namnam.importer.jxml.NamNamJXMLImporter;
-import namnam.model.Mensa;
-import namnam.model.Mensaessen;
-import namnam.model.Tagesmenue;
+import de.metalab.namnam.model.Mensa;
+import de.metalab.namnam.model.Mensaessen;
+import de.metalab.namnam.model.Tagesmenue;
 import winterwell.jtwitter.Twitter;
 
 /**

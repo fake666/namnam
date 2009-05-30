@@ -1,6 +1,6 @@
 package de.metalab.namnam.parser;
 
-import namnam.model.Mensa;
+import de.metalab.namnam.model.Mensa;
 
 /**
  * @author fake
