@@ -29,7 +29,7 @@ import net.fortuna.ical4j.model.property.Version;
 import net.fortuna.ical4j.util.UidGenerator;
 
 /**
- * module to export a mensa object to java serialised xml
+ * module to export a mensa object to an ical ics file
  * @author fake
  */
 public class NamNamICALExporter extends NamNamExporter {

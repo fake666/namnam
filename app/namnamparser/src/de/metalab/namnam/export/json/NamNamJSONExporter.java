@@ -14,7 +14,7 @@ import namnam.model.Mensaessen;
 import namnam.model.Tagesmenue;
 
 /**
- * module to export a mensa object to java serialised xml
+ * module to export a mensa object to json format
  * @author fake
  */
 public class NamNamJSONExporter extends NamNamExporter {
