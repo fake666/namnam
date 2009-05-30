@@ -1,15 +1,15 @@
-package namnam.export;
+package de.metalab.namnam.export;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import namnam.export.ical.NamNamICALExporter;
-import namnam.export.json.NamNamJSONExporter;
-import namnam.export.jxml.NamNamJXMLExporter;
-import namnam.export.xml.NamNamXMLExporter;
+import de.metalab.namnam.export.ical.NamNamICALExporter;
+import de.metalab.namnam.export.json.NamNamJSONExporter;
+import de.metalab.namnam.export.jxml.NamNamJXMLExporter;
+import de.metalab.namnam.export.xml.NamNamXMLExporter;
 import namnam.model.Mensa;
-import namnam.parser.NamNamParser;
-import namnam.parser.erlangennuernberg.NamNamParserEI;
-import namnam.parser.erlangennuernberg.NamNamParserIN;
+import de.metalab.namnam.parser.NamNamParser;
+import de.metalab.namnam.parser.erlangennuernberg.NamNamParserEI;
+import de.metalab.namnam.parser.erlangennuernberg.NamNamParserIN;
 
 /**
  * helper class exporting all mensae known to all supported formats.

@@ -1,4 +1,4 @@
-package namnam.parser;
+package de.metalab.namnam.parser;
 
 import namnam.model.Mensa;
 

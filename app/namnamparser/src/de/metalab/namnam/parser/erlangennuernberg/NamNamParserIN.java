@@ -1,4 +1,4 @@
-package namnam.parser.erlangennuernberg;
+package de.metalab.namnam.parser.erlangennuernberg;
 
 
 /**

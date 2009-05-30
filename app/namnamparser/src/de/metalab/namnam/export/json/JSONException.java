@@ -1,4 +1,4 @@
-package namnam.export.json;
+package de.metalab.namnam.export.json;
 
 /**
  * The JSONException is thrown by the JSON.org classes then things are amiss.

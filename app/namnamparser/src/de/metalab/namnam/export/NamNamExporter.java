@@ -1,4 +1,4 @@
-package namnam.export;
+package de.metalab.namnam.export;
 
 import java.io.File;
 import java.io.FileNotFoundException;

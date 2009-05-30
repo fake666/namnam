@@ -1,4 +1,4 @@
-package namnam.export.json;
+package de.metalab.namnam.export.json;
 
 /*
 Copyright (c) 2006 JSON.org

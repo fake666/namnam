@@ -1,4 +1,4 @@
-package namnam.export.ical;
+package de.metalab.namnam.export.ical;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,8 +8,8 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import namnam.export.NamNamExportException;
-import namnam.export.NamNamExporter;
+import de.metalab.namnam.export.NamNamExportException;
+import de.metalab.namnam.export.NamNamExporter;
 import namnam.model.Mensaessen;
 import namnam.model.Tagesmenue;
 import net.fortuna.ical4j.data.CalendarOutputter;

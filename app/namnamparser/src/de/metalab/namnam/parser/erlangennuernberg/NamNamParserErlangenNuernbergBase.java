@@ -1,4 +1,4 @@
-package namnam.parser.erlangennuernberg;
+package de.metalab.namnam.parser.erlangennuernberg;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -9,9 +9,9 @@ import java.util.Locale;
 import namnam.model.Mensa;
 import namnam.model.Mensaessen;
 import namnam.model.Tagesmenue;
-import namnam.parser.NamNamParser;
-import namnam.parser.util.MutableNamespaceContext;
-import namnam.parser.util.XPathUtil;
+import de.metalab.namnam.parser.NamNamParser;
+import de.metalab.namnam.parser.util.MutableNamespaceContext;
+import de.metalab.namnam.parser.util.XPathUtil;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 

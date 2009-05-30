@@ -1,4 +1,4 @@
-package namnam.export.xml;
+package de.metalab.namnam.export.xml;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -23,8 +23,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import namnam.export.NamNamExportException;
-import namnam.export.NamNamExporter;
+import de.metalab.namnam.export.NamNamExportException;
+import de.metalab.namnam.export.NamNamExporter;
 import namnam.model.Mensaessen;
 import namnam.model.Tagesmenue;
 import org.w3c.dom.Document;

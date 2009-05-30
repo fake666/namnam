@@ -1,9 +1,9 @@
-package namnam.export.jxml;
+package de.metalab.namnam.export.jxml;
 
 import java.beans.XMLEncoder;
 import java.io.OutputStream;
-import namnam.export.NamNamExportException;
-import namnam.export.NamNamExporter;
+import de.metalab.namnam.export.NamNamExportException;
+import de.metalab.namnam.export.NamNamExporter;
 
 /**
  * module to export a mensa object to java serialised xml

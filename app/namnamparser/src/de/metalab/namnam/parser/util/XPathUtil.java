@@ -1,4 +1,4 @@
-package namnam.parser.util;
+package de.metalab.namnam.parser.util;
 
 import java.io.StringWriter;
 import java.net.URL;

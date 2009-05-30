@@ -1,4 +1,4 @@
-package namnam.export.json;
+package de.metalab.namnam.export.json;
 
 import java.io.BufferedReader;
 import java.io.IOException;
