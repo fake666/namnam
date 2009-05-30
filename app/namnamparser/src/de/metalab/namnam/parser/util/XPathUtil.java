@@ -37,7 +37,8 @@ import org.xml.sax.InputSource;
 public class XPathUtil {
 
     /**
-     * @param urlString The URL of the page to retrieve
+     * @param sUrl The URL of the page to retrieve
+     * @param encoding The encoding of the page
      * @return A Node with a well formed XML doc coerced from the page.
      * @throws Exception if something goes wrong. No error handling at all
      * for brevity.

@@ -31,7 +31,7 @@ public class Mensa {
         return dayMenues;
     }
     public void setDayMenues(Set<Tagesmenue> dayMenues) {
-        this.dayMenues = new TreeSet(dayMenues);
+        this.dayMenues = new TreeSet<Tagesmenue>(dayMenues);
     }
     public void addDayMenue(Tagesmenue dayMenu) {
         this.dayMenues.add(dayMenu);

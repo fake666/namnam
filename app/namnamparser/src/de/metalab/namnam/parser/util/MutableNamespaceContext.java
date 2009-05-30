@@ -22,7 +22,7 @@ public class MutableNamespaceContext implements NamespaceContext {
   private Map<String,String> map;
 
   public MutableNamespaceContext() {
-    map = new HashMap();
+    map = new HashMap<String,String>();
   }
 
   public void setNamespace(String prefix, String namespaceURI) {
@@ -43,7 +43,7 @@ public class MutableNamespaceContext implements NamespaceContext {
   }
 
   public Iterator getPrefixes(String namespaceURI) {
-    List prefixes = new ArrayList();
+    List<String> prefixes = new ArrayList<String>();
     for (String prefix : map.keySet()) {
       if (map.get(prefix).equals(namespaceURI)) {
         prefixes.add(prefix);
