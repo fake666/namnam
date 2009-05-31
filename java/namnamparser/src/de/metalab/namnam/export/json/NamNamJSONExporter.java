@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -63,7 +64,7 @@ public class NamNamJSONExporter extends NamNamExporter {
             JSONObject parent = new JSONObject();
             parent.put("Mensa",jmensa);
 
-            Writer w = new OutputStreamWriter(os);
+            Writer w = new OutputStreamWriter(os,Charset.forName("UTF-8"));
             parent.write(w);
             w.flush();
             w.close();
