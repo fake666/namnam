@@ -15,7 +15,7 @@ public class NamNamParserIN extends NamNamParserErlangenNuernbergBase {
         this.theURL = "http://www.studentenwerk.uni-erlangen.de/verpflegung/de/sp-ingolstadt.shtml";
     }
 
-    protected String getMensaName() {
+    public String getMensaName() {
         return NamNamParserIN.name;
     }
 }

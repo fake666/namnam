@@ -1,5 +1,8 @@
 package de.metalab.namnam.export;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import de.metalab.namnam.export.ical.NamNamICALExporter;
@@ -8,8 +11,7 @@ import de.metalab.namnam.export.jxml.NamNamJXMLExporter;
 import de.metalab.namnam.export.xml.NamNamXMLExporter;
 import de.metalab.namnam.model.Mensa;
 import de.metalab.namnam.parser.NamNamParser;
-import de.metalab.namnam.parser.erlangennuernberg.NamNamParserEI;
-import de.metalab.namnam.parser.erlangennuernberg.NamNamParserIN;
+import de.metalab.namnam.parser.erlangennuernberg.*;
 
 /**
  * helper class exporting all mensae known to all supported formats.
@@ -44,40 +46,38 @@ public class NamNamExportAll {
             return;
         }
 
-        NamNamParser inParser = new NamNamParserIN();
-        NamNamParser eiParser = new NamNamParserEI();
+	List<NamNamParser> np = new ArrayList<NamNamParser>();
+        np.add(new NamNamParserIN());
+        np.add(new NamNamParserEI());
+	np.add(new NamNamParserAnsbach());
+	np.add(new NamNamParserLangemarckplatzER());
+	np.add(new NamNamParserMensateriaN());
+	np.add(new NamNamParserRegensburgerStrN());
+	np.add(new NamNamParserSchuettN());
+	np.add(new NamNamParserSuedMensaER());
 
         NamNamExporter nnjex = new NamNamJXMLExporter(baseDir);
         NamNamExporter nnjsonex = new NamNamJSONExporter(baseDir);
         NamNamExporter nnxmlex = new NamNamXMLExporter(baseDir);
         NamNamExporter nnicalex = new NamNamICALExporter(baseDir);
 
-        Mensa in = null;
-        try {
-            in = inParser.getCurrentMenues();
-            nnjex.export(in);
-            nnjsonex.export(in);
-            nnxmlex.export(in);
-            nnicalex.export(in);
-        } catch (NamNamExportException nneex) {
-            logger.log(Level.SEVERE,"Error exporting ingolstadt menues!",nneex);
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE,"Error fetching ingolstadt menues!",ex);
-        }
+	Iterator<NamNamParser> npIt = np.iterator();
+	while(npIt.hasNext()) {
+		NamNamParser cur = npIt.next();
+		try {
+		    Mensa m = cur.getCurrentMenues();
+		    nnjex.export(m);
+		    nnjsonex.export(m);
+		    nnxmlex.export(m);
+		    nnicalex.export(m);
+		} catch (NamNamExportException nneex) {
+		    logger.log(Level.SEVERE,"Error exporting: " + cur.getMensaName(), nneex);
+		} catch (Exception ex) {
+		    logger.log(Level.SEVERE,"Error fetching: " + cur.getMensaName(), ex);
+		}
+	}
 
-        Mensa ei = null;
-        try {
-            ei = eiParser.getCurrentMenues();
-            nnjex.export(ei);
-            nnjsonex.export(ei);
-            nnxmlex.export(ei);
-            nnicalex.export(ei);
-        } catch (NamNamExportException nneex) {
-            logger.log(Level.SEVERE,"Error exporting eichstaett menues!",nneex);
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE,"Error fetching eichstaett menues!",ex);
-        }
-    }
+}
 
     public static void usage() {
         System.out.println( "NamNamParser - (C) 2009 Thomas 'fake' Jakobi");

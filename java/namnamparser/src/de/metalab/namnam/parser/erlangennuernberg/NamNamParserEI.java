@@ -15,7 +15,7 @@ public class NamNamParserEI extends NamNamParserErlangenNuernbergBase {
         this.theURL = "http://www.studentenwerk.uni-erlangen.de/verpflegung/de/sp-eichstaett.shtml";
     }
 
-    protected String getMensaName() {
+    public String getMensaName() {
         return NamNamParserEI.name;
     }
 }

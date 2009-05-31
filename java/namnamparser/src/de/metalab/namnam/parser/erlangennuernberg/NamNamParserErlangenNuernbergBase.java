@@ -35,7 +35,7 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
         this.df.setDecimalFormatSymbols(this.decf);
     }
 
-    abstract protected String getMensaName();
+    abstract public String getMensaName();
 
     public Mensa getCurrentMenues() throws Exception {
         Mensa mensa = new Mensa(this.getMensaName());

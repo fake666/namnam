@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://namnam.f4k3.net/schema/NamNamXML"
-    xmlns:tns="http://namnam.f4k3.net/schema/NamNamXML"
+    targetNamespace="http://namnam.meta-lab.de/files/NamNamXML"
+    xmlns:tns="http://namnam.meta-lab.de/files/NamNamXML"
     elementFormDefault="qualified">
         
     <xsd:annotation>
         <xsd:documentation>
             Schema for the namnam-format xml mensa menu plan
-            See http://blog.f4k3.net/fake and search for namnam
+            See http://namnam.meta-lab.de
             Copyright 2009 Thomas 'fake' Jakobi
         </xsd:documentation>
     </xsd:annotation>
