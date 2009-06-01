@@ -12,7 +12,8 @@ import de.metalab.namnam.importer.jxml.NamNamJXMLImporter;
 import de.metalab.namnam.model.Mensa;
 import de.metalab.namnam.model.Mensaessen;
 import de.metalab.namnam.model.Tagesmenue;
-import winterwell.jtwitter.Twitter;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
 
 /**
  * base class for twittering daily menues
@@ -99,14 +100,17 @@ public class NamNamTwitterer {
                 if(doTwitter)
                     myTwitter.updateStatus(status);
 
-                System.out.println(status);
+                logger.log(Level.INFO, status);
             }
         } catch (Exception ex) {
-            System.err.println(df.format(theDate) + ": Heute gibt's wohl nix!");
-            ex.printStackTrace();
+            logger.log(Level.SEVERE, "Heute gibt's wohl nix :(",ex);
 
-            if(doTwitter)
-                myTwitter.updateStatus(df.format(theDate) + ": Heute gibt's wohl nix!");
+            try {
+                if(doTwitter)
+                    myTwitter.updateStatus(df.format(theDate) + ": Heute gibt's wohl nix!");
+            } catch (TwitterException te) {
+                logger.log(Level.SEVERE, "twitterexception while twittering exception!", te);
+            }
         }
 
 
