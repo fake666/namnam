@@ -57,7 +57,7 @@ public class Main {
         Calendar date = Calendar.getInstance();
 
         if(theDate != null) {
-            df = new SimpleDateFormat("YYYY-MM-dd");
+            df = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 date.setTime(df.parse(theDate));
             } catch (ParseException pe) {
