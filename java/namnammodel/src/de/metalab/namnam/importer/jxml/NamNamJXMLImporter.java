@@ -7,11 +7,22 @@ import de.metalab.namnam.importer.NamNamImporter;
 import de.metalab.namnam.model.Mensa;
 
 /**
- * load a mensa object saved as java xml serialisation
+ * diese klasse erweitert die namnamimporter klasse und implementiert
+ * die moeglichkeit, einen inputstream, der als xml serialisierte java-
+ * objekte enthaelt, wieder zu deserialiseren.
+ *
  * @author fake
  */
 public class NamNamJXMLImporter extends NamNamImporter {
 
+    /**
+     * diese methode erlaubt es einen inputStream anzugeben, der eine als java xml serialisierte
+     * Mensa-instanz enthaelt.
+     *
+     * @param xmlStream der InputStream
+     * @return das Mensa-Objekt das in diesem Stream schlummerte
+     * @throws de.metalab.namnam.importer.NamNamImportException wenn ewas schiefgeht ;-)
+     */
     public Mensa load(InputStream xmlStream) throws NamNamImportException {
         Mensa ret = null;
         try {
