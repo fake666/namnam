@@ -23,7 +23,7 @@ public class Mensaessen extends Essen {
      * ein V markiert das essen als vegetarisch, ein X als ohne schweinefleisch
      * und ein R als mit Rind.
      *
-     * @param beschreibung die beschreibung des essens, aus der die vegetarisch/k. schweinefl./rind daten extrahiert werden
+     * @param desc die beschreibung des essens, aus der die vegetarisch/k. schweinefl./rind daten extrahiert werden
      * @param bPreis der normale, nicht verguenstigte preis des essens in cent
      * @param sPreis der beguenstigte studentenpreis des essens in cent
      */
@@ -43,7 +43,7 @@ public class Mensaessen extends Essen {
     }
     /**
      * legt den reduzierten studentenpreis fuer dieses mensaessen fest.
-     * @param preis der zu setzende, reduzierte studentenpreis
+     * @param studentenPreis der zu setzende, reduzierte studentenpreis
      */
     public void setStudentenPreis(Preis studentenPreis) {
         this.studentenPreis = studentenPreis;

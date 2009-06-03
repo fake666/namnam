@@ -33,7 +33,7 @@ public class Preis {
      * dessen waehrung festlegt.
      *
      * @param value der wert in cent
-     * @param currencty die waerhung - ein bischen bogus, weil oben ja schon "cent" steht ^^ zumindest ein bisschen formatierung wird momentan benutzt.
+     * @param currency die waerhung - ein bischen bogus, weil oben ja schon "cent" steht ^^ zumindest ein bisschen formatierung wird momentan benutzt.
      */
     public Preis(Integer value, Currency currency) {
         this.cents = value;
