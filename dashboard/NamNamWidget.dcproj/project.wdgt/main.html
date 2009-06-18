@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleAnimator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="localizedStrings.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/utilities.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/setup.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/Text.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/InfoButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/GlassButton.js" charset="utf-8"></script>
+    <script type="text/javascript" src="json2.js" charset="utf-8"></script>
+    <script type="text/javascript" src="namnam.js" charset="utf-8"></script>
+    <script type="text/javascript" src="main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/Shape.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Parts/Button.js" charset="utf-8"></script>
+</head>
+<body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
+    <div id="front">
+        <div apple-part="com.apple.Dashcode.part.toprectangleshape" class="apple-no-children" apple-style="image-theme: 1; image-shape: 9; image-button-type: 3; image-opacity: 1.00; image-top-color: 1,1,1,1; image-bottom-color: 1,0.114802897,0.824762225,1; image-radius: 12,12,-1,-1; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0;" id="topRectangleShape"></div>
+        <div apple-part="com.apple.Dashcode.part.rectangleshape" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 3; image-opacity: 1.00; image-top-color: 1,1,1,1; image-bottom-color: 0.615400016,0.615400016,0.615400016,1; image-radius: 0,0,0,0; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-on: 0; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;" id="centerRectangleShape"></div>
+        <div apple-part="com.apple.Dashcode.part.bottomrectangleshape" class="apple-no-children" apple-style="image-theme: 1; image-shape: 10; image-button-type: 3; image-opacity: 1.00; image-top-color: 1,0.252673447,0.82084173,1; image-bottom-color: 1,0.965909064,0.965909064,1; image-radius: -1,-1,12,12; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0;" id="bottomRectangleShape"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="mensaNameText" apple-style="part-height-dependent: true;"></div>
+        <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden"></div>
+        <div apple-part="com.apple.Dashcode.part.lozengerightbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 8; image-button-type: 0; image-opacity: 1.00; image-top-color: 1,1,1,1; image-bottom-color: 0.615400016,0.615400016,0.615400016,1; image-radius: 0,10,0,10; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0;" id="nextButton"></div>
+        <div apple-part="com.apple.Dashcode.part.lozengeleftbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 7; image-button-type: 0; image-opacity: 1.00; image-top-color: 1,1,1,1; image-bottom-color: 0.615400016,0.615400016,0.615400016,1; image-radius: 10,0,10,0; image-border: 1; image-border-color: 0.529399991,0.529399991,0.529399991,1; image-border-width: 1; shine-strength: 0.90; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; shadow-include-shadow: 0;" id="prevButton" apple-text-overflow=""></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="currentDateText"></div>
+    </div>
+    <div id="back">
+        <img id="backImg" src="Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.1500,0.1500,0.1500; image-border-width: 3; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
+        <select apple-part="com.apple.Dashcode.part.backpopupbutton" id="ortListPopup" apple-group="popup" onchange="onOrtChangeHandler(event)">
+            <option class="apple-hidden" value="Ansbach">Ansbach</option>
+            <option class="apple-hidden" value="Eichstätt">Eichstätt</option>
+            <option class="apple-hidden" value="Erlangen">Erlangen</option>
+            <option class="apple-hidden" value="Ingolstadt">Ingolstadt</option>
+            <option class="apple-hidden" value="Nürnberg">Nürnberg</option>
+        </select>
+        <select apple-part="com.apple.Dashcode.part.backpopupbutton" id="mensaListPopup" apple-group="popup" onchange="onMensaChangeHandler(event)" disabled="disabled">
+        </select>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="heading"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="heading1"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="blafoo"></div>
+        <div id="done" class="apple-no-children" apple-part="com.apple.Dashcode.part.glassbutton"></div>
+        <img src="Images/NamNamLogo.png" id="img">
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" id="link" onclick="openNamNamPage(event)" onmouseover="onMouseOverLinkHandler(event)" onmouseout="onMouseOutOfLinkHandler(event)"></div>
+    </div>
+</body>
+</html>
