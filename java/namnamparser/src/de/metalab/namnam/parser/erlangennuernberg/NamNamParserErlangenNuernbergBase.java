@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import de.metalab.namnam.model.Mensa;
 import de.metalab.namnam.model.Mensaessen;
 import de.metalab.namnam.model.Tagesmenue;
@@ -25,6 +27,8 @@ import org.w3c.dom.NodeList;
  * @author fake
  */
 public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser {
+
+    private static Logger logger = Logger.getLogger(NamNamParserErlangenNuernbergBase.class.getName());
 
     protected String theURL; // this is what children fill in
     protected SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy");
@@ -64,17 +68,19 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
 
             // that was easy. the tricky part is to find the date!
             String date = "";
-            if (idx.endsWith("1")) { // Esen 1: go down
+ 	    // there may be funny special chars in the essen-name. of course. so we just check for
+	    // the existense of a 1, 2 or 3 in the idx string...
+           if (idx.contains("1")) { // Esen 1: go down
                 date = td.getParentNode().getNextSibling().
                         getChildNodes().item(0).getChildNodes().item(0).getTextContent();
-            } else if (idx.endsWith("2")) { // Essen 2: right here
+            } else if (idx.contains("2")) { // Essen 2: right here
                 date = td.getPreviousSibling().
                         getChildNodes().item(0).getTextContent();
-            } else if (idx.endsWith("3")) { // Essen 3: go up
+            } else if (idx.contains("3")) { // Essen 3: go up
                 date = td.getParentNode().getPreviousSibling().
                         getChildNodes().item(0).getChildNodes().item(0).getTextContent();
             } else {
-                System.err.println("Warning: unknown index skipped! " + idx);
+                logger.log(Level.SEVERE, "unknown index skipped! " + idx);
                 continue;
             }
 
