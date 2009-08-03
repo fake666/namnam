@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.*;
 import de.metalab.namnam.model.Mensa;
 import de.metalab.namnam.model.Mensaessen;
 import de.metalab.namnam.model.Tagesmenue;
@@ -32,6 +33,7 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
 
     protected String theURL; // this is what children fill in
     protected SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy");
+    protected Pattern pricePattern = Pattern.compile("[0-9]+,[0-9]+");
     protected DecimalFormat df = new DecimalFormat();
     protected DecimalFormatSymbols decf = new DecimalFormatSymbols(Locale.GERMAN);
 
@@ -70,29 +72,60 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
             String date = "";
  	    // there may be funny special chars in the essen-name. of course. so we just check for
 	    // the existense of a 1, 2 or 3 in the idx string...
+	    // note however: during summer break, some mensae only offer 2 meals, so the date may be left of idx 1!
            if (idx.contains("1")) { // Esen 1: go down
                 date = td.getParentNode().getNextSibling().
                         getChildNodes().item(0).getChildNodes().item(0).getTextContent();
+		if(getDateFromString(date) == null) {
+			//try with left of us:
+			date = td.getPreviousSibling().getChildNodes().item(0).getTextContent();
+		}
             } else if (idx.contains("2")) { // Essen 2: right here
                 date = td.getPreviousSibling().
                         getChildNodes().item(0).getTextContent();
+		if(getDateFromString(date) == null) {
+			//try with left of the row above us: (summer mode)
+                	date = td.getParentNode().getPreviousSibling().
+                       	    getChildNodes().item(0).getChildNodes().item(0).getTextContent();
+		}
             } else if (idx.contains("3")) { // Essen 3: go up
                 date = td.getParentNode().getPreviousSibling().
                         getChildNodes().item(0).getChildNodes().item(0).getTextContent();
             } else {
-                logger.log(Level.SEVERE, "unknown index skipped! " + idx);
+                logger.log(Level.SEVERE, this.getMensaName() + ": unknown index skipped! " + idx);
                 continue;
             }
 
             Date d = getDateFromString(date);
-            if(d == null) continue;
+            if(d == null) {
+		logger.log(Level.WARNING, this.getMensaName() + ": could not parse date '" + date  + "' for index " + idx);
+		continue;
+	    }
             
             Tagesmenue daymeal = mensa.getMenuForDate(d);
             if (daymeal == null) {
                 daymeal = new Tagesmenue(d);
                 mensa.addDayMenue(daymeal);
             }
-            Mensaessen me = new Mensaessen(desc, getPriceInCents(bPrice), getPriceInCents(sPrice));
+
+	    Integer bPriceInCents = null;
+            Integer sPriceInCents = null;
+	    try {
+	    	bPriceInCents = getPriceInCents(bPrice);
+		if(bPriceInCents == null) throw new Exception("return value was null");
+	    } catch (Exception ex) {
+		logger.log(Level.SEVERE, this.getMensaName() + ", " + date + ": converting bed. price '"+bPrice+"' to cents failed",ex);
+	    }
+	    try {
+	    	sPriceInCents = getPriceInCents(sPrice);
+		if(sPriceInCents == null) throw new Exception("return value was null");
+	    } catch (Exception ex) {
+		logger.log(Level.SEVERE, this.getMensaName() + ", " + date + ": converting student price '"+sPrice+"' to cents failed",ex);
+	    }
+
+	    if(bPriceInCents == null || sPriceInCents == null) continue;
+
+            Mensaessen me = new Mensaessen(desc, bPriceInCents, sPriceInCents);
             daymeal.addMenu(me);
         }
 
@@ -101,11 +134,17 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
 
     protected Integer getPriceInCents(String s) throws Exception {
         if (s == null || "".equals(s.trim())) return null;
+	Matcher m = pricePattern.matcher(s);
+	if(!m.find()) {
+		logger.log(Level.WARNING,this.getMensaName() + ": Price format did not match regular expression");
+		return null;
+	}
+	s = m.group();
         return new Double(df.parse(s.substring(0, s.indexOf(',')+2)).doubleValue() * 100).intValue();
     }
 
     protected Date getDateFromString(String d) throws Exception {
-        if(d == null || "".equals(d.trim())) return null;
+        if(d == null || "".equals(d.trim()) || d.length() < 8) return null;
         Date date = sdf.parse(d.substring(3));
         return date;
     }
