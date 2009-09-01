@@ -97,20 +97,34 @@ public class NamNamTwitterer {
                     status = date + me.getBeschreibung().substring(0,toomuch-3) + "..."+ end;
                 }
 
-                if(doTwitter)
-                    myTwitter.updateStatus(status);
+                if(doTwitter) {
+		    while(true) {
+			try {
+                		myTwitter.updateStatus(status);
+				break;
+			} catch (TwitterException tex) {
+            			logger.log(Level.SEVERE, "tex: ",tex);
+				if(tex.getStatusCode() == 408) {
+					logger.log(Level.SEVERE,"trying again in 30 seconds");
+					Thread.sleep(30000);
+				} else {
+					break;
+				}
+			}
+		    }
+		}
 
                 logger.log(Level.INFO, status);
             }
         } catch (Exception ex) {
             logger.log(Level.SEVERE, "Heute gibt's wohl nix :(",ex);
 
-            try {
-                if(doTwitter)
-                    myTwitter.updateStatus(df.format(theDate) + ": Heute gibt's wohl nix!");
-            } catch (TwitterException te) {
-                logger.log(Level.SEVERE, "twitterexception while twittering exception!", te);
-            }
+            //try {
+             //   if(doTwitter)
+              //      myTwitter.updateStatus(df.format(theDate) + ": Heute gibt's wohl nix!");
+            //} catch (TwitterException te) {
+             //   logger.log(Level.SEVERE, "twitterexception while twittering exception!", te);
+            //}
         }
 
 
