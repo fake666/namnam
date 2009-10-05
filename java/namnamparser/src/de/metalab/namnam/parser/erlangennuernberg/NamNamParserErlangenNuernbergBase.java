@@ -50,10 +50,14 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
         MutableNamespaceContext nc = new MutableNamespaceContext();
         nc.setNamespace("html", "http://www.w3.org/1999/xhtml");
 
-        String QUERY = "//html:div[@id='content']/html:div[1]/html:table";
+        String QUERY = "//html:table";
 
         // leave it all behind
-        Node table = XPathUtil.query(node, QUERY, nc).item(0).cloneNode(true);
+        NodeList qResult = XPathUtil.query(node, QUERY, nc);
+        if(qResult.getLength() == 0) {
+            throw new NullPointerException("xpath query returned no nodes! please check xpath query!");
+        }
+        Node table = qResult.item(0).cloneNode(true);
 
         QUERY = "//*[contains(html:div,'Essen')]";
 
