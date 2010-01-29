@@ -21,20 +21,16 @@
 		<integer>8</integer>
 		<key>SplitViewConfig</key>
 		<integer>3</integer>
-		<key>_collapsingFrameDimension</key>
-		<real>0.0</real>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
-		<key>_percentageOfCollapsedView</key>
-		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1030, 333}}</string>
-			<string>{{0, 343}, {1030, 715}}</string>
+			<string>{{0, 0}, {1030, 402}}</string>
+			<string>{{0, 412}, {1030, 646}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>5</integer>
+	<integer>2</integer>
 	<key>Dashboard Widget Prefs</key>
 	<dict>
 		<key>id</key>
@@ -62,14 +58,20 @@
 	</dict>
 	<key>DeploymentOptions</key>
 	<dict>
+		<key>Destination</key>
+		<string>aos.default</string>
 		<key>Save</key>
 		<false/>
 		<key>SavePath</key>
-		<string>/Users/fake/Desktop</string>
+		<string>/Users/fake/Desktop/bingo</string>
 		<key>WidgetCompatibilityTag</key>
 		<integer>0</integer>
 		<key>WidgetDeployName</key>
 		<string>NamNam</string>
+		<key>enableSimulation</key>
+		<true/>
+		<key>simulatedHost</key>
+		<string>web.me.com</string>
 	</dict>
 	<key>Design time language</key>
 	<string>de.lproj</string>
@@ -77,12 +79,8 @@
 	<string>259 873 479 226 0 0 1600 1178 </string>
 	<key>MainSplitViewGeometry</key>
 	<dict>
-		<key>_collapsingFrameDimension</key>
-		<real>0.0</real>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
-		<key>_percentageOfCollapsedView</key>
-		<real>0.0</real>
 		<key>sizes</key>
 		<array>
 			<string>{{0, 0}, {244, 1079}}</string>
@@ -90,23 +88,19 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>7 78 1275 1100 0 0 1600 1178 </string>
+	<string>42 74 1275 1100 0 0 1600 1178 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
-		<integer>5</integer>
+		<integer>9</integer>
 		<key>SplitViewConfig</key>
-		<integer>3</integer>
-		<key>_collapsingFrameDimension</key>
-		<real>0.0</real>
+		<integer>1</integer>
 		<key>_indexOfCollapsedView</key>
 		<integer>0</integer>
-		<key>_percentageOfCollapsedView</key>
-		<real>0.0</real>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 536}}</string>
-			<string>{{0, 546}, {246, 512}}</string>
+			<string>{{0, 0}, {246, 353}}</string>
+			<string>{{0, 363}, {246, 695}}</string>
 		</array>
 	</dict>
 	<key>Objects view expanded items</key>
@@ -192,5 +186,32 @@
 	<array>
 		<string>front</string>
 	</array>
+	<key>Widget</key>
+	<dict>
+		<key>Objects view expanded items</key>
+		<array>
+			<array>
+				<integer>0</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+			</array>
+		</array>
+		<key>Objects view last selections</key>
+		<array>
+			<array>
+				<integer>2</integer>
+			</array>
+		</array>
+		<key>Opened Steps</key>
+		<array>
+			<integer>5</integer>
+		</array>
+		<key>Visible StackLayout Views</key>
+		<array>
+			<string>front</string>
+		</array>
+	</dict>
 </dict>
 </plist>
