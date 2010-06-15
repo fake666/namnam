@@ -61,7 +61,7 @@ public class NamNamXMLExporter extends NamNamExporter {
             DocumentBuilder docBuilder = dbfac.newDocumentBuilder();
             Document doc = docBuilder.newDocument();
             
-            String docNS = "http://namnam.meta-lab.de/files/NamNamXML";
+            String docNS = "http://namnam.bytewerk.org/files/NamNamXML";
 
             Element root = doc.createElementNS(docNS,"Mensa");
             root.setAttribute("name", mensa.getName());

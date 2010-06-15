@@ -87,7 +87,8 @@ public class Main {
     }
 
     public static void usage() {
-        System.out.println( "NamNamTwitterer - (C) 2009 Thomas 'fake' Jakobi");
+        System.out.println( "NamNamTwitterer - (C) 2010 Thomas 'fake' Jakobi");
+        System.out.println( "a bytewerk.org project");
 		System.out.println();
 		System.out.println("Usage:");
 		System.out.println();

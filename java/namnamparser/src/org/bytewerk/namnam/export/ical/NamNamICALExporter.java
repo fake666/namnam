@@ -21,6 +21,7 @@ import net.fortuna.ical4j.model.TimeZoneRegistryFactory;
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.model.component.VEvent;
 import net.fortuna.ical4j.model.component.VTimeZone;
+import net.fortuna.ical4j.model.parameter.Encoding;
 import net.fortuna.ical4j.model.property.CalScale;
 import net.fortuna.ical4j.model.property.Description;
 import net.fortuna.ical4j.model.property.ProdId;
@@ -51,6 +52,7 @@ public class NamNamICALExporter extends NamNamExporter {
             Calendar calendar = new Calendar();
             calendar.getProperties().add(new ProdId("-//NamNam//iCal4j 1.0//DE"));
             calendar.getProperties().add(Version.VERSION_2_0);
+            calendar.getProperties().add(Encoding.EIGHT_BIT);
             calendar.getProperties().add(CalScale.GREGORIAN);
 
             UidGenerator ug = new UidGenerator("1");

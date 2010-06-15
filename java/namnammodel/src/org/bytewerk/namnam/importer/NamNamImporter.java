@@ -32,7 +32,7 @@ public abstract class NamNamImporter {
      * um z.b. das Mensa-Objekt der hochschule ingolstadt mittels jxml zu laden, ruft man einfach diese
      * Methode mit dem argument der mensa auf:
      *
-     * Mensa in = myImportert.loadFromURL(new URL("http://namnam.meta-lab.de/files/Studiwerk-Erlangen-Nuernberg-Mensa-IN.jxml"));
+     * Mensa in = myImportert.loadFromURL(new URL("http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-IN.jxml"));
      *
      * @param theURL die URL der zu importierenden mensa-instanz
      * @return die Mensa-instanz

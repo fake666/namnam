@@ -80,8 +80,8 @@ public class NamNamExportAll {
 }
 
     public static void usage() {
-        System.out.println( "NamNamParser - (C) 2009 Thomas 'fake' Jakobi");
-        System.out.println( "A meta-lab.de project");
+        System.out.println( "NamNamParser - (C) 2010 Thomas 'fake' Jakobi");
+        System.out.println( "A bytewerk.org project");
 		System.out.println();
 		System.out.println("Usage:");
 		System.out.println();
