@@ -1,10 +1,10 @@
-package de.metalab.namnam.importer.jxml;
+package org.bytewerk.namnam.importer.jxml;
 
 import java.beans.XMLDecoder;
 import java.io.InputStream;
-import de.metalab.namnam.importer.NamNamImportException;
-import de.metalab.namnam.importer.NamNamImporter;
-import de.metalab.namnam.model.Mensa;
+import org.bytewerk.namnam.importer.NamNamImportException;
+import org.bytewerk.namnam.importer.NamNamImporter;
+import org.bytewerk.namnam.model.Mensa;
 
 /**
  * diese klasse erweitert die namnamimporter klasse und implementiert

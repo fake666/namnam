@@ -1,4 +1,4 @@
-package de.metalab.namnam.importer;
+package org.bytewerk.namnam.importer;
 
 /**
  * ein simpler exception-wrapper, damit man nacher noch feststellen kann, dass die exception

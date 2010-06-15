@@ -1,4 +1,4 @@
-package de.metalab.namnam.model;
+package org.bytewerk.namnam.model;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package de.metalab.namnam.importer;
+package org.bytewerk.namnam.importer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import de.metalab.namnam.model.Mensa;
+import org.bytewerk.namnam.model.Mensa;
 
 /**
  * abstrakte basisklasse fuer alle java-basierten namnam-importer.

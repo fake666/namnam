@@ -1,4 +1,4 @@
-package de.metalab.namnam.model;
+package org.bytewerk.namnam.model;
 
 /**
  * diese klasse repraesentiert ein mensaessen, indem sie das normale Essen um einen weiteren Preis fuer

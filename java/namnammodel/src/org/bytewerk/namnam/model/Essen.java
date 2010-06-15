@@ -1,4 +1,4 @@
-package de.metalab.namnam.model;
+package org.bytewerk.namnam.model;
 
 /**
  * diese klasse repraesentiert ein generisches essen mit einem preis
