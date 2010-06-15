@@ -5,7 +5,7 @@ package org.bytewerk.namnam.model;
  * und dient eigentlich momentan nur als basisklasse fuer die
  * Mensaessen-klasse.
  *
- * @see de.metalab.namnam.model.Mensaessen
+ * @see org.bytewerk.namnam.model.Mensaessen
  * @author fake
  * @author testicle
  * @author nati

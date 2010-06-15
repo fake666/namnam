@@ -70,7 +70,7 @@ public class Tagesmenue implements Comparable<Tagesmenue> {
      * dies ist wichtig fuer die sortierung nach datum im TreeSet
      * der Mensa-Klasse.
      *
-     * @see de.metalab.namnam.model.Mensa
+     * @see org.bytewerk.namnam.model.Mensa
      * @see java.util.TreeSet
      * @param rhs die instanz, mit der diese instanz verglichen werden soll
      * @return der vergleich vom datum dieser instanz mit dem datum der anderen instanz

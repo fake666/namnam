@@ -22,7 +22,7 @@ public abstract class NamNamImporter {
      *
      * @param xmlStream der inputstream, den wir unten noch schoen vorbereiten
      * @return eine Mensa-instanz
-     * @throws de.metalab.namnam.importer.NamNamImportException wenn was schiefgeht ;-)
+     * @throws org.bytewerk.namnam.importer.NamNamImportException wenn was schiefgeht ;-)
      */
     public abstract Mensa load(InputStream xmlStream) throws NamNamImportException;
 
@@ -36,7 +36,7 @@ public abstract class NamNamImporter {
      *
      * @param theURL die URL der zu importierenden mensa-instanz
      * @return die Mensa-instanz
-     * @throws de.metalab.namnam.importer.NamNamImportException wenn was schiefgeht (url nicht vorhanden/erreichbar/etc)
+     * @throws org.bytewerk.namnam.importer.NamNamImportException wenn was schiefgeht (url nicht vorhanden/erreichbar/etc)
      */
     public Mensa loadFromURL(URL theURL) throws NamNamImportException {
         URLConnection con = null;
@@ -58,7 +58,7 @@ public abstract class NamNamImporter {
      * laedt eine mensa-instanz von einem lokalen file, zu benutzen genu wie loadFromURL
      * @param xmlFile das file, dass geladen werden soll
      * @return die Mensa-instanz, die in dem file schlummerte
-     * @throws de.metalab.namnam.importer.NamNamImportException wenn was schief geht (file not found, etc)
+     * @throws org.bytewerk.namnam.importer.NamNamImportException wenn was schief geht (file not found, etc)
      */
     public Mensa loadFromFile(File xmlFile) throws NamNamImportException {
         Mensa ret = null;

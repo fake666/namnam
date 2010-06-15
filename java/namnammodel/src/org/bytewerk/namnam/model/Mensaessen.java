@@ -4,7 +4,7 @@ package org.bytewerk.namnam.model;
  * diese klasse repraesentiert ein mensaessen, indem sie das normale Essen um einen weiteren Preis fuer
  * Studenten erweitert.
  *
- * @see de.metalab.namnam.model.Essen
+ * @see org.bytewerk.namnam.model.Essen
  * @author fake
  * @author testicle
  * @author nati

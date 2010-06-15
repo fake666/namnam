@@ -21,7 +21,7 @@ public class NamNamJXMLImporter extends NamNamImporter {
      *
      * @param xmlStream der InputStream
      * @return das Mensa-Objekt das in diesem Stream schlummerte
-     * @throws de.metalab.namnam.importer.NamNamImportException wenn ewas schiefgeht ;-)
+     * @throws org.bytewerk.namnam.importer.NamNamImportException wenn ewas schiefgeht ;-)
      */
     public Mensa load(InputStream xmlStream) throws NamNamImportException {
         Mensa ret = null;
