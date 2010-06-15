@@ -290,7 +290,7 @@ function priceFormat(cents) {
 function openNamNamPage(event)
 {
   if ( window.widget ) {
-    widget.openURL( "http://namnam.meta-lab.de" );
+    widget.openURL( "http://namnam.bytewerk.org" );
     return false;
   }
 }

@@ -13,7 +13,7 @@ var dashcodePartSpecs = {
     "heading": { "creationFunction": "CreateText", "text": "Ort:" },
     "heading1": { "creationFunction": "CreateText", "text": "Mensa:" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
-    "link": { "creationFunction": "CreateText", "text": "visit namnam.meta-lab.de!" },
+    "link": { "creationFunction": "CreateText", "text": "visit namnam.bytewerk.org!" },
     "mensaNameText": { "creationFunction": "CreateText", "text": "MensaName" },
     "nextButton": { "creationFunction": "CreateButton", "leftImageWidth": 1, "onclick": "nextButtonClickHandler", "rightImageWidth": 10, "text": "&gt;" },
     "prevButton": { "creationFunction": "CreateButton", "leftImageWidth": 10, "onclick": "prevButtonClickHandler", "rightImageWidth": 1, "text": "&lt;" },

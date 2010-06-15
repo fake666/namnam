@@ -142,7 +142,7 @@ function dateToDay(date) {
 }
 
 function getURLForMensa(ort, mensa) {
-    var ret = "http://namnam.meta-lab.de/files/Studiwerk-Erlangen-Nuernberg-Mensa-";
+    var ret = "http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-";
      switch(ort) {
         case 'Ingolstadt':
             ret += "IN";
