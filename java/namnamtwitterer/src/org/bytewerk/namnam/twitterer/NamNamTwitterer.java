@@ -1,4 +1,4 @@
-package de.metalab.namnam.twitterer;
+package org.bytewerk.namnam.twitterer;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,10 +8,10 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import de.metalab.namnam.importer.jxml.NamNamJXMLImporter;
-import de.metalab.namnam.model.Mensa;
-import de.metalab.namnam.model.Mensaessen;
-import de.metalab.namnam.model.Tagesmenue;
+import org.bytewerk.namnam.importer.jxml.NamNamJXMLImporter;
+import org.bytewerk.namnam.model.Mensa;
+import org.bytewerk.namnam.model.Mensaessen;
+import org.bytewerk.namnam.model.Tagesmenue;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 

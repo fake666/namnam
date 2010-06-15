@@ -1,4 +1,4 @@
-package de.metalab.namnam.twitterer;
+package org.bytewerk.namnam.twitterer;
 
 import java.io.IOException;
 import java.text.ParseException;
