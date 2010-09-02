@@ -14,6 +14,7 @@ import org.bytewerk.namnam.model.Mensaessen;
 import org.bytewerk.namnam.model.Tagesmenue;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 
 /**
  * base class for twittering daily menues
@@ -38,7 +39,7 @@ public class NamNamTwitterer {
             throw new IOException("unable to read file!");
         }
 
-        myTwitter = new Twitter(twitterUser,twitterPw);
+        myTwitter = new TwitterFactory().getInstance(twitterUser,twitterPw);
     }
 
     public void setDoTwitter(boolean yesno) {
