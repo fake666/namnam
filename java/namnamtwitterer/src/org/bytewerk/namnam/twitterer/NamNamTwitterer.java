@@ -15,6 +15,7 @@ import org.bytewerk.namnam.model.Tagesmenue;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.http.AccessToken;
 
 /**
  * base class for twittering daily menues
@@ -31,7 +32,7 @@ public class NamNamTwitterer {
 
     public static final Logger logger = Logger.getLogger(NamNamTwitterer.class.getName());
 
-    public NamNamTwitterer(String fileName, String twitterUser, String twitterPw) throws IOException {
+    public NamNamTwitterer(String fileName, String cKey, String cSecret, String aToken, String aSecret) throws IOException {
         df = new SimpleDateFormat("E dd.MM.", Locale.GERMAN);
 
         xmlFile = new File(fileName);
@@ -39,7 +40,10 @@ public class NamNamTwitterer {
             throw new IOException("unable to read file!");
         }
 
-        myTwitter = new TwitterFactory().getInstance(twitterUser,twitterPw);
+        myTwitter = new TwitterFactory().getInstance();
+	myTwitter.setOAuthConsumer(cKey, cSecret);
+	AccessToken accessToken = new AccessToken(aToken, aSecret);
+	myTwitter.setOAuthAccessToken(accessToken);
     }
 
     public void setDoTwitter(boolean yesno) {

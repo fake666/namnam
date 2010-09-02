@@ -25,8 +25,10 @@ public class Main {
 
         boolean doTwitter = true;
         String theDate = null;
-        String twitterUser = null;
-        String twitterPass = null;
+        String twitterAToken = null;
+	String twitterASecret = null;
+        String twitterCKey = null;
+	String twitterCSecret = null;
         String file = null;
 
         String arg = null;
@@ -39,16 +41,20 @@ public class Main {
                 theDate = arg.substring(arg.indexOf('=')+1,arg.length());
             } else if (arg.equals("--no-twitter")) {
                 doTwitter = false;
-            } else if (arg.startsWith("--tu=")) {
-                twitterUser = arg.substring(arg.indexOf('=')+1,arg.length());
-            } else if (arg.startsWith("--tp=")) {
-                twitterPass = arg.substring(arg.indexOf('=')+1,arg.length());
+            } else if (arg.startsWith("--at=")) {
+                twitterAToken = arg.substring(arg.indexOf('=')+1,arg.length());
+            } else if (arg.startsWith("--as=")) {
+                twitterASecret = arg.substring(arg.indexOf('=')+1,arg.length());
+            } else if (arg.startsWith("--ck=")) {
+                twitterCKey = arg.substring(arg.indexOf('=')+1,arg.length());
+            } else if (arg.startsWith("--cs=")) {
+                twitterCSecret = arg.substring(arg.indexOf('=')+1,arg.length());
             } else if (arg.startsWith("--file=")) {
                 file = arg.substring(arg.indexOf('=')+1,arg.length());
             }
         }
 
-        if(file == null || twitterUser == null || twitterPass == null ) {
+        if(file == null || twitterAToken == null || twitterASecret == null || twitterCKey == null || twitterCSecret == null) {
             usage();
             return;
         }
@@ -78,7 +84,7 @@ public class Main {
 
         try {
             logger.log(Level.INFO, (!doTwitter?"not ":"")+"twittering:");
-            NamNamTwitterer nnt = new NamNamTwitterer(file,twitterUser,twitterPass);
+            NamNamTwitterer nnt = new NamNamTwitterer(file,twitterCKey,twitterCSecret, twitterAToken, twitterASecret);
             nnt.setDoTwitter(doTwitter);
             nnt.sendMenue(date.getTime());
         } catch (IOException ioex) {
@@ -92,7 +98,7 @@ public class Main {
 		System.out.println();
 		System.out.println("Usage:");
 		System.out.println();
-		System.out.println("java -jar namnamtwitterer.jar --tu=<twitter user> --tp=<twitter pw> --file=<filename> ");
+		System.out.println("java -jar namnamtwitterer.jar --ck=<consumer key> --cs=<consumer secret> --at=<auth token> --as=<auth secret> --file=<filename> ");
 		System.out.println();
 		System.out.println("Options:");
 		System.out.println(" --help         This help text");
@@ -100,7 +106,7 @@ public class Main {
         System.out.println(" --date=<date>  twitter info for date, format: YYYY-MM-DD");
 		System.out.println();
 		System.out.println("Examples:");
-		System.out.println(" java -jar namnamtwitterer.jar --tu=hsin_mensa --tp=pass --file=Mensa-IN.xml");
+		System.out.println(" java -jar namnamtwitterer.jar --ck=123 --cs=456 --at=123 --as=456 --file=Mensa-IN.xml");
 		System.out.println();
     }
 
