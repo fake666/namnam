@@ -55,7 +55,7 @@ public class NamNamExportAll {
 	np.add(new NamNamParserRegensburgerStrN());
 	np.add(new NamNamParserSchuettN());
 	np.add(new NamNamParserSuedMensaER());
-
+	
         NamNamExporter nnjex = new NamNamJXMLExporter(baseDir);
         NamNamExporter nnjsonex = new NamNamJSONExporter(baseDir);
         NamNamExporter nnxmlex = new NamNamXMLExporter(baseDir);

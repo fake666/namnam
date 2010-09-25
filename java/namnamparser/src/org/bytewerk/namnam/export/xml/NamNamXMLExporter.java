@@ -3,6 +3,7 @@ package org.bytewerk.namnam.export.xml;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -12,7 +13,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -115,8 +115,8 @@ public class NamNamXMLExporter extends NamNamExporter {
             trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
             trans.setOutputProperty(OutputKeys.INDENT, "yes");
 
-            //create string from xml tree
-            OutputStreamWriter sw = new OutputStreamWriter(os);
+            //create string from xml tree - updated 2010-09-25 to use utf8, thanks dschaudel!
+            OutputStreamWriter sw = new OutputStreamWriter(os, Charset.forName("UTF-8"));
             StreamResult result = new StreamResult(sw);
             DOMSource source = new DOMSource(doc);
             trans.transform(source, result);
