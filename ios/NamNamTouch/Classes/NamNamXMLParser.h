@@ -17,6 +17,10 @@
     id <NamNamXMLParserDelegate> delegate;
     Mensa *parsedMensa;
 	
+	NSString* url;
+	
+	BOOL parseErrorOccurred;
+	
 	Tagesmenue* currentTagesmenue;
 	Mensaessen* currentMensaessen;
 	
@@ -27,10 +31,13 @@
 	BOOL storingCharacters;
     NSURLConnection *connection;
 	NSMutableString* currentString;
+	
+	NSAutoreleasePool *downloadAndParsePool;
 }
 
 @property (nonatomic, assign) id <NamNamXMLParserDelegate> delegate;
 @property (nonatomic, retain) Mensa *parsedMensa;
+@property (nonatomic, retain) NSString *url;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
 @property (nonatomic, retain) NSNumberFormatter *numberFormatter;
 @property (nonatomic, retain) NSMutableData *xmlData;
@@ -40,6 +47,8 @@
 @property (nonatomic, retain) NSString *currentString;
 @property (nonatomic, retain) Tagesmenue* currentTagesmenue;
 @property (nonatomic, retain) Mensaessen* currentMensaessen;
+@property BOOL parseErrorOccurred;
+@property (nonatomic, assign) NSAutoreleasePool *downloadAndParsePool;
 
 - (void)start;
 

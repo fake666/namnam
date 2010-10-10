@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Mensen</key>
+	<dict>
+		<key>Ansbach</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-Ansbach.xml</string>
+		<key>Eichstätt</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-EI.xml</string>
+		<key>Erlangen - Langemarckplatz</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-Erlangen-Langemarckplatz.xml</string>
+		<key>Erlangen - Süd</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-Sued-Erlangen.xml</string>
+		<key>Ingolstadt</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-IN.xml</string>
+		<key>Nürnberg - Mensateria</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-Mensateria-N.xml</string>
+		<key>Nürnberg - Regensburgerstr.</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-Regensburgerstr.-N.xml</string>
+		<key>Nürnberg - Schütt</key>
+		<string>http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-Schuett-N.xml</string>
+	</dict>
+</dict>
+</plist>

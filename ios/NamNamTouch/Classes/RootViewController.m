@@ -7,13 +7,15 @@
 //
 
 #import "RootViewController.h"
+#import "NamNamSettingsController.h"
 #import "Mensa.h"
+#import "MensaURL.h"
 #import "Tagesmenue.h"
 #import "TagesMenueDetailController.h"
 
 @implementation RootViewController
 
-@synthesize parser, mensa, dateFormatter;
+@synthesize parser, mensa, dateFormatter, settingsController, tmController;
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -23,32 +25,78 @@
 - (void)parserDidEndParsingData:(NamNamXMLParser *)theparser {
 	self.mensa = theparser.parsedMensa;
 	
-	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateStyle:NSDateFormatterShortStyle];
-	[formatter setTimeStyle:NSDateFormatterNoStyle];
-	[formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
-	[formatter setDateFormat:@"dd.MM."];
-	
-	
-	self.title = [NSString stringWithFormat:@"%@ - %@", [formatter stringFromDate:self.mensa.firstDate], [formatter stringFromDate:self.mensa.lastDate]];
-    [self.tableView reloadData];
-	
-	// TODO: scroll to today or the nearest upcoming date if available or the latest date or die ^^
-	NSIndexPath* indPath = [NSIndexPath indexPathForRow:10 inSection:0];
-	[self.tableView scrollToRowAtIndexPath:indPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];	
-	
-    //self.navigationItem.rightBarButtonItem.enabled = YES;
-    self.parser = nil;
+	if(mensa.dayMenues.count <= 0) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Keine Einträge" 
+														message:@"Kein Essen gefunden! :("
+													   delegate:nil 
+											  cancelButtonTitle:@"Einstellungen" 
+											  otherButtonTitles: nil];
+		[alert show];
+		[alert release];
+		
+		// XXX TODO show settings screen here
+	} else {
+		
+		NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+		[formatter setDateStyle:NSDateFormatterShortStyle];
+		[formatter setTimeStyle:NSDateFormatterNoStyle];
+		[formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
+		[formatter setDateFormat:@"dd.MM."];
+		
+		
+		self.title = settingsController.mensaSelection.name;
+		[self.tableView reloadData];
+		
+		int nearestIdx = -1;
+		long nearestEntryDistance = -1;
+		for(int n = 0; n < mensa.dayMenues.count; n++) {
+			Tagesmenue* cur = [mensa.dayMenues objectAtIndex:n];
+			
+			long dist = [cur.tag timeIntervalSinceNow];
+			if(nearestEntryDistance < 0 || dist < nearestEntryDistance) {
+				nearestEntryDistance = dist;
+				nearestIdx = n;
+			}
+		}
+		
+		if(nearestIdx >= 0) {			
+			NSIndexPath* indPath = [NSIndexPath indexPathForRow:nearestIdx inSection:0];
+			[self.tableView scrollToRowAtIndexPath:indPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];	
+		}
+
+		self.parser = nil;
+	}	
 }
 
 - (void)parser:(NamNamXMLParser *)parser didFailWithError:(NSError *)error {
-    // handle errors as appropriate to your application...
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fehler" 
+                                                    message:[error localizedDescription]
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"Einstellungen" 
+                                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+	
+	// XXX TODO show settings screen here
 }
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	if (self.settingsController == nil)
+        self.settingsController = [[[NamNamSettingsController alloc] initWithNibName:
+									NSStringFromClass([NamNamSettingsController class]) bundle:nil] autorelease];
+	settingsController.delegate = self;
+	[settingsController loadSettings];
+	
+	UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+	[modalViewButton addTarget:self action:@selector(modalViewAction:) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *modalBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
+	self.navigationItem.rightBarButtonItem = modalBarButtonItem;
+	[modalBarButtonItem release];
+	
 
 	dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle:NSDateFormatterLongStyle];
@@ -56,13 +104,20 @@
 	[dateFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
 	
 	parser = [[NamNamXMLParser alloc] init];
+	parser.url = self.settingsController.mensaSelection.url;
 	parser.delegate = self;
 	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	[parser start];
 }
 
+- (void)mensaChanged:(MensaURL *)mensaUrl {
+	[parser release];
+	parser = [[NamNamXMLParser alloc] init];
+	parser.url = mensaUrl.url;
+	parser.delegate = self;
+	
+	[parser start];
+}
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -223,14 +278,60 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-	 TagesMenueDetailController *detailViewController = [[TagesMenueDetailController alloc] init];
-     Tagesmenue* t = [self.mensa.dayMenues objectAtIndex:indexPath.row];
-	 detailViewController.tagesmenue = t;
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
+	
+	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Alle" style:UIBarButtonItemStylePlain target:nil action:nil];
+	self.navigationItem.backBarButtonItem = backButton;
+	[backButton release];
+	
+	if(self.tmController == nil) {
+		self.tmController = [[TagesMenueDetailController alloc] init];
+		self.tmController.settingsController = self.settingsController;
+		self.tmController.delegate = self;
+	}
+	Tagesmenue* t = [self.mensa.dayMenues objectAtIndex:indexPath.row];
+	tmController.tagesmenue = t;
+	tmController.navTitle = [self transformedValue:t.tag];
+	[self.navigationController pushViewController:tmController animated:YES];
 }
+
+
+- (void)setNextTagesmenue:(TagesMenueDetailController *)view {
+	NSIndexPath* selected = [self.tableView indexPathForSelectedRow];
+	
+	if((selected.row + 1) >= [self.mensa.dayMenues count]) return;
+	
+	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(selected.row + 1) inSection:0];
+	[self.tableView selectRowAtIndexPath:indPath animated:NO scrollPosition:UITableViewScrollPositionMiddle ];	
+
+	Tagesmenue* t = [self.mensa.dayMenues objectAtIndex:indPath.row];
+	tmController.tagesmenue = t;
+	tmController.navTitle = [self transformedValue:t.tag];
+	[tmController.tableView reloadData];
+}
+
+- (void)setPrevTagesmenue:(TagesMenueDetailController *)view {
+	NSIndexPath* selected = [self.tableView indexPathForSelectedRow];
+
+	if(selected.row == 0) return;
+	
+	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(selected.row-1) inSection:0];
+	[self.tableView selectRowAtIndexPath:indPath animated:NO scrollPosition:UITableViewScrollPositionMiddle ];	
+	
+	Tagesmenue* t = [self.mensa.dayMenues objectAtIndex:indPath.row];	
+	tmController.tagesmenue = t;
+	tmController.navTitle = [self transformedValue:t.tag];
+	[tmController.tableView reloadData];
+}
+
+
+- (IBAction)modalViewAction:(id)sender {
+	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Zurück" style:UIBarButtonItemStylePlain target:nil action:nil];
+	self.navigationItem.backBarButtonItem = backButton;
+	[backButton release];
+	
+  	[self.navigationController pushViewController:self.settingsController animated:YES];
+}
+
 
 
 #pragma mark -
@@ -251,6 +352,8 @@
 
 - (void)dealloc {
 	[dateFormatter release];
+	[settingsController release];
+	[tmController release];
 	[mensa release];
 	[parser release];
     [super dealloc];

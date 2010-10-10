@@ -5,13 +5,13 @@
 
 @implementation NamNamXMLParser
 
-@synthesize delegate, parsedMensa, dateFormatter, numberFormatter, xmlData, done, storingCharacters, connection, currentString, currentMensaessen, currentTagesmenue;
+@synthesize delegate, parsedMensa, url, dateFormatter, numberFormatter, xmlData, done, storingCharacters, connection, currentString, currentMensaessen, currentTagesmenue, parseErrorOccurred, downloadAndParsePool;
 
 - (void)start {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     self.parsedMensa = nil;
-    NSURL *url = [NSURL URLWithString:@"http://namnam.bytewerk.org/files/Studiwerk-Erlangen-Nuernberg-Mensa-IN.xml"];
-    [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:url];
+    NSURL *theurl = [NSURL URLWithString:self.url];
+    [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:theurl];
 }
 
 - (void)dealloc {
@@ -19,14 +19,16 @@
     [super dealloc];
 }
 
-- (void)downloadAndParse:(NSURL *)url {
+- (void)downloadAndParse:(NSURL *)theurl {
+	self.downloadAndParsePool = [[NSAutoreleasePool alloc] init];
 	done = NO;
     
+	NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"GMT"]; // otherwise the local timezone will be applied to the parsed date-only-dates
+	
 	self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setTimeZone:timeZone];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    // necessary because iTunes RSS feed is not localized, so if the device region has been set to other than US
-    // the date formatter must be set to US locale in order to parse the dates
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
 	
 	self.numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
@@ -34,7 +36,8 @@
 	
     self.xmlData = [NSMutableData data];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    NSURLRequest *theRequest = [NSURLRequest requestWithURL:url];
+    NSURLRequest *theRequest = [NSURLRequest requestWithURL:theurl];
+
     // create the connection with the request and start loading the data
     connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
     [self performSelectorOnMainThread:@selector(downloadStarted) withObject:nil waitUntilDone:NO];
@@ -46,6 +49,9 @@
     self.connection = nil;
     self.dateFormatter = nil;
 	self.numberFormatter = nil;
+	
+	[downloadAndParsePool release];
+	self.downloadAndParsePool = nil;
 }
 
 
@@ -70,6 +76,7 @@
 - (void)parseError:(NSError *)error {
     NSAssert2([NSThread isMainThread], @"%s at line %d called on secondary thread", __FUNCTION__, __LINE__);
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:didFailWithError:)]) {
+		self.parseErrorOccurred = YES;
         [self.delegate parser:self didFailWithError:error];
     }
 }
@@ -86,7 +93,7 @@
 // Forward errors to the delegate.
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     done = YES;
-    [self performSelectorOnMainThread:@selector(parseError:) withObject:error waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(parseError:) withObject:error waitUntilDone:YES];
 }
 
 // Called when a chunk of data has been downloaded.
@@ -97,17 +104,23 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     [self performSelectorOnMainThread:@selector(downloadEnded) withObject:nil waitUntilDone:NO];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
+
+	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
     parser.delegate = self;
     self.currentString = [NSMutableString string];
     [parser parse];
-	NSLog(@"essen fuer %d tage",[self.parsedMensa.dayMenues count]);
-    [self performSelectorOnMainThread:@selector(parseEnded:) withObject:self.parsedMensa waitUntilDone:NO];
+	if(self.parseErrorOccurred) {
+		NSLog(@"parse error already communicated to delegate");
+	} else {
+		NSLog(@"essen fuer %d tage",[self.parsedMensa.dayMenues count]);
+		[self performSelectorOnMainThread:@selector(parseEnded:) withObject:self.parsedMensa waitUntilDone:NO];
+	}
 	[parser release];
     self.currentString = nil;
     self.xmlData = nil;
 	self.currentMensaessen = nil;
 	self.currentTagesmenue = nil;
+	self.parseErrorOccurred = NO;
     // Set the condition which ends the run loop.
     done = YES; 
 }
@@ -153,9 +166,9 @@ static NSString *kName_vegetarischAttr = @"vegetarisch";
 		self.currentTagesmenue = [[[Tagesmenue alloc] init] autorelease];
 	} else if ([elementName isEqualToString:kName_Mensaessen]) {
 		self.currentMensaessen = [[[Mensaessen alloc] init] autorelease];
-		self.currentMensaessen.vegetarian = [attributeDict objectForKey:kName_vegetarischAttr] == @"true";
-		self.currentMensaessen.beef = [attributeDict objectForKey:kName_rindAttr]== @"true";
-		self.currentMensaessen.moslem = [attributeDict objectForKey:kName_moslemAttr]== @"true";
+		self.currentMensaessen.vegetarian = [[attributeDict objectForKey:kName_vegetarischAttr] isEqualToString:@"true"];
+		self.currentMensaessen.beef = [[attributeDict objectForKey:kName_rindAttr] isEqualToString:@"true"];
+		self.currentMensaessen.moslem = [[attributeDict objectForKey:kName_moslemAttr] isEqualToString:@"true"];
     } else if ([elementName isEqualToString:kName_firstDate] || [elementName isEqualToString:kName_lastDate] || [elementName isEqualToString:kName_tag] ||
 			   [elementName isEqualToString:kName_beschreibung]|| [elementName isEqualToString:kName_studentenPreis]|| [elementName isEqualToString:kName_normalerPreis]  ) {
         [currentString setString:@""];
@@ -191,12 +204,8 @@ static NSString *kName_vegetarischAttr = @"vegetarisch";
     if (storingCharacters) [currentString appendString:string];
 }
 
-/*
- A production application should include robust error handling as part of its parsing implementation.
- The specifics of how errors are handled depends on the application.
- */
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    // Handle errors as appropriate for your application.
+	[self performSelectorOnMainThread:@selector(parseError:) withObject:parseError waitUntilDone:YES];
 }
 
 

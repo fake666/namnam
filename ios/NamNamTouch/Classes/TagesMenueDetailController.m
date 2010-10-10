@@ -7,30 +7,90 @@
 //
 
 #import "TagesMenueDetailController.h"
+#import "TagesMenueTableCellController.h"
 #import "Tagesmenue.h"
 #import "Mensaessen.h"
+#import "NamNamSettingsController.h"
 
 @implementation TagesMenueDetailController
 
-@synthesize tagesmenue;
+@synthesize tagesmenue, tmpCell, veggie, nopork, beef, settingsController, navTitle, delegate;
 
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
+- (id)init {
+	self = [super init];
+	
+	self.veggie = [UIImage imageNamed:@"veggie.png"];
+	self.nopork = [UIImage imageNamed:@"nopork.png"];
+	self.beef = [UIImage imageNamed:@"rind.png"];
+	
+	return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	self.tableView.rowHeight = 138.0;
+	
+	UISwipeGestureRecognizer *recognizer;
+	recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+	[self.view addGestureRecognizer:recognizer];
+	[recognizer release];
 
+	recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+	recognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+	[self.view addGestureRecognizer:recognizer];
+	[recognizer release];
+	
+	
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-*/
 
-/*
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+	CGPoint location = self.tableView.center;
+	CGSize size = self.tableView.bounds.size;
+
+	if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+		location.x = size.width + (size.width / 2);
+	} else {
+		location.x = -(size.width / 2);
+	}
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.35];
+	self.tableView.alpha = 0.0;
+	self.tableView.center = location;
+	[UIView commitAnimations];
+
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+		[delegate setNextTagesmenue:self];
+		self.title = self.navTitle;
+    } else {
+		[delegate setPrevTagesmenue:self];		
+		self.title = self.navTitle;
+    }
+
+	location.x = (size.width / 2);
+
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.35];
+	self.tableView.alpha = 1.0;
+	self.tableView.center = location;
+	[UIView commitAnimations];
+	
+}
+
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	self.title = self.navTitle;
+	[self.tableView reloadData];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -75,14 +135,52 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TagesMenueTableCellController *cell = (TagesMenueTableCellController*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		
+		[[NSBundle mainBundle] loadNibNamed:@"TagesMenueTableCellController" owner:self options:nil];
+		cell = tmpCell;
+		self.tmpCell = nil;
+        //cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
 	Mensaessen* essen = [tagesmenue.menues objectAtIndex:indexPath.row];
-    cell.textLabel.text = essen.beschreibung;
+    cell.titleText.text = essen.beschreibung;
+	
+	if(self.settingsController.priceDisplaySelection == PRICE_DISPLAY_STUDENT) {
+		cell.price.text = [[NSString alloc] initWithFormat:@"%.2f €", (essen.studentenPreis / 100.0)];
+	} else if (self.settingsController.priceDisplaySelection == PRICE_DISPLAY_NORMAL) {
+		cell.price.text = [[NSString alloc] initWithFormat:@"%.2f €", (essen.preis / 100.0)];
+	} else {
+		cell.price.text = [[NSString alloc] initWithFormat:@"%.2f € / %.2f €", (essen.studentenPreis / 100.0), (essen.preis / 100.0)];
+	}
+	
+	if(essen.vegetarian) {
+		cell.token1.image = veggie;
+		[cell.token1 sizeToFit];
+	}
+	if(essen.moslem) {
+		if(cell.token1.image == nil) {
+			cell.token1.image = nopork;
+			[cell.token1 sizeToFit];
+		} else {
+			cell.token2.image = nopork;
+			[cell.token2 sizeToFit];
+		}
+	}
+	if(essen.beef) {
+		if(cell.token1.image == nil) {
+			cell.token1.image = beef;
+			[cell.token1 sizeToFit];
+		} else if(cell.token2.image == nil) {
+			cell.token2.image = beef;
+			[cell.token2 sizeToFit];
+		} else {
+			cell.token3.image = beef;
+			[cell.token3 sizeToFit];
+		}
+	}
 		
     return cell;
 }

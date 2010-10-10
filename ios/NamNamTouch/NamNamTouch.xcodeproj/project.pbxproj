@@ -15,6 +15,24 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		2F5AE13D1260B0CA005D7DC5 /* NamNamURLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE13C1260B0CA005D7DC5 /* NamNamURLs.plist */; };
+		2F5AE1451260B23B005D7DC5 /* NamNamSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AE1431260B23B005D7DC5 /* NamNamSettingsController.m */; };
+		2F5AE1461260B23B005D7DC5 /* NamNamSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE1441260B23B005D7DC5 /* NamNamSettingsController.xib */; };
+		2F5AE14B1260B2B1005D7DC5 /* MensaURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AE14A1260B2B1005D7DC5 /* MensaURL.m */; };
+		2F5AE2AC1260C95D005D7DC5 /* NamNamMensaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AE2AA1260C95D005D7DC5 /* NamNamMensaPickerController.m */; };
+		2F5AE2AD1260C95D005D7DC5 /* NamNamMensaPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE2AB1260C95D005D7DC5 /* NamNamMensaPickerController.xib */; };
+		2F5AE3371260D3C5005D7DC5 /* NamNamSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE3361260D3C5005D7DC5 /* NamNamSettings.plist */; };
+		2F5AE4AA126104D6005D7DC5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE4A4126104D6005D7DC5 /* Icon-72.png */; };
+		2F5AE4AB126104D6005D7DC5 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE4A5126104D6005D7DC5 /* Icon-Small-50.png */; };
+		2F5AE4AC126104D6005D7DC5 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE4A6126104D6005D7DC5 /* Icon-Small.png */; };
+		2F5AE4AD126104D6005D7DC5 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE4A7126104D6005D7DC5 /* Icon-Small@2x.png */; };
+		2F5AE4AE126104D6005D7DC5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE4A8126104D6005D7DC5 /* Icon.png */; };
+		2F5AE4AF126104D6005D7DC5 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE4A9126104D6005D7DC5 /* Icon@2x.png */; };
+		2F5AE4CD126106B7005D7DC5 /* TagesMenueTableCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AE4CB126106B7005D7DC5 /* TagesMenueTableCellController.m */; };
+		2F5AE4CE126106B7005D7DC5 /* TagesMenueTableCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE4CC126106B7005D7DC5 /* TagesMenueTableCellController.xib */; };
+		2F5AE5CB12611377005D7DC5 /* rind.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE5C812611377005D7DC5 /* rind.png */; };
+		2F5AE5F51261162C005D7DC5 /* veggie.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE5F41261162C005D7DC5 /* veggie.png */; };
+		2F5AE67A12611BFB005D7DC5 /* nopork.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE67912611BFB005D7DC5 /* nopork.png */; };
 		2FF01EBB124EB7E100B8E408 /* TagesMenueDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF01EB9124EB7E100B8E408 /* TagesMenueDetailController.m */; };
 		2FF01EBC124EB7E100B8E408 /* TagesMenueDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FF01EBA124EB7E100B8E408 /* TagesMenueDetailController.xib */; };
 		2FF34431124E80B700A7956E /* Mensa.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF34430124E80B700A7956E /* Mensa.m */; };
@@ -37,6 +55,28 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2F5AE13C1260B0CA005D7DC5 /* NamNamURLs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NamNamURLs.plist; sourceTree = "<group>"; };
+		2F5AE1421260B23B005D7DC5 /* NamNamSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamNamSettingsController.h; sourceTree = "<group>"; };
+		2F5AE1431260B23B005D7DC5 /* NamNamSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamNamSettingsController.m; sourceTree = "<group>"; };
+		2F5AE1441260B23B005D7DC5 /* NamNamSettingsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NamNamSettingsController.xib; path = Classes/NamNamSettingsController.xib; sourceTree = "<group>"; };
+		2F5AE1491260B2B1005D7DC5 /* MensaURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MensaURL.h; sourceTree = "<group>"; };
+		2F5AE14A1260B2B1005D7DC5 /* MensaURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MensaURL.m; sourceTree = "<group>"; };
+		2F5AE2A91260C95D005D7DC5 /* NamNamMensaPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamNamMensaPickerController.h; sourceTree = "<group>"; };
+		2F5AE2AA1260C95D005D7DC5 /* NamNamMensaPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamNamMensaPickerController.m; sourceTree = "<group>"; };
+		2F5AE2AB1260C95D005D7DC5 /* NamNamMensaPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NamNamMensaPickerController.xib; path = Classes/NamNamMensaPickerController.xib; sourceTree = "<group>"; };
+		2F5AE3361260D3C5005D7DC5 /* NamNamSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NamNamSettings.plist; sourceTree = "<group>"; };
+		2F5AE4A4126104D6005D7DC5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		2F5AE4A5126104D6005D7DC5 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		2F5AE4A6126104D6005D7DC5 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		2F5AE4A7126104D6005D7DC5 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		2F5AE4A8126104D6005D7DC5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		2F5AE4A9126104D6005D7DC5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		2F5AE4CA126106B7005D7DC5 /* TagesMenueTableCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagesMenueTableCellController.h; sourceTree = "<group>"; };
+		2F5AE4CB126106B7005D7DC5 /* TagesMenueTableCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagesMenueTableCellController.m; sourceTree = "<group>"; };
+		2F5AE4CC126106B7005D7DC5 /* TagesMenueTableCellController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TagesMenueTableCellController.xib; path = Classes/TagesMenueTableCellController.xib; sourceTree = "<group>"; };
+		2F5AE5C812611377005D7DC5 /* rind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rind.png; sourceTree = "<group>"; };
+		2F5AE5F41261162C005D7DC5 /* veggie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veggie.png; sourceTree = "<group>"; };
+		2F5AE67912611BFB005D7DC5 /* nopork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopork.png; sourceTree = "<group>"; };
 		2FF01EB8124EB7E100B8E408 /* TagesMenueDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagesMenueDetailController.h; sourceTree = "<group>"; };
 		2FF01EB9124EB7E100B8E408 /* TagesMenueDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagesMenueDetailController.m; sourceTree = "<group>"; };
 		2FF01EBA124EB7E100B8E408 /* TagesMenueDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TagesMenueDetailController.xib; path = Classes/TagesMenueDetailController.xib; sourceTree = "<group>"; };
@@ -79,6 +119,12 @@
 				1D3623250D0F684500981E51 /* NamNamTouchAppDelegate.m */,
 				2FF01EB8124EB7E100B8E408 /* TagesMenueDetailController.h */,
 				2FF01EB9124EB7E100B8E408 /* TagesMenueDetailController.m */,
+				2F5AE1421260B23B005D7DC5 /* NamNamSettingsController.h */,
+				2F5AE1431260B23B005D7DC5 /* NamNamSettingsController.m */,
+				2F5AE2A91260C95D005D7DC5 /* NamNamMensaPickerController.h */,
+				2F5AE2AA1260C95D005D7DC5 /* NamNamMensaPickerController.m */,
+				2F5AE4CA126106B7005D7DC5 /* TagesMenueTableCellController.h */,
+				2F5AE4CB126106B7005D7DC5 /* TagesMenueTableCellController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -115,10 +161,24 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F5AE67912611BFB005D7DC5 /* nopork.png */,
+				2F5AE5F41261162C005D7DC5 /* veggie.png */,
+				2F5AE5C812611377005D7DC5 /* rind.png */,
+				2F5AE4CC126106B7005D7DC5 /* TagesMenueTableCellController.xib */,
+				2F5AE4A4126104D6005D7DC5 /* Icon-72.png */,
+				2F5AE4A5126104D6005D7DC5 /* Icon-Small-50.png */,
+				2F5AE4A6126104D6005D7DC5 /* Icon-Small.png */,
+				2F5AE4A7126104D6005D7DC5 /* Icon-Small@2x.png */,
+				2F5AE4A8126104D6005D7DC5 /* Icon.png */,
+				2F5AE4A9126104D6005D7DC5 /* Icon@2x.png */,
+				2F5AE2AB1260C95D005D7DC5 /* NamNamMensaPickerController.xib */,
+				2F5AE1441260B23B005D7DC5 /* NamNamSettingsController.xib */,
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
 				2FF01EBA124EB7E100B8E408 /* TagesMenueDetailController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* NamNamTouch-Info.plist */,
+				2F5AE13C1260B0CA005D7DC5 /* NamNamURLs.plist */,
+				2F5AE3361260D3C5005D7DC5 /* NamNamSettings.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -144,6 +204,8 @@
 				2FF3443F124E82D300A7956E /* Essen.m */,
 				2FF3448F124E882F00A7956E /* Mensaessen.h */,
 				2FF34490124E882F00A7956E /* Mensaessen.m */,
+				2F5AE1491260B2B1005D7DC5 /* MensaURL.h */,
+				2F5AE14A1260B2B1005D7DC5 /* MensaURL.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -151,9 +213,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* NamNamTouch */ = {
+		1D6058900D05DD3D006BFB54 /* NamNam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "NamNamTouch" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "NamNam" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -163,7 +225,7 @@
 			);
 			dependencies = (
 			);
-			name = NamNamTouch;
+			name = NamNam;
 			productName = NamNamTouch;
 			productReference = 1D6058910D05DD3D006BFB54 /* NamNamTouch.app */;
 			productType = "com.apple.product-type.application";
@@ -188,7 +250,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* NamNamTouch */,
+				1D6058900D05DD3D006BFB54 /* NamNam */,
 			);
 		};
 /* End PBXProject section */
@@ -201,6 +263,20 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
 				2FF01EBC124EB7E100B8E408 /* TagesMenueDetailController.xib in Resources */,
+				2F5AE13D1260B0CA005D7DC5 /* NamNamURLs.plist in Resources */,
+				2F5AE1461260B23B005D7DC5 /* NamNamSettingsController.xib in Resources */,
+				2F5AE2AD1260C95D005D7DC5 /* NamNamMensaPickerController.xib in Resources */,
+				2F5AE3371260D3C5005D7DC5 /* NamNamSettings.plist in Resources */,
+				2F5AE4AA126104D6005D7DC5 /* Icon-72.png in Resources */,
+				2F5AE4AB126104D6005D7DC5 /* Icon-Small-50.png in Resources */,
+				2F5AE4AC126104D6005D7DC5 /* Icon-Small.png in Resources */,
+				2F5AE4AD126104D6005D7DC5 /* Icon-Small@2x.png in Resources */,
+				2F5AE4AE126104D6005D7DC5 /* Icon.png in Resources */,
+				2F5AE4AF126104D6005D7DC5 /* Icon@2x.png in Resources */,
+				2F5AE4CE126106B7005D7DC5 /* TagesMenueTableCellController.xib in Resources */,
+				2F5AE5CB12611377005D7DC5 /* rind.png in Resources */,
+				2F5AE5F51261162C005D7DC5 /* veggie.png in Resources */,
+				2F5AE67A12611BFB005D7DC5 /* nopork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +296,10 @@
 				2FF34491124E882F00A7956E /* Mensaessen.m in Sources */,
 				2FF344AE124E8CA400A7956E /* NamNamXMLParser.m in Sources */,
 				2FF01EBB124EB7E100B8E408 /* TagesMenueDetailController.m in Sources */,
+				2F5AE1451260B23B005D7DC5 /* NamNamSettingsController.m in Sources */,
+				2F5AE14B1260B2B1005D7DC5 /* MensaURL.m in Sources */,
+				2F5AE2AC1260C95D005D7DC5 /* NamNamMensaPickerController.m in Sources */,
+				2F5AE4CD126106B7005D7DC5 /* TagesMenueTableCellController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,11 +337,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
@@ -270,12 +351,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
@@ -283,7 +365,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "NamNamTouch" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "NamNam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
