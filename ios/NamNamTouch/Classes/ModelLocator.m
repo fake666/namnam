@@ -131,7 +131,7 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	[plistDict setValue:priceSelectionString forKey:@"ShowPrice"];
 	
 	NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict
-																   format:NSPropertyListXMLFormat_v1_0
+																   format:NSPropertyListBinaryFormat_v1_0
 														 errorDescription:&error];
 	if(plistData) {
 		[plistData writeToFile:plistPath atomically:YES];
@@ -150,7 +150,7 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	[plistDict setValue:[mensa serialize] forKey:@"mensa"];
 	
 	NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict
-																   format:NSPropertyListXMLFormat_v1_0
+																   format:NSPropertyListBinaryFormat_v1_0
 														 errorDescription:&error];
 	if(plistData) {
 		[plistData writeToFile:plistPath atomically:YES];
