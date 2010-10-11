@@ -14,46 +14,35 @@
 #import "TagesMenueDetailController.h"
 #import "ModelLocator.h"
 
-/* mensa data update interval in seconds */
-const double DataCacheInterval = 86400.0;
-
 @implementation RootViewController
 
-@synthesize parser, dateFormatter, settingsController, tmController, model;
+@synthesize dateFormatter, settingsController, tmController, model;
 #pragma mark -
 #pragma mark View lifecycle
 
+- (void)awakeFromNib {
+	model = [ModelLocator sharedInstance];
+	model.delegate = self;
+}
 
-#pragma mark <NamNamXMLParserDelegate> Implementation
-
-- (void)parserDidEndParsingData:(NamNamXMLParser *)theparser {
-	// automatically releases the current value if set!
-	model.mensa = theparser.parsedMensa;
+- (void)loadingFinished {
+	self.title = model.mensaURL.name;
+	[self.tableView reloadData];
+	Tagesmenue* current = [model closestDayMenue];
+	[self scrollToTagesmenue:current];
 	
-	if(model.mensa.dayMenues.count <= 0) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Keine Einträge" 
-														message:@"Kein Essen gefunden! :("
-													   delegate:nil 
-											  cancelButtonTitle:@"Einstellungen" 
-											  otherButtonTitles: nil];
-		[alert show];
-		[alert release];
-		
-		[self modalViewAction:self];
-	} else {
-		[model saveData];
-		self.title = model.mensaURL.name;
-		[self.tableView reloadData];
-		Tagesmenue* current = [model closestDayMenue];
-		[self scrollToTagesmenue:current];
-		
-		if(model.appWasInBackGround) {
-			model.appWasInBackGround = NO;
-			[self switchToTagesMenueDetailView:current];
-		}
-		
-		self.parser = nil;
-	}	
+	if(model.appWasInBackGround) {
+		model.appWasInBackGround = NO;
+		[self switchToTagesMenueDetailView:current];
+	}
+}
+
+- (void)mensaNameKnown:(NSString*)name {
+	self.title = name;
+}
+
+- (void)loadingFailed {
+	[self modalViewAction:self];
 }
 
 - (void)scrollToTagesmenue:(Tagesmenue*)tm {
@@ -62,27 +51,10 @@ const double DataCacheInterval = 86400.0;
 		NSIndexPath* indPath = [NSIndexPath indexPathForRow:nearestIdx inSection:0];
 		[self.tableView scrollToRowAtIndexPath:indPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];	
 	}
-}	
-
-- (void)parser:(NamNamXMLParser *)parser didFailWithError:(NSError *)error {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fehler" 
-                                                    message:[error localizedDescription]
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"Einstellungen" 
-                                          otherButtonTitles: nil];
-    [alert show];
-    [alert release];
-	
-	[self modalViewAction:self];
-
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	model = [ModelLocator sharedInstance];
 	
 	if (self.settingsController == nil) {
         self.settingsController = [[NamNamSettingsController alloc] 
@@ -111,31 +83,17 @@ const double DataCacheInterval = 86400.0;
 	
 	// check wether it's time to re-load data
 	if(model.mensa != nil && [model.mensa.dayMenues count] > 0) {
-		NSTimeInterval dataAge = fabs([model.mensa.lastUpdate timeIntervalSinceNow]);
-		if (dataAge <= DataCacheInterval) {
-			[self.tableView reloadData];
-			[self scrollToTagesmenue:[model closestDayMenue]];
-			
-			return;
-		}
+		[self.tableView reloadData];
+		[self scrollToTagesmenue:[model closestDayMenue]];
 	}
-	
-	
-	parser = [[NamNamXMLParser alloc] init];
-	parser.delegate = self;
-	
-	[parser start];
 }
 
 - (void)mensaChanged:(MensaURL *)mensaUrl {
-	[parser release];
 	model.mensa = nil;
 	[model saveData];
+	self.title = model.mensaURL.name;
 	[self.tableView reloadData];
-	parser = [[NamNamXMLParser alloc] init];
-	parser.delegate = self;
-	
-	[parser start];
+	[model fetchMensaData];
 }
 
 
@@ -149,6 +107,7 @@ const double DataCacheInterval = 86400.0;
     [super viewDidAppear:animated];
 
 	if(model.appWasInBackGround && [model.mensa.dayMenues count] > 0) {
+		[model.activity stopAnimating];
 		model.appWasInBackGround = NO;
 		// scroll to the current date and open the current or next daymenue
 		Tagesmenue* current = [model closestDayMenue];
@@ -311,12 +270,11 @@ const double DataCacheInterval = 86400.0;
 	[self.navigationController pushViewController:tmController animated:YES];	
 }
 
-- (void)setNextTagesmenue:(TagesMenueDetailController *)view {
-	NSIndexPath* selected = [self.tableView indexPathForSelectedRow];
+- (void)setNextTagesmenue:(Tagesmenue *)currentTm {
+	int curIdx = [model.mensa.dayMenues indexOfObject:currentTm];
+	if((curIdx + 1) >= [model.mensa.dayMenues count]) return;
 	
-	if((selected.row + 1) >= [model.mensa.dayMenues count]) return;
-	
-	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(selected.row + 1) inSection:0];
+	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(curIdx + 1) inSection:0];
 	[self.tableView selectRowAtIndexPath:indPath animated:NO scrollPosition:UITableViewScrollPositionMiddle ];	
 
 	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indPath.row];
@@ -325,12 +283,12 @@ const double DataCacheInterval = 86400.0;
 	[tmController.tableView reloadData];
 }
 
-- (void)setPrevTagesmenue:(TagesMenueDetailController *)view {
-	NSIndexPath* selected = [self.tableView indexPathForSelectedRow];
+- (void)setPrevTagesmenue:(Tagesmenue *)currentTm {
+	int curIdx = [model.mensa.dayMenues indexOfObject:currentTm];
 
-	if(selected.row == 0) return;
+	if(curIdx == 0) return;
 	
-	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(selected.row-1) inSection:0];
+	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(curIdx-1) inSection:0];
 	[self.tableView selectRowAtIndexPath:indPath animated:NO scrollPosition:UITableViewScrollPositionMiddle ];	
 	
 	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indPath.row];	
@@ -369,7 +327,6 @@ const double DataCacheInterval = 86400.0;
 	[dateFormatter release];
 	[settingsController release];
 	[tmController release];
-	[parser release];
     [super dealloc];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NamNamXMLParser.h"
 
 #define PRICE_DISPLAY_BOTH 0
 #define PRICE_DISPLAY_STUDENT 1
@@ -14,8 +15,20 @@
 
 @class Mensa, MensaURL, Tagesmenue;
 
-@interface ModelLocator : NSObject {
+@protocol NamNamModelLocatorDelegate <NSObject>
 
+@optional
+// Called by the parser when parsing is finished.
+- (void)loadingFinished;
+- (void)loadingFailed;
+- (void)mensaNameKnown:(NSString*)name;
+@end
+
+@interface ModelLocator : NSObject <NamNamXMLParserDelegate> {
+
+	NamNamXMLParser* parser;
+	id<NamNamModelLocatorDelegate> delegate;
+	
 	BOOL appWasInBackGround; // scroll to current day if on ios 4+ on iphone 3gs/4 (TODO XXX)
 	
 	MensaURL* mensaURL; // the mensa we are currently using;
@@ -23,20 +36,29 @@
 	Mensa* mensa; // the loaded mensa, either restored from local cache or freshly loaded from the net
 	
 	NSInteger priceDisplayType; // how to display prices
+	
+	UIActivityIndicatorView* activity; // a generic indicator to show activty
 }
 
 @property BOOL appWasInBackGround;
 
-@property(nonatomic, retain) MensaURL *mensaURL;
-@property(nonatomic, retain) NSArray *mensen;
-@property(nonatomic, retain) Mensa *mensa;
+@property(assign) id<NamNamModelLocatorDelegate> delegate;
+@property(retain) NamNamXMLParser *parser;
+@property(retain) MensaURL *mensaURL;
+@property(retain) NSArray *mensen;
+@property(retain) Mensa *mensa;
 @property NSInteger priceDisplayType;
+@property(retain) UIActivityIndicatorView *activity;
 
 - (void) loadSettings;
 - (void) loadMensae;
 - (void) saveSettings;
 - (void) saveData;
 - (void) loadData;
+- (void) fetchMensaData;
+
+- (void)parserDidEndParsingData:(NamNamXMLParser *)theparser;
+- (void)parser:(NamNamXMLParser *)parser didFailWithError:(NSError *)error;
 
 - (Tagesmenue*)closestDayMenue;
 

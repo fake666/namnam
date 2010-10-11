@@ -9,35 +9,53 @@
 #import "NamNamTouchAppDelegate.h"
 #import "RootViewController.h"
 #import "ModelLocator.h"
-
+#import "Mensa.h"
 
 @implementation NamNamTouchAppDelegate
 
 @synthesize window;
 @synthesize navigationController;
 @synthesize model;
-
+@synthesize act;
 
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    // Override point for customization after application launch.
-    
-    // Add the navigation controller's view to the window and display.
     [window addSubview:navigationController.view];
     [window makeKeyAndVisible];
-
+	
+	
+	act = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(140.0,140.0,40.0,40.0)];
+	act.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+	[window addSubview:act];
+	act.hidesWhenStopped = YES;
+	[act startAnimating];
+    
 	model = [ModelLocator sharedInstance];
-	[model loadSettings];
-	[model loadData];
+	model.activity = act;
+
+	[self performSelector:@selector(doLoad) withObject:nil afterDelay:0];	
 	
 	model.appWasInBackGround = YES;
-	
+
     return YES;
 }
 
+- (void)doLoad{
+	[model loadSettings];
+	[model loadData];
+	if(model.mensa != nil && [model.mensa.dayMenues count] > 0 ) {
+		NSTimeInterval dataAge = [model.mensa.lastDate timeIntervalSinceNow];
+		if (dataAge > -50400) { // 14:00 on the last day we have data for
+			[act stopAnimating];
+			[model.delegate loadingFinished];
+			return;
+		}
+	}
+	[model fetchMensaData];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*

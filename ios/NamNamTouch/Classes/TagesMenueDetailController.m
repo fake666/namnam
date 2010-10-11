@@ -8,6 +8,7 @@
 
 #import "TagesMenueDetailController.h"
 #import "TagesMenueTableCellController.h"
+#import "Mensa.h"
 #import "Tagesmenue.h"
 #import "Mensaessen.h"
 #import "ModelLocator.h"
@@ -52,12 +53,19 @@
 }
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer {
+	
+	int curIdx = [model.mensa.dayMenues indexOfObject:tagesmenue];
+
 	CGPoint location = self.tableView.center;
 	CGSize size = self.tableView.bounds.size;
 
 	if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+		if((curIdx + 1) >= [model.mensa.dayMenues count]) return;
+		
 		location.x = size.width + (size.width / 2);
 	} else {
+		if(curIdx == 0) return;
+		
 		location.x = -(size.width / 2);
 	}
 	
@@ -68,10 +76,10 @@
 	[UIView commitAnimations];
 
     if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
-		[delegate setNextTagesmenue:self];
+		[delegate setNextTagesmenue:tagesmenue];
 		self.title = self.navTitle;
     } else {
-		[delegate setPrevTagesmenue:self];		
+		[delegate setPrevTagesmenue:tagesmenue];		
 		self.title = self.navTitle;
     }
 

@@ -16,8 +16,8 @@
 @protocol NamNamTagesmenueNextPrevDelegate <NSObject>
 
 @optional
-- (void)setNextTagesmenue:(TagesMenueDetailController *)view;
-- (void)setPrevTagesmenue:(TagesMenueDetailController *)view;
+- (void)setNextTagesmenue:(Tagesmenue *)currentTm;
+- (void)setPrevTagesmenue:(Tagesmenue *)currentTm;
 @end
 
 @interface TagesMenueDetailController : UITableViewController <UIGestureRecognizerDelegate> {

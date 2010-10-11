@@ -18,7 +18,7 @@ static ModelLocator *sharedInstance = nil;
 #pragma mark -
 #pragma mark class instance methods
 
-@synthesize appWasInBackGround, mensaURL, mensa, mensen, priceDisplayType;
+@synthesize appWasInBackGround, mensaURL, mensa, mensen, priceDisplayType, activity, parser, delegate;
 
 NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	return [[mensa1 name] localizedCaseInsensitiveCompare:[mensa2 name]];
@@ -59,6 +59,8 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	}
 	
 	NSString* selMensaName = [selectedMensa objectForKey:@"name"];
+	[delegate mensaNameKnown:selMensaName];
+	
 	for(int n = 0; n < self.mensen.count; n++) {
 		MensaURL* cur = [self.mensen objectAtIndex:n];
 		if([cur.name isEqualToString:selMensaName]) {
@@ -153,7 +155,7 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	if(plistData) {
 		[plistData writeToFile:plistPath atomically:YES];
 	} else {
-		NSLog(@"error saving settings: %@",error);
+		NSLog(@"error saving data: %@",error);
 		[error release];
 	}
 }
@@ -201,6 +203,50 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 		return nil;
 	}
 
+}
+
+- (void)parserDidEndParsingData:(NamNamXMLParser *)theparser {
+	// automatically releases the current value if set!
+	self.mensa = theparser.parsedMensa;
+	
+	if(mensa.dayMenues.count <= 0) {
+		[activity stopAnimating];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Keine Einträge" 
+														message:@"Kein Essen gefunden! :("
+													   delegate:nil 
+											  cancelButtonTitle:@"Einstellungen" 
+											  otherButtonTitles: nil];
+		[alert show];
+		[alert release];
+		
+		[delegate loadingFailed];
+	} else {
+		[self saveData];
+		[activity stopAnimating];
+		[delegate loadingFinished];
+	}	
+}
+
+- (void)parser:(NamNamXMLParser *)parser didFailWithError:(NSError *)error {
+	[activity stopAnimating];	
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fehler" 
+                                                    message:[error localizedDescription]
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"Einstellungen" 
+                                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+	
+	[delegate loadingFailed];
+}
+
+- (void)fetchMensaData {
+	[parser release];
+	parser = [[NamNamXMLParser alloc] init];
+	parser.delegate = self;
+	[activity startAnimating];
+	[parser start];
 }
 
 #pragma mark -

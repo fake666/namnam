@@ -14,6 +14,8 @@
     
     UIWindow *window;
     UINavigationController *navigationController;
+	UIActivityIndicatorView *act;
+	
 	
 	ModelLocator* model;
 }
@@ -21,6 +23,9 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) ModelLocator *model;
+@property (nonatomic, retain) UIActivityIndicatorView *act;
+
+- (void)doLoad;
 
 @end
 

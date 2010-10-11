@@ -15,6 +15,7 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		2F1BD3A21262BF9100507E47 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1BD3A11262BF9100507E47 /* Default.png */; };
 		2F5AE13D1260B0CA005D7DC5 /* NamNamURLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE13C1260B0CA005D7DC5 /* NamNamURLs.plist */; };
 		2F5AE1451260B23B005D7DC5 /* NamNamSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5AE1431260B23B005D7DC5 /* NamNamSettingsController.m */; };
 		2F5AE1461260B23B005D7DC5 /* NamNamSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F5AE1441260B23B005D7DC5 /* NamNamSettingsController.xib */; };
@@ -56,6 +57,7 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2F1BD3A11262BF9100507E47 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2F5AE13C1260B0CA005D7DC5 /* NamNamURLs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NamNamURLs.plist; sourceTree = "<group>"; };
 		2F5AE1421260B23B005D7DC5 /* NamNamSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamNamSettingsController.h; sourceTree = "<group>"; };
 		2F5AE1431260B23B005D7DC5 /* NamNamSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamNamSettingsController.m; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F1BD3A11262BF9100507E47 /* Default.png */,
 				2F5AE67912611BFB005D7DC5 /* nopork.png */,
 				2F5AE5F41261162C005D7DC5 /* veggie.png */,
 				2F5AE5C812611377005D7DC5 /* rind.png */,
@@ -282,6 +285,7 @@
 				2F5AE5CB12611377005D7DC5 /* rind.png in Resources */,
 				2F5AE5F51261162C005D7DC5 /* veggie.png in Resources */,
 				2F5AE67A12611BFB005D7DC5 /* nopork.png in Resources */,
+				2F1BD3A21262BF9100507E47 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,13 +347,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
 		};
@@ -357,14 +361,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Release;
 		};

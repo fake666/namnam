@@ -7,35 +7,35 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NamNamXMLParser.h"
 #import "NamNamSettingsController.h"
 #import "TagesMenueDetailController.h"
+#import "ModelLocator.h"
 
 @class MensaURL;
-@class ModelLocator;
 
-@interface RootViewController : UITableViewController <NamNamXMLParserDelegate, UINavigationBarDelegate,
+@interface RootViewController : UITableViewController <UINavigationBarDelegate, NamNamModelLocatorDelegate,
 													   NamNamMensaReloadDelegate, NamNamTagesmenueNextPrevDelegate> {
-	NamNamXMLParser* parser;
-	
 	NSDateFormatter *dateFormatter;
 	NamNamSettingsController* settingsController;
 	TagesMenueDetailController* tmController;
 														   
-   ModelLocator* model;
+    ModelLocator* model;
 }
 
 - (void)scrollToTagesmenue:(Tagesmenue*)tm;
-- (void) switchToTagesMenueDetailView:(Tagesmenue*)t;
+- (void)switchToTagesMenueDetailView:(Tagesmenue*)t;
 
 - (NSString*)transformedValue:(NSDate*)theDate;
 - (void)mensaChanged:(MensaURL *)mensaUrl;
 - (IBAction)modalViewAction:(id)sender;
 
-- (void)setNextTagesmenue:(TagesMenueDetailController *)view;
-- (void)setPrevTagesmenue:(TagesMenueDetailController *)view;
+- (void)setNextTagesmenue:(Tagesmenue *)currentTm;
+- (void)setPrevTagesmenue:(Tagesmenue *)currentTm;
 
-@property(nonatomic, retain) NamNamXMLParser *parser;
+- (void)loadingFinished;
+- (void)loadingFailed;
+- (void)mensaNameKnown:(NSString*)name;
+
 @property(nonatomic, retain) NSDateFormatter *dateFormatter;
 @property(nonatomic, retain) NamNamSettingsController *settingsController;
 @property(nonatomic, retain) TagesMenueDetailController *tmController;
