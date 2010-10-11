@@ -9,6 +9,7 @@
 #import "ModelLocator.h"
 #import "MensaURL.h"
 #import "Mensa.h"
+#import "Tagesmenue.h"
 
 static ModelLocator *sharedInstance = nil;
 
@@ -182,7 +183,25 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	}
 }
 
+- (Tagesmenue*) closestDayMenue {
+	int nearestIdx = -1;
+	long nearestEntryDistance = -1;
+	for(int n = 0; n < self.mensa.dayMenues.count; n++) {
+		Tagesmenue* cur = [self.mensa.dayMenues objectAtIndex:n];
+		
+		long dist = abs([cur.tag timeIntervalSinceNow]);
+		if(nearestEntryDistance < 0 || dist < nearestEntryDistance) {
+			nearestEntryDistance = dist;
+			nearestIdx = n;
+		}
+	}
+	if(nearestIdx >= 0) {
+		return [self.mensa.dayMenues objectAtIndex:nearestIdx];
+	} else {
+		return nil;
+	}
 
+}
 
 #pragma mark -
 #pragma mark Singleton methods

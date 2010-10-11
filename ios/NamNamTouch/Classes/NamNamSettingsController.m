@@ -30,7 +30,7 @@
 	self.title = @"Einstellungen";
 	
 	//init the date formater for the last update display
-	self.formatter = [[NSDateFormatter alloc] init];
+	self.formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateStyle:NSDateFormatterLongStyle];
     [formatter setTimeStyle:NSDateFormatterMediumStyle];
 	
@@ -44,7 +44,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	lastUpdateLabel.text = [[[NSString alloc] initWithFormat:@"leztes Update: %@", [formatter stringFromDate:model.mensa.lastUpdate]] autorelease];
+	if(model.mensa.lastUpdate != nil) {
+		lastUpdateLabel.text = [[[NSString alloc] initWithFormat:@"leztes Update: %@", [formatter stringFromDate:model.mensa.lastUpdate]] autorelease];
+	} else {
+		lastUpdateLabel.text = @"leztes Update: nie";
+	}
 }
 
 /*
@@ -53,21 +57,23 @@
 }
 */
 
-// XXX TODO reload mensa data if it changed
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+	model.appWasInBackGround = NO;
+}
+
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 	
 	if(self.mensaChanged) {
 		self.mensaChanged = NO;
 		[delegate mensaChanged:model.mensaURL]; 
 	}
+	
 }
 
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -12,7 +12,7 @@
 - (void)parser:(NamNamXMLParser *)parser didFailWithError:(NSError *)error;
 @end
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
+#ifdef __IPHONE_4_0
 #else
 @protocol NSXMLParserDelegate
 @end

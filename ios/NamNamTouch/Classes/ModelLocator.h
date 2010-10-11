@@ -12,7 +12,7 @@
 #define PRICE_DISPLAY_STUDENT 1
 #define PRICE_DISPLAY_NORMAL 2
 
-@class Mensa, MensaURL;
+@class Mensa, MensaURL, Tagesmenue;
 
 @interface ModelLocator : NSObject {
 
@@ -37,6 +37,8 @@
 - (void) saveSettings;
 - (void) saveData;
 - (void) loadData;
+
+- (Tagesmenue*)closestDayMenue;
 
 + (ModelLocator*)sharedInstance;
 + (id)allocWithZone:(NSZone *)zone;

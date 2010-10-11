@@ -60,8 +60,6 @@
 }
 
 - (void)dealloc {
-	NSLog(@"mensa %@ being dealloced", name);
-	
 	[lastUpdate release];
 	[firstDate release];
 	[lastDate release];

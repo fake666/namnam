@@ -25,7 +25,8 @@
    ModelLocator* model;
 }
 
-- (void)scrollToNearestDate;
+- (void)scrollToTagesmenue:(Tagesmenue*)tm;
+- (void) switchToTagesMenueDetailView:(Tagesmenue*)t;
 
 - (NSString*)transformedValue:(NSDate*)theDate;
 - (void)mensaChanged:(MensaURL *)mensaUrl;

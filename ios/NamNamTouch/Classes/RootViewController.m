@@ -44,25 +44,21 @@ const double DataCacheInterval = 86400.0;
 		[model saveData];
 		self.title = model.mensaURL.name;
 		[self.tableView reloadData];
-		[self scrollToNearestDate];
+		Tagesmenue* current = [model closestDayMenue];
+		[self scrollToTagesmenue:current];
+		
+		if(model.appWasInBackGround) {
+			model.appWasInBackGround = NO;
+			[self switchToTagesMenueDetailView:current];
+		}
+		
 		self.parser = nil;
 	}	
 }
 
-- (void)scrollToNearestDate {
-	int nearestIdx = -1;
-	long nearestEntryDistance = -1;
-	for(int n = 0; n < model.mensa.dayMenues.count; n++) {
-		Tagesmenue* cur = [model.mensa.dayMenues objectAtIndex:n];
-		
-		long dist = [cur.tag timeIntervalSinceNow];
-		if(nearestEntryDistance < 0 || dist < nearestEntryDistance) {
-			nearestEntryDistance = dist;
-			nearestIdx = n;
-		}
-	}
-	
-	if(nearestIdx >= 0) {			
+- (void)scrollToTagesmenue:(Tagesmenue*)tm {
+	if(tm != nil) {
+		int nearestIdx = [model.mensa.dayMenues indexOfObject:tm];
 		NSIndexPath* indPath = [NSIndexPath indexPathForRow:nearestIdx inSection:0];
 		[self.tableView scrollToRowAtIndexPath:indPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];	
 	}
@@ -78,6 +74,7 @@ const double DataCacheInterval = 86400.0;
     [alert release];
 	
 	[self modalViewAction:self];
+
 }
 
 
@@ -113,11 +110,12 @@ const double DataCacheInterval = 86400.0;
 	self.title = model.mensaURL.name;
 	
 	// check wether it's time to re-load data
-	if(model.mensa != nil) {
+	if(model.mensa != nil && [model.mensa.dayMenues count] > 0) {
 		NSTimeInterval dataAge = fabs([model.mensa.lastUpdate timeIntervalSinceNow]);
 		if (dataAge <= DataCacheInterval) {
 			[self.tableView reloadData];
-			[self scrollToNearestDate];
+			[self scrollToTagesmenue:[model closestDayMenue]];
+			
 			return;
 		}
 	}
@@ -131,6 +129,9 @@ const double DataCacheInterval = 86400.0;
 
 - (void)mensaChanged:(MensaURL *)mensaUrl {
 	[parser release];
+	model.mensa = nil;
+	[model saveData];
+	[self.tableView reloadData];
 	parser = [[NamNamXMLParser alloc] init];
 	parser.delegate = self;
 	
@@ -138,20 +139,23 @@ const double DataCacheInterval = 86400.0;
 }
 
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	if(model.appWasInBackGround) {
-		// scroll to the current date
-		[self scrollToNearestDate];
-	}
-
-}
-
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 */
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+	if(model.appWasInBackGround && [model.mensa.dayMenues count] > 0) {
+		model.appWasInBackGround = NO;
+		// scroll to the current date and open the current or next daymenue
+		Tagesmenue* current = [model closestDayMenue];
+		[self switchToTagesMenueDetailView:current];
+	}
+}
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
@@ -183,7 +187,8 @@ const double DataCacheInterval = 86400.0;
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [model.mensa.dayMenues count];
+	if(model.mensa != nil) return [model.mensa.dayMenues count];
+	else return 0;
 }
 
 
@@ -219,7 +224,7 @@ const double DataCacheInterval = 86400.0;
 	
 	// Iterate through the eight days (tomorrow, today, and the last six).
 	int i;
-	for (i = -1; i < 7; i++)
+	for (i = -6; i < 3; i++)
 	{
 		// Initialize reference date.
 		comps = [calendar components:unitFlags fromDate:[NSDate date]];
@@ -293,18 +298,17 @@ const double DataCacheInterval = 86400.0;
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+	[self switchToTagesMenueDetailView:[model.mensa.dayMenues objectAtIndex:indexPath.row]];
+}
+
+- (void) switchToTagesMenueDetailView:(Tagesmenue*)tm {
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Alle" style:UIBarButtonItemStylePlain target:nil action:nil];
 	self.navigationItem.backBarButtonItem = backButton;
 	[backButton release];
 	
-	if(self.tmController == nil) {
-		
-	}
-	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indexPath.row];
-	tmController.tagesmenue = t;
-	tmController.navTitle = [self transformedValue:t.tag];
-	[self.navigationController pushViewController:tmController animated:YES];
+	tmController.tagesmenue = tm;
+	tmController.navTitle = [self transformedValue:tm.tag];
+	[self.navigationController pushViewController:tmController animated:YES];	
 }
 
 - (void)setNextTagesmenue:(TagesMenueDetailController *)view {
