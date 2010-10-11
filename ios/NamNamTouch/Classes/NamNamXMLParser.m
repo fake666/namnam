@@ -1,21 +1,27 @@
 #import "NamNamXMLParser.h"
 #import "Mensa.h"
+#import "MensaURL.h"
 #import "Mensaessen.h"
 #import "Tagesmenue.h"
+#import "ModelLocator.h"
 
 @implementation NamNamXMLParser
 
-@synthesize delegate, parsedMensa, url, dateFormatter, numberFormatter, xmlData, done, storingCharacters, connection, currentString, currentMensaessen, currentTagesmenue, parseErrorOccurred, downloadAndParsePool;
+@synthesize delegate, parsedMensa, dateFormatter, numberFormatter, xmlData, done, storingCharacters, connection, currentString, currentMensaessen, currentTagesmenue, parseErrorOccurred, downloadAndParsePool, currentMenues, currentDayMenues, model;
 
 - (void)start {
+	
+	model = [ModelLocator sharedInstance];
+	
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     self.parsedMensa = nil;
-    NSURL *theurl = [NSURL URLWithString:self.url];
+    NSURL *theurl = [NSURL URLWithString:model.mensaURL.url];
     [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:theurl];
 }
 
 - (void)dealloc {
     [parsedMensa release];
+	[dateFormatter release];
     [super dealloc];
 }
 
@@ -25,13 +31,13 @@
     
 	NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"GMT"]; // otherwise the local timezone will be applied to the parsed date-only-dates
 	
-	self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	self.dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setTimeZone:timeZone];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
 	
-	self.numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+	self.numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 	
     self.xmlData = [NSMutableData data];
@@ -46,8 +52,11 @@
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         } while (!done);
     }
-    self.connection = nil;
-    self.dateFormatter = nil;
+    //[connection release];
+	self.connection = nil;
+    [dateFormatter release];
+	self.dateFormatter = nil;
+	[numberFormatter release];
 	self.numberFormatter = nil;
 	
 	[downloadAndParsePool release];
@@ -68,6 +77,7 @@
 - (void)parseEnded:(Mensa*) mensa {
     NSAssert2([NSThread isMainThread], @"%s at line %d called on secondary thread", __FUNCTION__, __LINE__);
 	self.parsedMensa = mensa;
+	self.parsedMensa.lastUpdate = [[[NSDate alloc] init] autorelease];
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(parserDidEndParsingData:)]) {
         [self.delegate parserDidEndParsingData:self];
     }
@@ -108,34 +118,25 @@
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
     parser.delegate = self;
     self.currentString = [NSMutableString string];
+	
+	self.currentDayMenues = [[[NSMutableArray alloc] initWithCapacity:20] autorelease];
+	self.currentMenues = [[[NSMutableArray alloc] initWithCapacity:3] autorelease];
+	
     [parser parse];
-	if(self.parseErrorOccurred) {
-		NSLog(@"parse error already communicated to delegate");
-	} else {
-		NSLog(@"essen fuer %d tage",[self.parsedMensa.dayMenues count]);
+	if(!self.parseErrorOccurred) {
 		[self performSelectorOnMainThread:@selector(parseEnded:) withObject:self.parsedMensa waitUntilDone:NO];
 	}
 	[parser release];
-    self.currentString = nil;
-    self.xmlData = nil;
-	self.currentMensaessen = nil;
-	self.currentTagesmenue = nil;
+    [self.currentString release];
+    [self.xmlData release];
+	[self.currentMensaessen release];
+	[self.currentTagesmenue release];
+	[self.currentDayMenues release];
+	[self.currentMenues release];
 	self.parseErrorOccurred = NO;
     // Set the condition which ends the run loop.
     done = YES; 
 }
-
-#pragma mark Parsing support methods
-
-static const NSUInteger kAutoreleasePoolPurgeFrequency = 1;
-
-/*
-- (void)finishedCurrentMensa {
-    [self performSelectorOnMainThread:@selector(parsedMensa:) withObject:currentMensa waitUntilDone:NO];
-    // performSelectorOnMainThread: will retain the object until the selector has been performed
-    // setting the local reference to nil ensures that the local reference will be released
-    self.currentMensa = nil;
-} */
 
 #pragma mark NSXMLParser Parsing Callbacks
 
@@ -143,19 +144,19 @@ static const NSUInteger kAutoreleasePoolPurgeFrequency = 1;
 // Declaring these as static constants reduces the number of objects created during the run
 // and is less prone to programmer error.
 static NSString *kName_Mensa = @"Mensa";
+static NSString *kName_Tagesmenue = @"Tagesmenue";
+static NSString *kName_Mensaessen = @"Mensaessen";
+
 static NSString *kName_firstDate = @"firstDate";
 static NSString *kName_lastDate = @"lastDate";
-static NSString *kName_Tagesmenue = @"Tagesmenue";
 static NSString *kName_tag = @"tag";
-static NSString *kName_Mensaessen = @"Mensaessen";
-static NSString *kName_beschreibung = @"beschreibung";
-static NSString *kName_studentenPreis = @"studentenPreis";
-static NSString *kName_normalerPreis = @"normalerPreis";
-
 static NSString *kName_nameAttr = @"name";
+static NSString *kName_beschreibung = @"beschreibung";
 static NSString *kName_moslemAttr = @"moslem";
 static NSString *kName_rindAttr = @"rind";
 static NSString *kName_vegetarischAttr = @"vegetarisch";
+static NSString *kName_studentenPreis = @"studentenPreis";
+static NSString *kName_normalerPreis = @"normalerPreis";
 
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
@@ -170,7 +171,7 @@ static NSString *kName_vegetarischAttr = @"vegetarisch";
 		self.currentMensaessen.beef = [[attributeDict objectForKey:kName_rindAttr] isEqualToString:@"true"];
 		self.currentMensaessen.moslem = [[attributeDict objectForKey:kName_moslemAttr] isEqualToString:@"true"];
     } else if ([elementName isEqualToString:kName_firstDate] || [elementName isEqualToString:kName_lastDate] || [elementName isEqualToString:kName_tag] ||
-			   [elementName isEqualToString:kName_beschreibung]|| [elementName isEqualToString:kName_studentenPreis]|| [elementName isEqualToString:kName_normalerPreis]  ) {
+			   [elementName isEqualToString:kName_beschreibung] || [elementName isEqualToString:kName_studentenPreis] || [elementName isEqualToString:kName_normalerPreis]) {
         [currentString setString:@""];
         storingCharacters = YES;
     }
@@ -184,19 +185,21 @@ static NSString *kName_vegetarischAttr = @"vegetarisch";
 	} else if ([elementName isEqualToString:kName_tag]) {
         currentTagesmenue.tag = [dateFormatter dateFromString:currentString];
     } else if ([elementName isEqualToString:kName_beschreibung]) {
-        currentMensaessen.beschreibung = [[NSString alloc] initWithString:currentString];
+        currentMensaessen.beschreibung = [[[NSString alloc] initWithString:currentString] autorelease];
     } else if ([elementName isEqualToString:kName_studentenPreis]) {
         currentMensaessen.studentenPreis = [[numberFormatter numberFromString:currentString] intValue];
     } else if ([elementName isEqualToString:kName_normalerPreis]) {
         currentMensaessen.preis = [[numberFormatter numberFromString:currentString] intValue];
-		
-		// start adding up
     } else if ([elementName isEqualToString:kName_Mensaessen]) {
-        [currentTagesmenue.menues addObject:currentMensaessen];
+		[currentMenues addObject:currentMensaessen];
     } else if ([elementName isEqualToString:kName_Tagesmenue]) {
-        [parsedMensa.dayMenues addObject:currentTagesmenue];
+		currentTagesmenue.menues = [NSArray arrayWithArray:currentMenues];
+		[currentDayMenues addObject:currentTagesmenue];
+		[currentMenues removeAllObjects];
+    } else if ([elementName isEqualToString:kName_Mensa]) {
+		parsedMensa.dayMenues = [NSArray arrayWithArray:currentDayMenues];
+		[currentDayMenues removeAllObjects];
 	}
-	
     storingCharacters = NO;
 }
 

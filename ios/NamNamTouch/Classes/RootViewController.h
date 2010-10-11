@@ -12,27 +12,32 @@
 #import "TagesMenueDetailController.h"
 
 @class MensaURL;
+@class ModelLocator;
 
-
-@interface RootViewController : UITableViewController <NamNamXMLParserDelegate, UINavigationBarDelegate, NamNamMensaReloadDelegate, NamNamTagesmenueNextPrevDelegate> {
+@interface RootViewController : UITableViewController <NamNamXMLParserDelegate, UINavigationBarDelegate,
+													   NamNamMensaReloadDelegate, NamNamTagesmenueNextPrevDelegate> {
 	NamNamXMLParser* parser;
-	Mensa* mensa;
 	
-	NSDateFormatter* dateFormatter;
-	NamNamSettingsController *settingsController;
-	TagesMenueDetailController *tmController;
+	NSDateFormatter *dateFormatter;
+	NamNamSettingsController* settingsController;
+	TagesMenueDetailController* tmController;
+														   
+   ModelLocator* model;
 }
 
--transformedValue:(NSDate*)theDate;
+- (void)scrollToNearestDate;
+
+- (NSString*)transformedValue:(NSDate*)theDate;
 - (void)mensaChanged:(MensaURL *)mensaUrl;
+- (IBAction)modalViewAction:(id)sender;
 
 - (void)setNextTagesmenue:(TagesMenueDetailController *)view;
 - (void)setPrevTagesmenue:(TagesMenueDetailController *)view;
 
-@property(nonatomic, retain) NamNamXMLParser* parser;
-@property(nonatomic, retain) Mensa* mensa;
-@property(nonatomic, retain) NSDateFormatter* dateFormatter;
-@property (nonatomic, retain) NamNamSettingsController *settingsController;
-@property (nonatomic, retain) TagesMenueDetailController *tmController;
+@property(nonatomic, retain) NamNamXMLParser *parser;
+@property(nonatomic, retain) NSDateFormatter *dateFormatter;
+@property(nonatomic, retain) NamNamSettingsController *settingsController;
+@property(nonatomic, retain) TagesMenueDetailController *tmController;
+@property(nonatomic, retain) ModelLocator *model;
 
 @end

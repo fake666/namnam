@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MensaURL;
+@class MensaURL, ModelLocator;
 
 @protocol NamNamMensaPickerDelegate <NSObject>
 
@@ -18,12 +18,9 @@
 
 @interface NamNamMensaPickerController : UITableViewController {
 	id <NamNamMensaPickerDelegate> delegate;
-
-	NSArray* mensen;
-	MensaURL* currentSelection;
+	ModelLocator* model;
 }
 @property (nonatomic, assign) id <NamNamMensaPickerDelegate> delegate;
-@property (nonatomic, retain) NSArray *mensen;
-@property (nonatomic, retain) MensaURL *currentSelection;
+@property (nonatomic, retain) ModelLocator* model;
 
 @end

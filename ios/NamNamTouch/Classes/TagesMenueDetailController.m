@@ -10,17 +10,19 @@
 #import "TagesMenueTableCellController.h"
 #import "Tagesmenue.h"
 #import "Mensaessen.h"
-#import "NamNamSettingsController.h"
+#import "ModelLocator.h"
 
 @implementation TagesMenueDetailController
 
-@synthesize tagesmenue, tmpCell, veggie, nopork, beef, settingsController, navTitle, delegate;
+@synthesize tagesmenue, tmpCell, veggie, nopork, beef, navTitle, delegate, model;
 
 #pragma mark -
 #pragma mark View lifecycle
 
 - (id)init {
 	self = [super init];
+	
+	model = [ModelLocator sharedInstance];
 	
 	self.veggie = [UIImage imageNamed:@"veggie.png"];
 	self.nopork = [UIImage imageNamed:@"nopork.png"];
@@ -106,13 +108,13 @@
     [super viewDidDisappear:animated];
 }
 */
-/*
+
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-*/
+
 
 
 #pragma mark -
@@ -148,9 +150,9 @@
 	Mensaessen* essen = [tagesmenue.menues objectAtIndex:indexPath.row];
     cell.titleText.text = essen.beschreibung;
 	
-	if(self.settingsController.priceDisplaySelection == PRICE_DISPLAY_STUDENT) {
+	if(model.priceDisplayType == PRICE_DISPLAY_STUDENT) {
 		cell.price.text = [[NSString alloc] initWithFormat:@"%.2f €", (essen.studentenPreis / 100.0)];
-	} else if (self.settingsController.priceDisplaySelection == PRICE_DISPLAY_NORMAL) {
+	} else if (model.priceDisplayType == PRICE_DISPLAY_NORMAL) {
 		cell.price.text = [[NSString alloc] initWithFormat:@"%.2f €", (essen.preis / 100.0)];
 	} else {
 		cell.price.text = [[NSString alloc] initWithFormat:@"%.2f € / %.2f €", (essen.studentenPreis / 100.0), (essen.preis / 100.0)];

@@ -7,10 +7,11 @@
 //
 
 #import "NamNamMensaPickerController.h"
+#import "ModelLocator.h"
 
 @implementation NamNamMensaPickerController
 
-@synthesize delegate, mensen, currentSelection;
+@synthesize delegate, model;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -22,12 +23,13 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	model = [ModelLocator sharedInstance];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -48,7 +50,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.mensen count];
+    return [model.mensen count];
 }
 
 
@@ -63,8 +65,8 @@
     }
     
 	// Configure the cell.
-	MensaURL* url = [self.mensen objectAtIndex:indexPath.row];
-	if(url == self.currentSelection) {
+	MensaURL* url = [model.mensen objectAtIndex:indexPath.row];
+	if(url == model.mensaURL) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	} 
 	cell.textLabel.text = [url name];
@@ -80,7 +82,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSInteger catIndex = [mensen indexOfObject:self.currentSelection];
+    NSInteger catIndex = [model.mensen indexOfObject:model.mensaURL];
     if (catIndex == indexPath.row) {
 		[self dismissModalViewControllerAnimated:YES];
     }
@@ -89,7 +91,7 @@
     UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
     if (newCell.accessoryType == UITableViewCellAccessoryNone) {
         newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        self.currentSelection = [mensen objectAtIndex:indexPath.row];
+		[delegate didSelectMensaUrl:[model.mensen objectAtIndex:indexPath.row]];
     }
 	
     UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldIndexPath];
@@ -97,7 +99,6 @@
         oldCell.accessoryType = UITableViewCellAccessoryNone;
     }
 	
-	[delegate didSelectMensaUrl:self.currentSelection];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -117,8 +118,6 @@
 
 
 - (void)dealloc {
-	[currentSelection release];
-	[mensen release];
     [super dealloc];
 }
 

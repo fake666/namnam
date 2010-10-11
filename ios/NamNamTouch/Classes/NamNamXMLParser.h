@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@class NamNamXMLParser, Mensa, Tagesmenue, Mensaessen;
+@class NamNamXMLParser, Mensa, Tagesmenue, Mensaessen,ModelLocator;
 
 // Protocol for the parser to communicate with its delegate.
 @protocol NamNamXMLParserDelegate <NSObject>
@@ -12,17 +12,24 @@
 - (void)parser:(NamNamXMLParser *)parser didFailWithError:(NSError *)error;
 @end
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
+#else
+@protocol NSXMLParserDelegate
+@end
+#endif
 
 @interface NamNamXMLParser : NSObject <NSXMLParserDelegate> {
     id <NamNamXMLParserDelegate> delegate;
     Mensa *parsedMensa;
 	
-	NSString* url;
+	ModelLocator* model;
 	
 	BOOL parseErrorOccurred;
 	
 	Tagesmenue* currentTagesmenue;
+	NSMutableArray* currentDayMenues;
 	Mensaessen* currentMensaessen;
+	NSMutableArray* currentMenues;
 	
 	NSDateFormatter *dateFormatter;
 	NSNumberFormatter *numberFormatter;
@@ -37,7 +44,7 @@
 
 @property (nonatomic, assign) id <NamNamXMLParserDelegate> delegate;
 @property (nonatomic, retain) Mensa *parsedMensa;
-@property (nonatomic, retain) NSString *url;
+@property (nonatomic, retain) ModelLocator *model;
 @property (nonatomic, retain) NSDateFormatter *dateFormatter;
 @property (nonatomic, retain) NSNumberFormatter *numberFormatter;
 @property (nonatomic, retain) NSMutableData *xmlData;
@@ -49,6 +56,9 @@
 @property (nonatomic, retain) Mensaessen* currentMensaessen;
 @property BOOL parseErrorOccurred;
 @property (nonatomic, assign) NSAutoreleasePool *downloadAndParsePool;
+
+@property (nonatomic, retain) NSMutableArray *currentDayMenues;
+@property (nonatomic, retain) NSMutableArray *currentMenues;
 
 - (void)start;
 

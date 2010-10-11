@@ -19,4 +19,7 @@
 
 @property int studentenPreis;
 
+-(NSDictionary*)serialize;
++ (Mensaessen*)deserialize:(NSDictionary*)dict;
+
 @end

@@ -11,10 +11,13 @@
 
 @interface Tagesmenue : NSObject {
 	NSDate* tag;
-	NSMutableArray* menues;
+	NSArray* menues;
 }
 
-@property (nonatomic, retain) NSMutableArray *menues;
+@property (nonatomic, retain) NSArray *menues;
 @property (nonatomic, retain) NSDate *tag;
+
+-(NSDictionary*)serialize;
++ (Tagesmenue*)deserialize:(NSDictionary*)dict;
 
 @end

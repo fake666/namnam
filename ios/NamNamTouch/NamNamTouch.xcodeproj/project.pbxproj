@@ -40,6 +40,7 @@
 		2FF34440124E82D300A7956E /* Essen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3443F124E82D300A7956E /* Essen.m */; };
 		2FF34491124E882F00A7956E /* Mensaessen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF34490124E882F00A7956E /* Mensaessen.m */; };
 		2FF344AE124E8CA400A7956E /* NamNamXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF344AB124E8CA400A7956E /* NamNamXMLParser.m */; };
+		2FF348461262505900DD928C /* ModelLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF348451262505900DD928C /* ModelLocator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,8 @@
 		2FF34490124E882F00A7956E /* Mensaessen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mensaessen.m; sourceTree = "<group>"; };
 		2FF344AA124E8CA400A7956E /* NamNamXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamNamXMLParser.h; sourceTree = "<group>"; };
 		2FF344AB124E8CA400A7956E /* NamNamXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamNamXMLParser.m; sourceTree = "<group>"; };
+		2FF348441262505900DD928C /* ModelLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelLocator.h; sourceTree = "<group>"; };
+		2FF348451262505900DD928C /* ModelLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelLocator.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* NamNamTouch-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NamNamTouch-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +209,8 @@
 				2FF34490124E882F00A7956E /* Mensaessen.m */,
 				2F5AE1491260B2B1005D7DC5 /* MensaURL.h */,
 				2F5AE14A1260B2B1005D7DC5 /* MensaURL.m */,
+				2FF348441262505900DD928C /* ModelLocator.h */,
+				2FF348451262505900DD928C /* ModelLocator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				2F5AE14B1260B2B1005D7DC5 /* MensaURL.m in Sources */,
 				2F5AE2AC1260C95D005D7DC5 /* NamNamMensaPickerController.m in Sources */,
 				2F5AE4CD126106B7005D7DC5 /* TagesMenueTableCellController.m in Sources */,
+				2FF348461262505900DD928C /* ModelLocator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +349,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Debug;
 		};
@@ -358,7 +364,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphonesimulator4.1;
 			};
 			name = Release;
 		};

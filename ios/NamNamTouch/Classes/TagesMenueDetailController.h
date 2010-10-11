@@ -11,7 +11,7 @@
 @class Tagesmenue;
 @class TagesMenueTableCellController;
 @class TagesMenueDetailController;
-@class NamNamSettingsController;
+@class ModelLocator;
 
 @protocol NamNamTagesmenueNextPrevDelegate <NSObject>
 
@@ -22,6 +22,8 @@
 
 @interface TagesMenueDetailController : UITableViewController <UIGestureRecognizerDelegate> {
 
+	ModelLocator* model;
+	
 	Tagesmenue* tagesmenue;
 	TagesMenueTableCellController* tmpCell;
 	
@@ -30,8 +32,6 @@
 	UIImage* veggie;
 	UIImage* nopork;
 	UIImage* beef;
-	
-	NamNamSettingsController* settingsController;
 	
 	id<NamNamTagesmenueNextPrevDelegate> delegate;
 	
@@ -43,7 +43,7 @@
 @property (nonatomic, retain) UIImage* nopork;
 @property (nonatomic, retain) UIImage* beef;
 @property (nonatomic, assign) IBOutlet TagesMenueTableCellController *tmpCell;
-@property (nonatomic, retain) NamNamSettingsController* settingsController;
+@property (nonatomic, retain) ModelLocator* model;
 @property (nonatomic, assign) id <NamNamTagesmenueNextPrevDelegate> delegate;
 
 @end

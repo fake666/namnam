@@ -27,4 +27,7 @@
 @property BOOL moslem;
 @property BOOL beef;
 
+-(NSDictionary*)serialize;
++ (Essen*)deserialize:(NSDictionary*)dict;
+
 @end

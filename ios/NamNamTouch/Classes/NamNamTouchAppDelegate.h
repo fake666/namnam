@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class ModelLocator;
+
 @interface NamNamTouchAppDelegate : NSObject <UIApplicationDelegate> {
     
     UIWindow *window;
     UINavigationController *navigationController;
+	
+	ModelLocator* model;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) ModelLocator *model;
 
 @end
 
