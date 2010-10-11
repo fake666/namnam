@@ -279,6 +279,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>42</integer>
+									<integer>41</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -330,7 +332,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2F1BD5E61262EEAB00507E47</string>
+										<string>2F1BD5F41262F1E500507E47</string>
 										<key>history</key>
 										<array>
 											<string>2F5AE64012611A3C005D7DC5</string>
@@ -369,7 +371,7 @@
 											<string>2F1BD5AF1262E8BE00507E47</string>
 											<string>2F1BD5B01262E8BE00507E47</string>
 											<string>2F1BD5B11262E8BE00507E47</string>
-											<string>2F1BD5C31262EA6B00507E47</string>
+											<string>2F1BD5E61262EEAB00507E47</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -381,14 +383,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {2038, 845}}</string>
+								<string>{{0, 0}, {2038, 840}}</string>
 								<key>RubberWindowFrame</key>
 								<string>132 152 2340 1137 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>845pt</string>
+							<string>840pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -401,14 +403,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 850}, {2038, 246}}</string>
+								<string>{{0, 845}, {2038, 251}}</string>
 								<key>RubberWindowFrame</key>
 								<string>132 152 2340 1137 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>246pt</string>
+							<string>251pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -427,9 +429,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2F1BD5CC1262EB1900507E47</string>
+				<string>2F1BD5F11262F10B00507E47</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>2F1BD5CD1262EB1900507E47</string>
+				<string>2F1BD5F21262F10B00507E47</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -567,10 +569,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>2F1BD5E31262EC9800507E47</string>
-		<string>2F1BD5E41262EC9800507E47</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>2FF3435D124E495900A7956E</string>
 		<string>/Users/fake/XCodeProjects/NamNamTouch/NamNamTouch.xcodeproj</string>
 	</array>
@@ -613,8 +611,6 @@
 							<string>914pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -654,7 +650,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>2FF3435D124E495900A7956E</string>
-				<string>2F1BD5CE1262EB1900507E47</string>
+				<string>2F1BD5F31262F10B00507E47</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
