@@ -1,105 +1,103 @@
 
 package org.bytewerk.namnam.gui;
 
-import com.toedter.calendar.JDateChooser;
-import org.bytewerk.namnam.model.Mensa;
-import org.bytewerk.namnam.model.Mensaessen;
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+
+import org.bytewerk.namnam.model.Mensa;
+
+import com.toedter.calendar.JDateChooser;
 
 /**
  * swing gui dialog
- * @author chiffre
+ * @author chiffre, invalid-id
  */
 public class Gui extends JFrame
 	implements ActionListener
 {
 
-	private void tagesMenu(Mensa m, Date d)
-	{
-		if(m.hasMenuForDate(d))
-		{
-			outputGrid.setVisible(false);
-			outputGrid.removeAll();
-			java.util.List ms = m.getMenuForDate(d).getMenues();
-			for(Iterator iterator = ms.iterator(); iterator.hasNext();)
-			{
-				Mensaessen essen = (Mensaessen)iterator.next();
-				outputGrid.add(new JLabel(essen.getBeschreibung()));
-				outputGrid.add(new JLabel((new StringBuilder(String.valueOf(getStudentenPreis(essen)))).append(" \u20AC / ").append(getPreis(essen)).append(" \u20AC").toString()));
-				if(essen.isBeef())
-					outputGrid.add(new JLabel("mit lecker Rind!"));
-				if(essen.isMoslem())
-					outputGrid.add(new JLabel("Moslem"));
-				if(essen.isVegetarian())
-					outputGrid.add(new JLabel("Vegetarisch"));
-				if(!essen.isBeef() && !essen.isMoslem() && !essen.isVegetarian())
-					outputGrid.add(new JLabel(""));
-			}
-
-			outputGrid.setVisible(true);
-		} else
-		{
-			new Alert();
-		}
-	}
-
-	private String getStudentenPreis(Mensaessen essen)
-	{
-		return essen.getStudentenPreis().toString();
-	}
-
-	private String getPreis(Mensaessen essen)
-	{
-		return essen.getPreis().toString();
-	}
-
 	public Gui(Mensa m)
 	{
-		c = Calendar.getInstance();
-		outputGrid = new JPanel();
-		heute = new Date(c.get(1) - 1900, c.get(2), c.get(5), 0, 0, 0);
+	
+		this.setLayout(new BorderLayout());
 		this.m = m;
-		setDefaultCloseOperation(3);
-		setTitle("namnam - immer hungrig");
-		outputGrid.setLayout(new GridLayout(0, 3, 5, 5));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("namnam - immer hungrig");
+		
+		
+		c = Calendar.getInstance();
+		heute = new Date(c.get(1) - 1900, c.get(2), c.get(5), 0, 0, 0);
+		
+		outputGrid = new JTable(new NamnamTableModel(m, heute));
+		outputGrid.setBackground(hellrosa);
+		outputGrid.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		outputGrid.setAutoCreateRowSorter(true);
+		outputGrid.getTableHeader().setBackground(dunkelrosa);
+		
 		datechooser = new JDateChooser(heute);
-		datechooser.setDateFormatString("dd. MMMMM yyyy");
+		datechooser.setDateFormatString("dd.MMMMM yyyy");
 		datechooser.setMinSelectableDate(m.getFirstDate());
 		datechooser.setMaxSelectableDate(m.getLastDate());
+		
 		JButton load = new JButton("Men\374 Laden");
+		load.setBackground(dunkelrosa);
 		load.addActionListener(this);
 		load.setActionCommand("load");
-		JPanel oben = new JPanel();
+		
 		JLabel header = new JLabel("Men\374 des Tages f\374r ");
-		tagesMenu(m, heute);
+	
+		JPanel oben = new JPanel();
+		oben.setBackground(dunkeldunkelrosa);
 		oben.add(header);
 		oben.add(datechooser);
 		oben.add(load);
-		add("North", oben);
-		add("South", outputGrid);
-		pack();
-		setVisible(true);
+		
+		JPanel essensanzeige = new JPanel();
+		essensanzeige.setLayout(new BorderLayout());
+		essensanzeige.add(outputGrid.getTableHeader(), BorderLayout.PAGE_START);
+		essensanzeige.add(outputGrid);
+		
+		this.add(oben, BorderLayout.NORTH);
+		this.add(essensanzeige, BorderLayout.CENTER);
+		this.pack();
+		this.setVisible(true);
+		
+		/* Positioniere das Fenster in der Mitte des Bildschirms */
+		Dimension scrsize = this.getToolkit().getScreenSize();
+		this.setLocation(
+				(scrsize.width - this.getWidth()) / 2,
+				(scrsize.height - this.getHeight()) / 2);
+					
 	}
 
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getActionCommand().equals("load"))
-			tagesMenu(m, datechooser.getDate());
+		if(e.getActionCommand().equals("load")) 
+		{
+			outputGrid.setModel(new NamnamTableModel(this.m, this.datechooser.getDate()));
+		}
+		
 	}
 
 	private static final long serialVersionUID = 0L;
 	private Calendar c;
-	private JPanel outputGrid;
+	private JTable outputGrid;
 	private Date heute;
 	private JDateChooser datechooser;
 	private Mensa m;
+	private JPanel essensanzeige;
+	private final Color dunkelrosa = new Color(255, 139, 240);
+	private final Color hellrosa = new Color(255, 196, 247);
+	private final Color dunkeldunkelrosa = new Color(255, 0 , 222);
 }
