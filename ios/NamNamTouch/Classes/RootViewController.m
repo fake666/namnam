@@ -16,7 +16,7 @@
 
 @implementation RootViewController
 
-@synthesize dateFormatter, settingsController, tmController, model;
+@synthesize settingsController, tmController, model;
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -64,7 +64,6 @@
 	
 	if(self.tmController == nil) {
 		self.tmController = [[TagesMenueDetailController alloc] init];
-		self.tmController.delegate = self;
 	}
 	
 	UIButton* modalViewButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -72,19 +71,14 @@
 	UIBarButtonItem *modalBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
 	self.navigationItem.rightBarButtonItem = modalBarButtonItem;
 	[modalBarButtonItem release];
-	
-
-	dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateStyle:NSDateFormatterLongStyle];
-	[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-	[dateFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
-	
+		
 	self.title = model.mensaURL.name;
 	
 	// check wether it's time to re-load data
 	if(model.mensa != nil && [model.mensa.dayMenues count] > 0) {
 		[self.tableView reloadData];
 		[self scrollToTagesmenue:[model closestDayMenue]];
+		[tmController scrollToTagesmenue:[model closestDayMenue]];
 	}
 }
 
@@ -97,11 +91,12 @@
 }
 
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	[self.tableView reloadData];
 }
-*/
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -111,6 +106,7 @@
 		model.appWasInBackGround = NO;
 		// scroll to the current date and open the current or next daymenue
 		Tagesmenue* current = [model closestDayMenue];
+		[self scrollToTagesmenue:current];
 		[self switchToTagesMenueDetailView:current];
 	}
 }
@@ -163,56 +159,12 @@
     
 	// Configure the cell.
 	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indexPath.row];
-	cell.textLabel.text = [self transformedValue:t.tag];
-		
+	cell.textLabel.text = [model getNiceDate:t.tag];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
 
-- (NSString*)transformedValue:(NSDate *)date {
-	// Initialize the calendar and flags.
-	unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSWeekdayCalendarUnit;
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-	
-	// Create reference date for supplied date.
-	NSDateComponents *comps = [calendar components:unitFlags fromDate:date];
-	[comps setHour:0];
-	[comps setMinute:0];
-	[comps setSecond:0];
-	NSDate *suppliedDate = [calendar dateFromComponents:comps];
-	
-	// Iterate through the eight days (tomorrow, today, and the last six).
-	int i;
-	for (i = -6; i < 3; i++)
-	{
-		// Initialize reference date.
-		comps = [calendar components:unitFlags fromDate:[NSDate date]];
-		[comps setHour:0];
-		[comps setMinute:0];
-		[comps setSecond:0];
-		[comps setDay:[comps day] - i];
-		NSDate *referenceDate = [calendar dateFromComponents:comps];
-		// Get week day (starts at 1).
-		int weekday = [[calendar components:unitFlags fromDate:referenceDate] weekday] - 1;
-		
-		if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == -1) {
-			// Tomorrow
-			return [NSString stringWithString:@"Morgen"];
-		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == 0)	{
-			return [NSString stringWithString:@"Heute"];
-		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == 1)	{
-			return [NSString stringWithString:@"Gestern"];
-		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame) {
-			// Day of the week
-			NSString *day = [[dateFormatter weekdaySymbols] objectAtIndex:weekday];
-			return day;
-		}
-	}
-	
-	// It's not in those eight days.
-	NSString *defaultDate = [dateFormatter stringFromDate:date];
-	return defaultDate;
-}		
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -265,11 +217,11 @@
 	self.navigationItem.backBarButtonItem = backButton;
 	[backButton release];
 	
-	tmController.tagesmenue = tm;
-	tmController.navTitle = [self transformedValue:tm.tag];
+	[tmController.tableView reloadData];
+	[tmController scrollToTagesmenue:tm];
 	[self.navigationController pushViewController:tmController animated:YES];	
 }
-
+/*
 - (void)setNextTagesmenue:(Tagesmenue *)currentTm {
 	int curIdx = [model.mensa.dayMenues indexOfObject:currentTm];
 	if((curIdx + 1) >= [model.mensa.dayMenues count]) return;
@@ -279,7 +231,7 @@
 
 	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indPath.row];
 	tmController.tagesmenue = t;
-	tmController.navTitle = [self transformedValue:t.tag];
+	tmController.navTitle = [model getNiceDate:t.tag];
 	[tmController.tableView reloadData];
 }
 
@@ -293,10 +245,10 @@
 	
 	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indPath.row];	
 	tmController.tagesmenue = t;
-	tmController.navTitle = [self transformedValue:t.tag];
+	tmController.navTitle = [model getNiceDate:t.tag];
 	[tmController.tableView reloadData];
 }
-
+*/
 - (IBAction)modalViewAction:(id)sender {
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Zurück" style:UIBarButtonItemStylePlain target:nil action:nil];
 	self.navigationItem.backBarButtonItem = backButton;
@@ -324,7 +276,6 @@
 
 
 - (void)dealloc {
-	[dateFormatter release];
 	[settingsController release];
 	[tmController release];
     [super dealloc];

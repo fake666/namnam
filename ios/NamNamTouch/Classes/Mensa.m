@@ -8,10 +8,35 @@
 
 #import "Mensa.h"
 #import "Tagesmenue.h"
+#import "ModelLocator.h"
 
 @implementation Mensa
 
-@synthesize name, firstDate, lastDate, dayMenues, lastUpdate;
+@synthesize name, firstDate, lastDate, dayMenues, lastUpdate, dateFormat;
+
+-(id) init {
+	self = [super init];
+	dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateStyle:NSDateFormatterShortStyle];
+    [dateFormat setTimeStyle:NSDateFormatterNoStyle];
+	[dateFormat setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
+	[dateFormat setDateFormat:@"dd."];
+	return self;
+}
+
+-(NSArray*)dayMenuIndexArray {
+	NSMutableArray* mutArray = [NSMutableArray arrayWithCapacity:[dayMenues count]];
+	
+	NSEnumerator* dmEnum = [dayMenues objectEnumerator];
+	Tagesmenue* tm;
+	while(tm = [dmEnum nextObject]) {
+		NSString* value = [dateFormat stringFromDate:tm.tag];
+		if(![mutArray containsObject:value]) {
+			[mutArray addObject:value];
+		}
+	}
+	return mutArray;
+}
 
 -(NSDictionary*)serialize {
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:5];
@@ -60,6 +85,7 @@
 }
 
 - (void)dealloc {
+	[dateFormat release];
 	[lastUpdate release];
 	[firstDate release];
 	[lastDate release];

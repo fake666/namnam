@@ -38,6 +38,7 @@
 	NSInteger priceDisplayType; // how to display prices
 	
 	UIActivityIndicatorView* activity; // a generic indicator to show activty
+	NSDateFormatter *niceDateFormatter;
 }
 
 @property BOOL appWasInBackGround;
@@ -49,6 +50,7 @@
 @property(retain) Mensa *mensa;
 @property NSInteger priceDisplayType;
 @property(retain) UIActivityIndicatorView *activity;
+@property(retain) NSDateFormatter *niceDateFormatter;
 
 - (void) loadSettings;
 - (void) loadMensae;
@@ -56,6 +58,7 @@
 - (void) saveData;
 - (void) loadData;
 - (void) fetchMensaData;
+- (NSString*)getNiceDate:(NSDate*)theDate;
 
 - (void)parserDidEndParsingData:(NamNamXMLParser *)theparser;
 - (void)parser:(NamNamXMLParser *)parser didFailWithError:(NSError *)error;

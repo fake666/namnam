@@ -18,11 +18,20 @@ static ModelLocator *sharedInstance = nil;
 #pragma mark -
 #pragma mark class instance methods
 
-@synthesize appWasInBackGround, mensaURL, mensa, mensen, priceDisplayType, activity, parser, delegate;
+@synthesize appWasInBackGround, mensaURL, mensa, mensen, priceDisplayType, activity, parser, delegate, niceDateFormatter;
 
 NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	return [[mensa1 name] localizedCaseInsensitiveCompare:[mensa2 name]];
 }
+
+- (id) init {
+	self = [super init];
+	niceDateFormatter = [[NSDateFormatter alloc] init];
+	[niceDateFormatter setDateStyle:NSDateFormatterLongStyle];
+	[niceDateFormatter setTimeStyle:NSDateFormatterNoStyle];
+	[niceDateFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
+	return self;
+}	
 
 - (void) loadSettings {
 	[self loadMensae];
@@ -69,7 +78,6 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 		}
 	}
 }
-
 
 - (void)loadMensae {
 	NSString *errorDesc = nil;
@@ -249,6 +257,52 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	[parser start];
 }
 
+- (NSString*)getNiceDate:(NSDate *)date {
+	// Initialize the calendar and flags.
+	unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSWeekdayCalendarUnit;
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	
+	// Create reference date for supplied date.
+	NSDateComponents *comps = [calendar components:unitFlags fromDate:date];
+	[comps setHour:0];
+	[comps setMinute:0];
+	[comps setSecond:0];
+	NSDate *suppliedDate = [calendar dateFromComponents:comps];
+	
+	// Iterate through the eight days (tomorrow, today, and the last six).
+	int i;
+	for (i = -6; i < 3; i++)
+	{
+		// Initialize reference date.
+		comps = [calendar components:unitFlags fromDate:[NSDate date]];
+		[comps setHour:0];
+		[comps setMinute:0];
+		[comps setSecond:0];
+		[comps setDay:[comps day] - i];
+		NSDate *referenceDate = [calendar dateFromComponents:comps];
+		// Get week day (starts at 1).
+		int weekday = [[calendar components:unitFlags fromDate:referenceDate] weekday] - 1;
+		
+		if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == -1) {
+			// Tomorrow
+			return [NSString stringWithString:@"Morgen"];
+		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == 0)	{
+			return [NSString stringWithString:@"Heute"];
+		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == 1)	{
+			return [NSString stringWithString:@"Gestern"];
+		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame) {
+			// Day of the week
+			NSString *day = [[niceDateFormatter weekdaySymbols] objectAtIndex:weekday];
+			return day;
+		}
+	}
+	
+	// It's not in those eight days.
+	NSString *defaultDate = [niceDateFormatter stringFromDate:date];
+	return defaultDate;
+}		
+
+
 #pragma mark -
 #pragma mark Singleton methods
 
@@ -283,6 +337,7 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 }
 
 - (void)release {
+	[niceDateFormatter release];
     //do nothing
 }
 

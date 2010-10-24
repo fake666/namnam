@@ -16,6 +16,7 @@
 	NSDate* lastDate;
 	
 	NSDate* lastUpdate;
+	NSDateFormatter* dateFormat;
 }
 
 @property (nonatomic, retain) NSString *name;
@@ -24,7 +25,9 @@
 @property (nonatomic, retain) NSDate *lastDate;
 
 @property (nonatomic, retain) NSDate *lastUpdate;
+@property (nonatomic, retain) NSDateFormatter *dateFormat;
 
+-(NSArray*)dayMenuIndexArray;
 -(NSDictionary*)serialize;
 + (Mensa*)deserialize:(NSDictionary*)dict;
 
