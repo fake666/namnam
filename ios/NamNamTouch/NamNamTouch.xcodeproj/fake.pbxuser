@@ -36,9 +36,9 @@
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1977, 3796}}";
-			sepNavSelRange = "{8639, 0}";
-			sepNavVisRange = "{6863, 1782}";
+			sepNavIntBoundsRect = "{{0, 0}, {1977, 3497}}";
+			sepNavSelRange = "{394, 0}";
+			sepNavVisRange = "{0, 1408}";
 			sepNavWindowFrame = "{{38, 994}, {750, 558}}";
 		};
 	};
@@ -151,11 +151,10 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 309653949;
-			PBXWorkspaceStateSaveDate = 309653949;
+			PBXPerProjectTemplateStateSaveDate = 309804344;
+			PBXWorkspaceStateSaveDate = 309804344;
 		};
 		perUserProjectItems = {
-			2F1BD5961262E8BE00507E47 /* PlistBookmark */ = 2F1BD5961262E8BE00507E47 /* PlistBookmark */;
 			2F1BD59B1262E8BE00507E47 /* PBXTextBookmark */ = 2F1BD59B1262E8BE00507E47 /* PBXTextBookmark */;
 			2F1BD59C1262E8BE00507E47 /* PBXTextBookmark */ = 2F1BD59C1262E8BE00507E47 /* PBXTextBookmark */;
 			2F1BD59D1262E8BE00507E47 /* PBXTextBookmark */ = 2F1BD59D1262E8BE00507E47 /* PBXTextBookmark */;
@@ -186,9 +185,9 @@
 			2F5F742E1277935700059E6C /* PBXTextBookmark */ = 2F5F742E1277935700059E6C /* PBXTextBookmark */;
 			2F5F742F1277935700059E6C /* PBXTextBookmark */ = 2F5F742F1277935700059E6C /* PBXTextBookmark */;
 			2F5F748F1277948A00059E6C /* PBXTextBookmark */ = 2F5F748F1277948A00059E6C /* PBXTextBookmark */;
-			2F5F74901277948A00059E6C /* XCBuildMessageTextBookmark */ = 2F5F74901277948A00059E6C /* XCBuildMessageTextBookmark */;
-			2F5F74911277948A00059E6C /* PBXTextBookmark */ = 2F5F74911277948A00059E6C /* PBXTextBookmark */;
 			2F69E10B12639931000B4F5B /* PBXTextBookmark */ = 2F69E10B12639931000B4F5B /* PBXTextBookmark */;
+			2FE36EA012773BAF00F041C4 /* PBXTextBookmark */ = 2FE36EA012773BAF00F041C4 /* PBXTextBookmark */;
+			2FE36ED11277420F00F041C4 /* PBXTextBookmark */ = 2FE36ED11277420F00F041C4 /* PBXTextBookmark */;
 			2FF349891262626F00DD928C /* PBXBookmark */ = 2FF349891262626F00DD928C /* PBXBookmark */;
 			2FF349CF1262667700DD928C /* PlistBookmark */ = 2FF349CF1262667700DD928C /* PlistBookmark */;
 			2FF34ED41262B17500DD928C /* PlistBookmark */ = 2FF34ED41262B17500DD928C /* PlistBookmark */;
@@ -203,17 +202,6 @@
 			sepNavSelRange = "{145, 0}";
 			sepNavVisRange = "{0, 379}";
 		};
-	};
-	2F1BD5961262E8BE00507E47 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* NamNamTouch-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = "/Users/fake/XCodeProjects/NamNamTouch/NamNamTouch-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775808;
 	};
 	2F1BD59B1262E8BE00507E47 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -400,7 +388,7 @@
 	};
 	2F5AE4A4126104D6005D7DC5 /* Icon-72.png */ = {
 		uiCtxt = {
-			sepNavWindowFrame = "{{38, 900}, {860, 652}}";
+			sepNavWindowFrame = "{{106, 861}, {860, 652}}";
 		};
 	};
 	2F5AE4CA126106B7005D7DC5 /* TagesMenueTableCellController.h */ = {
@@ -563,25 +551,6 @@
 		vrLen = 1985;
 		vrLoc = 387;
 	};
-	2F5F74901277948A00059E6C /* XCBuildMessageTextBookmark */ = {
-		isa = PBXTextBookmark;
-		comments = "Incomplete implementation of class 'RootViewController'";
-		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
-		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 284;
-		rType = 1;
-	};
-	2F5F74911277948A00059E6C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
-		name = "RootViewController.m: 285";
-		rLen = 0;
-		rLoc = 8639;
-		rType = 0;
-		vrLen = 1782;
-		vrLoc = 6863;
-	};
 	2F69E10B12639931000B4F5B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 28A0AAE50D9B0CCF005BE974 /* NamNamTouch_Prefix.pch */;
@@ -590,6 +559,26 @@
 		rLoc = 328;
 		rType = 0;
 		vrLen = 328;
+		vrLoc = 0;
+	};
+	2FE36EA012773BAF00F041C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 5";
+		rLen = 0;
+		rLoc = 95;
+		rType = 0;
+		vrLen = 1477;
+		vrLoc = 0;
+	};
+	2FE36ED11277420F00F041C4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 18";
+		rLen = 0;
+		rLoc = 394;
+		rType = 0;
+		vrLen = 1408;
 		vrLoc = 0;
 	};
 	2FF01EB8124EB7E100B8E408 /* TagesMenueDetailController.h */ = {

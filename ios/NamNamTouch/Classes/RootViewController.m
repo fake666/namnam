@@ -221,34 +221,7 @@
 	[tmController scrollToTagesmenue:tm];
 	[self.navigationController pushViewController:tmController animated:YES];	
 }
-/*
-- (void)setNextTagesmenue:(Tagesmenue *)currentTm {
-	int curIdx = [model.mensa.dayMenues indexOfObject:currentTm];
-	if((curIdx + 1) >= [model.mensa.dayMenues count]) return;
-	
-	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(curIdx + 1) inSection:0];
-	[self.tableView selectRowAtIndexPath:indPath animated:NO scrollPosition:UITableViewScrollPositionMiddle ];	
 
-	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indPath.row];
-	tmController.tagesmenue = t;
-	tmController.navTitle = [model getNiceDate:t.tag];
-	[tmController.tableView reloadData];
-}
-
-- (void)setPrevTagesmenue:(Tagesmenue *)currentTm {
-	int curIdx = [model.mensa.dayMenues indexOfObject:currentTm];
-
-	if(curIdx == 0) return;
-	
-	NSIndexPath* indPath = [NSIndexPath indexPathForRow:(curIdx-1) inSection:0];
-	[self.tableView selectRowAtIndexPath:indPath animated:NO scrollPosition:UITableViewScrollPositionMiddle ];	
-	
-	Tagesmenue* t = [model.mensa.dayMenues objectAtIndex:indPath.row];	
-	tmController.tagesmenue = t;
-	tmController.navTitle = [model getNiceDate:t.tag];
-	[tmController.tableView reloadData];
-}
-*/
 - (IBAction)modalViewAction:(id)sender {
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Zurück" style:UIBarButtonItemStylePlain target:nil action:nil];
 	self.navigationItem.backBarButtonItem = backButton;
