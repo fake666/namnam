@@ -1,10 +1,13 @@
 
 package org.bytewerk.namnam.gui;
 
+import java.net.URL;
+
+import javax.swing.JOptionPane;
+
 import org.bytewerk.namnam.importer.NamNamImporter;
 import org.bytewerk.namnam.importer.jxml.NamNamJXMLImporter;
 import org.bytewerk.namnam.model.Mensa;
-import java.net.URL;
 
 /**
  * basic namnam java gui base class
@@ -31,6 +34,23 @@ public class Main
 		{
 			System.err.println("autsch, da klappt was nicht!");
 			ex.printStackTrace();
+
+			if(ex.getCause() instanceof java.net.UnknownHostException)
+			{
+				JOptionPane.showMessageDialog(null, 
+						"Konnte keine Verindung zum Server\n'"+
+						ex.getCause().getMessage() + "'\nim Internet aufbauen!", 
+						"Fehler beim Verbinden",
+						JOptionPane.ERROR_MESSAGE);	
+			} 
+			else 
+			{
+				JOptionPane.showMessageDialog(null,
+						ex.getMessage(),
+						"Fehler!",
+						JOptionPane.ERROR_MESSAGE);
+				
+			}
 			return;
 		}
 		new Gui(m);

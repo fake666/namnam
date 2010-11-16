@@ -6,12 +6,12 @@ import org.bytewerk.namnam.model.Mensa;
 import org.bytewerk.namnam.model.Mensaessen;
 
 /*
- * Das NamnamTableModel ist dafÃ¼r zustÃ¤ndig, dass die JTable im Hauptfenster
- * mit Daten gefÃ¼llt wird. Es wird daher beim Initialisieren der JTable eine neue
+ * Das NamnamTableModel ist dafür zuständig, dass die JTable im Hauptfenster
+ * mit Daten gefüllt wird. Es wird daher beim Initialisieren der JTable eine neue
  * Instanz eines NamnamTables erstellt, mit der Mensa und einem Datum als Parameter.
- * Sobald der Benutzer ein neues Datum ausgewÃ¤hlt hat, muss dafÃ¼r ein neues 
+ * Sobald der Benutzer ein neues Datum ausgewählt hat, muss dafür ein neues 
  * NamnamTableModel erstellt werden, da das aktuelle NNTM(NamnamTableModel) die
- * Daten fÃ¼r des vorherige Datum enthÃ¤lt. Beim Erstellen eines neuen NNTM wird
+ * Daten für des vorherige Datum enthält. Beim Erstellen eines neuen NNTM wird
  * das aktuelle NNTM aufgrund des Garbage Collectors von Java aus dem Speicher
  * wegen Nichtbenutzung entfernt.
  *  
@@ -19,8 +19,9 @@ import org.bytewerk.namnam.model.Mensaessen;
 public class NamnamTableModel extends AbstractTableModel {
 	private String[][] tabledata;
 	private String[] spalten = { "Speise", "Preis (Stud/Mitarb)", "Anm." };
+	private static final long serialVersionUID = 0L;
 	
-	/* Sobald auf "MenÃ¼ laden" geklickt wurde, wird ein neues 
+	/* Sobald auf "Menü laden" geklickt wurde, wird ein neues 
 	 * NamnamTableModel erstellt und damit neue Daten abgefragt.
 	 */
 	public NamnamTableModel(Mensa m, Date c) {
@@ -45,7 +46,7 @@ public class NamnamTableModel extends AbstractTableModel {
 				tbldata[i][0] = new String(essen.getBeschreibung());
 				tbldata[i][1] = new String((new StringBuilder(String.valueOf(this.getStudentenPreis(essen)))).append(" \u20AC / ").append(this.getPreis(essen)).append(" \u20AC").toString());
 				
-				/* FÃ¼ge Anmerkung fÃ¼r vegetarisch, ohne Schweinefleisch bzw. mit Rindfleisch dazu */
+				/* Füge Anmerkung für vegetarisch, ohne Schweinefleisch bzw. mit Rindfleisch dazu */
 				if(essen.isBeef()) {
 					tbldata[i][2] = "mit lecker Rind!";
 				} else if(essen.isMoslem()) {
@@ -59,13 +60,28 @@ public class NamnamTableModel extends AbstractTableModel {
 
 		} else
 		{
-			new Alert();
+			/* Der Benutzer soll die Fehlermeldung in der Speisespalte angezeigt
+			 * bekommen.
+			 */
+			tbldata[0] = new String[3];
+			tbldata[0][0] = "";
+			tbldata[0][1] = "Kein Menü verfügbar!";
+			tbldata[0][2] = "";
+			/* Da keine Menüs verfügbar sind, werden die restlichen Zellen mit
+			 * Leerstrings beschrieben
+			 */
+			for(int i = 1; i < 3; i++) {
+				for(int j = 0;j < 3;j++) {
+					tbldata[i][j] = "";
+				}
+			}
+			//new Alert();
 		}
 		return tbldata;
 	}
 	
 	/*
-	 * Ermittelt, wie viel ein Essen fÃ¼r Studenten kostet.  
+	 * Ermittelt, wie viel ein Essen für Studenten kostet.  
 	 */
 	private String getStudentenPreis(Mensaessen essen)
 	{
@@ -73,7 +89,7 @@ public class NamnamTableModel extends AbstractTableModel {
 	}
 
 	/*
-	 * Ermittelt, wie viel ein Essen fÃ¼r Mitarbeiter kostet.
+	 * Ermittelt, wie viel ein Essen für Mitarbeiter kostet.
 	 */
 	private String getPreis(Mensaessen essen)
 	{
@@ -81,7 +97,7 @@ public class NamnamTableModel extends AbstractTableModel {
 	}
 	
 	/*
-	 * Aufgerufen von Java, gibt die Anzahl der Spalten zurÃ¼ck.
+	 * Aufgerufen von Java, gibt die Anzahl der Spalten zurück.
 	 */
 	@Override
 	public int getColumnCount() {
@@ -90,7 +106,7 @@ public class NamnamTableModel extends AbstractTableModel {
 	}
 
 	/*
-	 * Aufgerufen von Java, gibt die Anzahl der Zeilen zurÃ¼ck.
+	 * Aufgerufen von Java, gibt die Anzahl der Zeilen zurück.
 	 */
 	@Override
 	public int getRowCount() {
@@ -99,7 +115,7 @@ public class NamnamTableModel extends AbstractTableModel {
 	}
 
 	/*
-	 * Aufgerufen von Java, gibt den Wert einer Zelle zurÃ¼ck.
+	 * Aufgerufen von Java, gibt den Wert einer Zelle zurück.
 	 */
 	@Override
 	public Object getValueAt(int row, int col) {
@@ -108,7 +124,7 @@ public class NamnamTableModel extends AbstractTableModel {
 	}
 
 	/*
-	 * Aufgerufen von Java, gibt den Titel einer Spalten zurÃ¼ck.
+	 * Aufgerufen von Java, gibt den Titel einer Spalten zurück.
 	 */
 	public String getColumnName(int col) {
 		return spalten[col];
