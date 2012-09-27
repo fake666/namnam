@@ -18,10 +18,5 @@
 	return name;
 }
 
-- (void)dealloc {
-	[name release];
-	[url release];
-    [super dealloc];
-}
 
 @end

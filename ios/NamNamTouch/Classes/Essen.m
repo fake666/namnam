@@ -29,10 +29,10 @@
 
 + (Essen*)deserialize:(NSDictionary*)dict {
 	
-	Essen* ret = [[[Essen alloc] init] autorelease];
+	Essen* ret = [[Essen alloc] init];
 	ret.preis = [[dict objectForKey:@"preis"] integerValue];
 	
-	ret.beschreibung = [[[dict objectForKey:@"beschreibung"] copy] autorelease];  
+	ret.beschreibung = [[dict objectForKey:@"beschreibung"] copy];  
 	
 	ret.vegetarian = [[dict objectForKey:@"vegetarian"] isEqualToString:@"YES"];
 	ret.moslem = [[dict objectForKey:@"moslem"] isEqualToString:@"YES"];
@@ -42,10 +42,5 @@
 }
 
 
-- (void)dealloc {
-	[beschreibung release];
-	
-    [super dealloc];
-}
 
 @end

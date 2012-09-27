@@ -7,7 +7,7 @@
 
 @implementation NamNamXMLParser
 
-@synthesize delegate, parsedMensa, dateFormatter, numberFormatter, xmlData, done, storingCharacters, connection, currentString, currentMensaessen, currentTagesmenue, parseErrorOccurred, downloadAndParsePool, currentMenues, currentDayMenues, model;
+@synthesize delegate, parsedMensa, dateFormatter, numberFormatter, xmlData, done, storingCharacters, connection, currentString, currentMensaessen, currentTagesmenue, parseErrorOccurred, currentMenues, currentDayMenues, model;
 
 - (void)start {
 	
@@ -19,14 +19,8 @@
     [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:theurl];
 }
 
-- (void)dealloc {
-    [parsedMensa release];
-	[dateFormatter release];
-    [super dealloc];
-}
 
 - (void)downloadAndParse:(NSURL *)theurl {
-	self.downloadAndParsePool = [[NSAutoreleasePool alloc] init];
 	done = NO;
     
 	NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"GMT"]; // otherwise the local timezone will be applied to the parsed date-only-dates
@@ -54,13 +48,8 @@
     }
     //[connection release];
 	self.connection = nil;
-    [dateFormatter release];
 	self.dateFormatter = nil;
-	[numberFormatter release];
 	self.numberFormatter = nil;
-	
-	[downloadAndParsePool release];
-	self.downloadAndParsePool = nil;
 }
 
 
@@ -77,7 +66,7 @@
 - (void)parseEnded:(Mensa*) mensa {
     NSAssert2([NSThread isMainThread], @"%s at line %d called on secondary thread", __FUNCTION__, __LINE__);
 	self.parsedMensa = mensa;
-	self.parsedMensa.lastUpdate = [[[NSDate alloc] init] autorelease];
+	self.parsedMensa.lastUpdate = [[NSDate alloc] init];
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(parserDidEndParsingData:)]) {
         [self.delegate parserDidEndParsingData:self];
     }
@@ -119,20 +108,19 @@
     parser.delegate = self;
     self.currentString = [NSMutableString string];
 	
-	self.currentDayMenues = [[[NSMutableArray alloc] initWithCapacity:20] autorelease];
-	self.currentMenues = [[[NSMutableArray alloc] initWithCapacity:3] autorelease];
+	self.currentDayMenues = [[NSMutableArray alloc] initWithCapacity:20];
+	self.currentMenues = [[NSMutableArray alloc] initWithCapacity:3];
 	
     [parser parse];
 	if(!self.parseErrorOccurred) {
 		[self performSelectorOnMainThread:@selector(parseEnded:) withObject:self.parsedMensa waitUntilDone:NO];
 	}
-	[parser release];
-    [self.currentString release];
-    [self.xmlData release];
-	[self.currentMensaessen release];
-	[self.currentTagesmenue release];
-	[self.currentDayMenues release];
-	[self.currentMenues release];
+    self.currentString = nil;
+    self.xmlData = nil;
+	self.currentMensaessen = nil;
+	self.currentTagesmenue = nil;
+	self.currentDayMenues = nil;
+	self.currentMenues = nil;
 	self.parseErrorOccurred = NO;
     // Set the condition which ends the run loop.
     done = YES; 
@@ -161,12 +149,12 @@ static NSString *kName_normalerPreis = @"normalerPreis";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
     if ([elementName isEqualToString:kName_Mensa]) {
-        self.parsedMensa = [[[Mensa alloc] init] autorelease];
+        self.parsedMensa = [[Mensa alloc] init];
 		self.parsedMensa.name = [attributeDict objectForKey:kName_nameAttr];
 	} else if ([elementName isEqualToString:kName_Tagesmenue]) {
-		self.currentTagesmenue = [[[Tagesmenue alloc] init] autorelease];
+		self.currentTagesmenue = [[Tagesmenue alloc] init];
 	} else if ([elementName isEqualToString:kName_Mensaessen]) {
-		self.currentMensaessen = [[[Mensaessen alloc] init] autorelease];
+		self.currentMensaessen = [[Mensaessen alloc] init];
 		self.currentMensaessen.vegetarian = [[attributeDict objectForKey:kName_vegetarischAttr] isEqualToString:@"true"];
 		self.currentMensaessen.beef = [[attributeDict objectForKey:kName_rindAttr] isEqualToString:@"true"];
 		self.currentMensaessen.moslem = [[attributeDict objectForKey:kName_moslemAttr] isEqualToString:@"true"];
@@ -185,7 +173,7 @@ static NSString *kName_normalerPreis = @"normalerPreis";
 	} else if ([elementName isEqualToString:kName_tag]) {
         currentTagesmenue.tag = [dateFormatter dateFromString:currentString];
     } else if ([elementName isEqualToString:kName_beschreibung]) {
-        currentMensaessen.beschreibung = [[[NSString alloc] initWithString:currentString] autorelease];
+        currentMensaessen.beschreibung = [[NSString alloc] initWithString:currentString];
     } else if ([elementName isEqualToString:kName_studentenPreis]) {
         currentMensaessen.studentenPreis = [[numberFormatter numberFromString:currentString] intValue];
     } else if ([elementName isEqualToString:kName_normalerPreis]) {

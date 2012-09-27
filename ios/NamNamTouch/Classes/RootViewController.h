@@ -31,8 +31,8 @@
 - (void)loadingFailed;
 - (void)mensaNameKnown:(NSString*)name;
 
-@property(nonatomic, retain) NamNamSettingsController *settingsController;
-@property(nonatomic, retain) TagesMenueDetailController *tmController;
-@property(nonatomic, retain) ModelLocator *model;
+@property(nonatomic, strong) NamNamSettingsController *settingsController;
+@property(nonatomic, strong) TagesMenueDetailController *tmController;
+@property(nonatomic, strong) ModelLocator *model;
 
 @end

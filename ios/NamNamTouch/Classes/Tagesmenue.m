@@ -18,7 +18,7 @@
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
 	[dict setValue:tag forKey:@"tag"];
 	
-	NSMutableArray* ms = [[[NSMutableArray alloc] initWithCapacity:menues.count] autorelease];
+	NSMutableArray* ms = [[NSMutableArray alloc] initWithCapacity:menues.count];
 	
 	NSEnumerator* msEnum = [menues objectEnumerator];
 	id m;
@@ -38,11 +38,11 @@
 
 + (Tagesmenue*)deserialize:(NSDictionary*)dict {
 	
-	Tagesmenue* ret = [[[Tagesmenue alloc] init] autorelease];
-	ret.tag = [[[dict objectForKey:@"tag"] copy] autorelease];
+	Tagesmenue* ret = [[Tagesmenue alloc] init];
+	ret.tag = [[dict objectForKey:@"tag"] copy];
 	
 	NSArray* ms = [dict objectForKey:@"menues"];
-	NSMutableArray* mar = [[[NSMutableArray alloc] initWithCapacity:ms.count] autorelease];
+	NSMutableArray* mar = [[NSMutableArray alloc] initWithCapacity:ms.count];
 	
 	NSEnumerator* en = [ms objectEnumerator];
 	NSDictionary* md;
@@ -63,11 +63,5 @@
 }
 
 
-- (void)dealloc {
-	[menues release];
-	[tag release];
-	
-    [super dealloc];
-}
 
 @end

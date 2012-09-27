@@ -22,7 +22,7 @@
 }
 
 @property int preis;
-@property (nonatomic, retain) NSString *beschreibung;
+@property (nonatomic, strong) NSString *beschreibung;
 @property BOOL vegetarian;
 @property BOOL moslem;
 @property BOOL beef;

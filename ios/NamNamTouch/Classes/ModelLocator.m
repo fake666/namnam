@@ -29,7 +29,7 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	niceDateFormatter = [[NSDateFormatter alloc] init];
 	[niceDateFormatter setDateStyle:NSDateFormatterLongStyle];
 	[niceDateFormatter setTimeStyle:NSDateFormatterNoStyle];
-	[niceDateFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
+	[niceDateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"DE"]];
 	return self;
 }	
 
@@ -113,7 +113,6 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	}
 	
 	[self setMensen:[parsed sortedArrayUsingFunction:mensaNameSort context:nil]];
-	[parsed release];
 }
 
 - (void)saveSettings {
@@ -130,11 +129,11 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 	
 	NSString* priceSelectionString;
 	if(self.priceDisplayType == PRICE_DISPLAY_STUDENT) {
-		priceSelectionString = [[NSString alloc] initWithString:@"STUDENT"];
+		priceSelectionString = @"STUDENT";
 	} else if(self.priceDisplayType == PRICE_DISPLAY_NORMAL) {
-		priceSelectionString = [[NSString alloc] initWithString:@"NORMAL"];
+		priceSelectionString = @"NORMAL";
 	} else {
-		priceSelectionString = [[NSString alloc] initWithString:@"BOTH"];
+		priceSelectionString = @"BOTH";
 	}
 	[plistDict setValue:priceSelectionString forKey:@"ShowPrice"];
 	
@@ -145,7 +144,6 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 		[plistData writeToFile:plistPath atomically:YES];
 	} else {
 		NSLog(@"error saving settings: %@",error);
-		[error release];
 	}	
 }
 
@@ -164,7 +162,6 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 		[plistData writeToFile:plistPath atomically:YES];
 	} else {
 		NSLog(@"error saving data: %@",error);
-		[error release];
 	}
 }
 
@@ -225,7 +222,6 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 											  cancelButtonTitle:@"Einstellungen" 
 											  otherButtonTitles: nil];
 		[alert show];
-		[alert release];
 		
 		[delegate loadingFailed];
 	} else {
@@ -244,13 +240,11 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
                                           cancelButtonTitle:@"Einstellungen" 
                                           otherButtonTitles: nil];
     [alert show];
-    [alert release];
 	
 	[delegate loadingFailed];
 }
 
 - (void)fetchMensaData {
-	[parser release];
 	parser = [[NamNamXMLParser alloc] init];
 	parser.delegate = self;
 	[activity startAnimating];
@@ -285,11 +279,11 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 		
 		if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == -1) {
 			// Tomorrow
-			return [NSString stringWithString:@"Morgen"];
+			return @"Morgen";
 		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == 0)	{
-			return [NSString stringWithString:@"Heute"];
+			return @"Heute";
 		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame && i == 1)	{
-			return [NSString stringWithString:@"Gestern"];
+			return @"Gestern";
 		} else if ([suppliedDate compare:referenceDate] == NSOrderedSame) {
 			// Day of the week
 			NSString *day = [[niceDateFormatter weekdaySymbols] objectAtIndex:weekday];
@@ -325,23 +319,6 @@ NSInteger mensaNameSort(MensaURL *mensa1, MensaURL *mensa2, void* ignored) {
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (unsigned)retainCount {
-    return UINT_MAX;  // denotes an object that cannot be released
-}
-
-- (void)release {
-	[niceDateFormatter release];
-    //do nothing
-}
-
-- (id)autorelease {
     return self;
 }
 

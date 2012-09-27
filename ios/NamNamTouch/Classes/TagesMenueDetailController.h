@@ -17,18 +17,18 @@
 
 	ModelLocator* model;
 	
-	TagesMenueTableCellController* tmpCell;
+	TagesMenueTableCellController* __unsafe_unretained tmpCell;
 	
 	UIImage* veggie;
 	UIImage* nopork;
 	UIImage* beef;
 	
 }
-@property (nonatomic, retain) UIImage* veggie;
-@property (nonatomic, retain) UIImage* nopork;
-@property (nonatomic, retain) UIImage* beef;
-@property (nonatomic, assign) IBOutlet TagesMenueTableCellController *tmpCell;
-@property (nonatomic, retain) ModelLocator* model;
+@property (nonatomic, strong) UIImage* veggie;
+@property (nonatomic, strong) UIImage* nopork;
+@property (nonatomic, strong) UIImage* beef;
+@property (nonatomic, unsafe_unretained) IBOutlet TagesMenueTableCellController *tmpCell;
+@property (nonatomic, strong) ModelLocator* model;
 
 - (void)scrollToTagesmenue:(Tagesmenue*)tm;
 

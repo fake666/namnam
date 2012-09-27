@@ -18,10 +18,10 @@
 	IBOutlet UIImageView *token3; 
 }
 
-@property (nonatomic, retain) IBOutlet UITextView* titleText;
-@property (nonatomic, retain) IBOutlet UILabel* price;
-@property (nonatomic, retain) IBOutlet UIImageView* token1;
-@property (nonatomic, retain) IBOutlet UIImageView* token2;
-@property (nonatomic, retain) IBOutlet UIImageView* token3;
+@property (nonatomic, strong) IBOutlet UITextView* titleText;
+@property (nonatomic, strong) IBOutlet UILabel* price;
+@property (nonatomic, strong) IBOutlet UIImageView* token1;
+@property (nonatomic, strong) IBOutlet UIImageView* token2;
+@property (nonatomic, strong) IBOutlet UIImageView* token3;
 
 @end

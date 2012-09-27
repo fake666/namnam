@@ -17,10 +17,10 @@
 @end
 
 @interface NamNamMensaPickerController : UITableViewController {
-	id <NamNamMensaPickerDelegate> delegate;
+	id <NamNamMensaPickerDelegate> __unsafe_unretained delegate;
 	ModelLocator* model;
 }
-@property (nonatomic, assign) id <NamNamMensaPickerDelegate> delegate;
-@property (nonatomic, retain) ModelLocator* model;
+@property (nonatomic, unsafe_unretained) id <NamNamMensaPickerDelegate> delegate;
+@property (nonatomic, strong) ModelLocator* model;
 
 @end

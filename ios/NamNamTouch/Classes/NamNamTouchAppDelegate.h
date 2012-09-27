@@ -20,10 +20,10 @@
 	ModelLocator* model;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, retain) ModelLocator *model;
-@property (nonatomic, retain) UIActivityIndicatorView *act;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, strong) ModelLocator *model;
+@property (nonatomic, strong) UIActivityIndicatorView *act;
 
 - (void)doLoad;
 

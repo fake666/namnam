@@ -19,7 +19,7 @@
 #endif
 
 @interface NamNamXMLParser : NSObject <NSXMLParserDelegate> {
-    id <NamNamXMLParserDelegate> delegate;
+    id <NamNamXMLParserDelegate> __unsafe_unretained delegate;
     Mensa *parsedMensa;
 	
 	ModelLocator* model;
@@ -38,27 +38,24 @@
 	BOOL storingCharacters;
     NSURLConnection *connection;
 	NSMutableString* currentString;
-	
-	NSAutoreleasePool *downloadAndParsePool;
 }
 
-@property (nonatomic, assign) id <NamNamXMLParserDelegate> delegate;
-@property (nonatomic, retain) Mensa *parsedMensa;
-@property (nonatomic, retain) ModelLocator *model;
-@property (nonatomic, retain) NSDateFormatter *dateFormatter;
-@property (nonatomic, retain) NSNumberFormatter *numberFormatter;
-@property (nonatomic, retain) NSMutableData *xmlData;
+@property (nonatomic, unsafe_unretained) id <NamNamXMLParserDelegate> delegate;
+@property (nonatomic, strong) Mensa *parsedMensa;
+@property (nonatomic, strong) ModelLocator *model;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
+@property (nonatomic, strong) NSMutableData *xmlData;
 @property BOOL done;
 @property BOOL storingCharacters;
-@property (nonatomic, retain) NSURLConnection *connection;
-@property (nonatomic, retain) NSString *currentString;
-@property (nonatomic, retain) Tagesmenue* currentTagesmenue;
-@property (nonatomic, retain) Mensaessen* currentMensaessen;
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) NSString *currentString;
+@property (nonatomic, strong) Tagesmenue* currentTagesmenue;
+@property (nonatomic, strong) Mensaessen* currentMensaessen;
 @property BOOL parseErrorOccurred;
-@property (nonatomic, assign) NSAutoreleasePool *downloadAndParsePool;
 
-@property (nonatomic, retain) NSMutableArray *currentDayMenues;
-@property (nonatomic, retain) NSMutableArray *currentMenues;
+@property (nonatomic, strong) NSMutableArray *currentDayMenues;
+@property (nonatomic, strong) NSMutableArray *currentMenues;
 
 - (void)start;
 

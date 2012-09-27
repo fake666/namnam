@@ -20,7 +20,7 @@
 
 
 @interface NamNamSettingsController : UIViewController<NamNamMensaPickerDelegate> {
-	id<NamNamMensaReloadDelegate> delegate;
+	id<NamNamMensaReloadDelegate> __unsafe_unretained delegate;
 	ModelLocator* model;
 	
 	BOOL mensaChanged;
@@ -32,13 +32,13 @@
 	IBOutlet UILabel *lastUpdateLabel;
 
 }
-@property (nonatomic, assign) id <NamNamMensaReloadDelegate> delegate;
-@property (nonatomic, retain) ModelLocator* model;
+@property (nonatomic, unsafe_unretained) id <NamNamMensaReloadDelegate> delegate;
+@property (nonatomic, strong) ModelLocator* model;
 @property BOOL mensaChanged;
-@property (nonatomic, retain) NSDateFormatter* formatter;
-@property (nonatomic, retain) IBOutlet UIButton* selectMensaButton;
-@property (nonatomic, retain) IBOutlet UISegmentedControl* selectPriceControl;
-@property (nonatomic, retain) IBOutlet UILabel* lastUpdateLabel;
+@property (nonatomic, strong) NSDateFormatter* formatter;
+@property (nonatomic, strong) IBOutlet UIButton* selectMensaButton;
+@property (nonatomic, strong) IBOutlet UISegmentedControl* selectPriceControl;
+@property (nonatomic, strong) IBOutlet UILabel* lastUpdateLabel;
 
 - (IBAction) selectMensa: (id) sender;
 - (IBAction) selectPriceDisplay: (id) sender;

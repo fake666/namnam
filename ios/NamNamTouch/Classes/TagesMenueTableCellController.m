@@ -13,9 +13,6 @@
 
 @synthesize price, titleText, token1, token2, token3;
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

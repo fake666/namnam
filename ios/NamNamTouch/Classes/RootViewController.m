@@ -70,7 +70,6 @@
 	[modalViewButton addTarget:self action:@selector(modalViewAction:) forControlEvents:UIControlEventTouchUpInside];
 	UIBarButtonItem *modalBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:modalViewButton];
 	self.navigationItem.rightBarButtonItem = modalBarButtonItem;
-	[modalBarButtonItem release];
 		
 	self.title = model.mensaURL.name;
 	
@@ -154,7 +153,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
 	// Configure the cell.
@@ -215,7 +214,6 @@
 - (void) switchToTagesMenueDetailView:(Tagesmenue*)tm {
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Alle" style:UIBarButtonItemStylePlain target:nil action:nil];
 	self.navigationItem.backBarButtonItem = backButton;
-	[backButton release];
 	
 	[tmController.tableView reloadData];
 	[tmController scrollToTagesmenue:tm];
@@ -225,7 +223,6 @@
 - (IBAction)modalViewAction:(id)sender {
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Zurück" style:UIBarButtonItemStylePlain target:nil action:nil];
 	self.navigationItem.backBarButtonItem = backButton;
-	[backButton release];
 	
   	[self.navigationController pushViewController:self.settingsController animated:YES];
 }
@@ -248,11 +245,6 @@
 }
 
 
-- (void)dealloc {
-	[settingsController release];
-	[tmController release];
-    [super dealloc];
-}
 
 
 @end

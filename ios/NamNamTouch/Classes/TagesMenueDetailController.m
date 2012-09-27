@@ -31,7 +31,6 @@
 
 	UIBarButtonItem *currentButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Aktuell" style:UIBarButtonItemStyleBordered target:self action:@selector(scrollToCurrentTagesmenue) ];
 	self.navigationItem.rightBarButtonItem = currentButtonItem;
-	[currentButtonItem release];	
 	
 	return self;
 }
@@ -296,9 +295,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

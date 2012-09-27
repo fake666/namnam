@@ -27,7 +27,7 @@
 @interface ModelLocator : NSObject <NamNamXMLParserDelegate> {
 
 	NamNamXMLParser* parser;
-	id<NamNamModelLocatorDelegate> delegate;
+	id<NamNamModelLocatorDelegate> __unsafe_unretained delegate;
 	
 	BOOL appWasInBackGround; // scroll to current day if on ios 4+ on iphone 3gs/4 (TODO XXX)
 	
@@ -43,14 +43,14 @@
 
 @property BOOL appWasInBackGround;
 
-@property(assign) id<NamNamModelLocatorDelegate> delegate;
-@property(retain) NamNamXMLParser *parser;
-@property(retain) MensaURL *mensaURL;
-@property(retain) NSArray *mensen;
-@property(retain) Mensa *mensa;
+@property(unsafe_unretained) id<NamNamModelLocatorDelegate> delegate;
+@property(strong) NamNamXMLParser *parser;
+@property(strong) MensaURL *mensaURL;
+@property(strong) NSArray *mensen;
+@property(strong) Mensa *mensa;
 @property NSInteger priceDisplayType;
-@property(retain) UIActivityIndicatorView *activity;
-@property(retain) NSDateFormatter *niceDateFormatter;
+@property(strong) UIActivityIndicatorView *activity;
+@property(strong) NSDateFormatter *niceDateFormatter;
 
 - (void) loadSettings;
 - (void) loadMensae;
@@ -68,10 +68,5 @@
 + (ModelLocator*)sharedInstance;
 + (id)allocWithZone:(NSZone *)zone;
 - (id)copyWithZone:(NSZone *)zone;
-- (id)retain;
-- (unsigned)retainCount;
-- (void)release;
-- (id)autorelease;
-
 
 @end

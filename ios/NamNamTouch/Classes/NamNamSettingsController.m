@@ -30,7 +30,7 @@
 	self.title = @"Einstellungen";
 	
 	//init the date formater for the last update display
-	self.formatter = [[[NSDateFormatter alloc] init] autorelease];
+	self.formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterLongStyle];
     [formatter setTimeStyle:NSDateFormatterMediumStyle];
 	
@@ -45,7 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	if(model.mensa.lastUpdate != nil) {
-		lastUpdateLabel.text = [[[NSString alloc] initWithFormat:@"leztes Update: %@", [formatter stringFromDate:model.mensa.lastUpdate]] autorelease];
+		lastUpdateLabel.text = [[NSString alloc] initWithFormat:@"leztes Update: %@", [formatter stringFromDate:model.mensa.lastUpdate]];
 	} else {
 		lastUpdateLabel.text = @"leztes Update: nie";
 	}
@@ -91,7 +91,6 @@
 	NamNamMensaPickerController *picker = [[NamNamMensaPickerController alloc] init];
 	picker.delegate = self;
 	[self.navigationController presentModalViewController:picker animated:YES];
-	[picker release];
 }
 
 - (void)didSelectMensaUrl:(MensaURL *)mensaUrl {
@@ -122,10 +121,6 @@
 }
 
 
-- (void)dealloc {
-	[formatter release];
-    [super dealloc];
-}
 
 
 @end

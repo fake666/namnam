@@ -19,7 +19,7 @@
 	dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterShortStyle];
     [dateFormat setTimeStyle:NSDateFormatterNoStyle];
-	[dateFormat setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"DE"] autorelease]];
+	[dateFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"DE"]];
 	[dateFormat setDateFormat:@"dd."];
 	return self;
 }
@@ -45,7 +45,7 @@
 	[dict setValue:lastDate forKey:@"lastDate"];
 	[dict setValue:lastUpdate forKey:@"lastUpdate"];
 	
-	NSMutableArray* days = [[[NSMutableArray alloc] initWithCapacity:dayMenues.count] autorelease];
+	NSMutableArray* days = [[NSMutableArray alloc] initWithCapacity:dayMenues.count];
 	
 	NSEnumerator* dmEnum = [dayMenues objectEnumerator];
 	Tagesmenue* tm;
@@ -60,14 +60,14 @@
 
 + (Mensa*)deserialize:(NSDictionary*)dict {
 
-	Mensa* ret = [[[Mensa alloc] init] autorelease];
-	ret.lastUpdate = [[[dict objectForKey:@"lastUpdate"] copy] autorelease];
-	ret.lastDate = [[[dict objectForKey:@"lastDate"] copy] autorelease];
-	ret.firstDate = [[[dict objectForKey:@"firstDate"] copy] autorelease];
-	ret.name = [[[dict objectForKey:@"name"] copy] autorelease];
+	Mensa* ret = [[Mensa alloc] init];
+	ret.lastUpdate = [[dict objectForKey:@"lastUpdate"] copy];
+	ret.lastDate = [[dict objectForKey:@"lastDate"] copy];
+	ret.firstDate = [[dict objectForKey:@"firstDate"] copy];
+	ret.name = [[dict objectForKey:@"name"] copy];
 	
 	NSArray* dms = [dict objectForKey:@"dayMenues"];
-	NSMutableArray* dmar = [[[NSMutableArray alloc] initWithCapacity:dms.count] autorelease];
+	NSMutableArray* dmar = [[NSMutableArray alloc] initWithCapacity:dms.count];
 	
 	NSEnumerator* en = [dms objectEnumerator];
 	NSDictionary* tmd;
@@ -84,15 +84,5 @@
 	return ret;
 }
 
-- (void)dealloc {
-	[dateFormat release];
-	[lastUpdate release];
-	[firstDate release];
-	[lastDate release];
-	[dayMenues release];
-	[name release];
-	
-    [super dealloc];
-}
 
 @end

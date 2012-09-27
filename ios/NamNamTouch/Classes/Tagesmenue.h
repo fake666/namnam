@@ -14,8 +14,8 @@
 	NSArray* menues;
 }
 
-@property (nonatomic, retain) NSArray *menues;
-@property (nonatomic, retain) NSDate *tag;
+@property (nonatomic, strong) NSArray *menues;
+@property (nonatomic, strong) NSDate *tag;
 
 -(NSDictionary*)serialize;
 + (Tagesmenue*)deserialize:(NSDictionary*)dict;

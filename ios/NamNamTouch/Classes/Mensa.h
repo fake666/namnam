@@ -19,13 +19,13 @@
 	NSDateFormatter* dateFormat;
 }
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSArray *dayMenues;
-@property (nonatomic, retain) NSDate *firstDate;
-@property (nonatomic, retain) NSDate *lastDate;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSArray *dayMenues;
+@property (nonatomic, strong) NSDate *firstDate;
+@property (nonatomic, strong) NSDate *lastDate;
 
-@property (nonatomic, retain) NSDate *lastUpdate;
-@property (nonatomic, retain) NSDateFormatter *dateFormat;
+@property (nonatomic, strong) NSDate *lastUpdate;
+@property (nonatomic, strong) NSDateFormatter *dateFormat;
 
 -(NSArray*)dayMenuIndexArray;
 -(NSDictionary*)serialize;

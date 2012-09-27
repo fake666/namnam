@@ -15,8 +15,8 @@
 	NSString* name;
 }
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *url;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *url;
 
 - (NSString *)description;
 
