@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -23,6 +24,7 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
+
 import org.bytewerk.namnam.export.NamNamExportException;
 import org.bytewerk.namnam.export.NamNamExporter;
 import org.bytewerk.namnam.model.Mensaessen;
@@ -34,128 +36,148 @@ import org.xml.sax.SAXException;
 
 /**
  * module to export a mensa object to java serialised xml
+ * 
  * @author fake
  */
 public class NamNamXMLExporter extends NamNamExporter {
 
-    private static Logger logger = Logger.getLogger(NamNamXMLExporter.class.getName());
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // ISO
+	private static Logger logger = Logger.getLogger(NamNamXMLExporter.class
+			.getName());
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // ISO
 
-    public NamNamXMLExporter(String path) {
-        super(path);
-    }
+	public NamNamXMLExporter(String path) {
+		super(path);
+	}
 
+	protected void doExport(OutputStream os) throws NamNamExportException {
+		try {
 
-    protected void doExport(OutputStream os) throws NamNamExportException {
-        try {
+			SchemaFactory factory = SchemaFactory
+					.newInstance("http://www.w3.org/2001/XMLSchema");
+			Schema schema = factory.newSchema(new StreamSource(
+					NamNamXMLExporter.class
+							.getResourceAsStream("NamNamXML.xsd")));
 
-            SchemaFactory factory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
-            Schema schema = factory.newSchema(
-                    new StreamSource(NamNamXMLExporter.class.getResourceAsStream("NamNamXML.xsd"))
-                    );
+			DocumentBuilderFactory dbfac = DocumentBuilderFactory.newInstance();
+			dbfac.setNamespaceAware(true);
+			dbfac.setSchema(schema);
+			dbfac.setValidating(true);
+			DocumentBuilder docBuilder = dbfac.newDocumentBuilder();
+			Document doc = docBuilder.newDocument();
 
-            DocumentBuilderFactory dbfac = DocumentBuilderFactory.newInstance();
-            dbfac.setNamespaceAware(true);
-            dbfac.setSchema(schema);
-            dbfac.setValidating(true);
-            DocumentBuilder docBuilder = dbfac.newDocumentBuilder();
-            Document doc = docBuilder.newDocument();
-            
-            String docNS = "http://namnam.bytewerk.org/files/NamNamXML";
+			String docNS = "http://namnam.bytewerk.org/files/NamNamXML";
 
-            Element root = doc.createElementNS(docNS,"Mensa");
-            root.setAttribute("name", mensa.getName());
-            root.setAttribute("xmlns", docNS);
-            doc.appendChild(root);
+			Element root = doc.createElementNS(docNS, "Mensa");
+			root.setAttribute("name", mensa.getName());
+			root.setAttribute("xmlns", docNS);
+			doc.appendChild(root);
 
-            root.appendChild(getDateElem(doc,"firstDate",mensa.getFirstDate()));
-            root.appendChild(getDateElem(doc,"lastDate",mensa.getLastDate()));
+			root.appendChild(getDateElem(doc, "firstDate", mensa.getFirstDate()));
+			root.appendChild(getDateElem(doc, "lastDate", mensa.getLastDate()));
 
-            //Element tagesMs = doc.createElement("Tagesmenues");
+			// Element tagesMs = doc.createElement("Tagesmenues");
 
-            Iterator<Tagesmenue> dMit = mensa.getDayMenues().iterator();
-            while(dMit.hasNext()) {
-                Tagesmenue t = dMit.next();
-                Element txml = doc.createElement("Tagesmenue");
-                txml.appendChild(getDateElem(doc,"tag",t.getTag()));
+			Iterator<Tagesmenue> dMit = mensa.getDayMenues().iterator();
+			while (dMit.hasNext()) {
+				Tagesmenue t = dMit.next();
+				Element txml = doc.createElement("Tagesmenue");
+				txml.appendChild(getDateElem(doc, "tag", t.getTag()));
 
-                //Element essen = doc.createElement("Essen");
-                Iterator<Mensaessen> eIt = t.getMenues().iterator();
-                while(eIt.hasNext()) {
-                    Mensaessen m = eIt.next();
-                    Element mxml = doc.createElement("Mensaessen");
-                    mxml.setAttribute("moslem", m.isMoslem()+"");
-                    mxml.setAttribute("vegetarisch", m.isVegetarian()+"");
-                    mxml.setAttribute("rind", m.isBeef()+"");
+				// Element essen = doc.createElement("Essen");
+				Iterator<Mensaessen> eIt = t.getMenues().iterator();
+				while (eIt.hasNext()) {
+					Mensaessen m = eIt.next();
+					Element mxml = doc.createElement("Mensaessen");
+					
+					Element desc = doc.createElement("beschreibung");
+					Text descT = doc.createTextNode(m.getBeschreibung());
+					desc.appendChild(descT);
+					mxml.appendChild(desc);
 
-                    Element desc = doc.createElement("beschreibung");
-                    Text descT = doc.createTextNode(m.getBeschreibung());
-                    desc.appendChild(descT);
-                    mxml.appendChild(desc);
+					Element tokens = doc.createElement("Tokens");
+					if (m.getToken() != null) {
+						Element token = doc.createElement("Token");
+						Text tokenText = doc.createTextNode(m.getToken()
+								.getDescription());
+						token.appendChild(tokenText);
+					}
+					
+					mxml.appendChild(getPriceElem(doc, "studentenPreis", m
+							.getStudentenPreis().getCents()));
+					mxml.appendChild(getPriceElem(doc, "normalerPreis", m
+							.getPreis().getCents()));
 
-                    mxml.appendChild(getPriceElem(doc,"studentenPreis",m.getStudentenPreis().getCents()));
-                    mxml.appendChild(getPriceElem(doc,"normalerPreis",m.getPreis().getCents()));
+					txml.appendChild(mxml);
+				}
+				// txml.appendChild(essen);
 
-                    txml.appendChild(mxml);
-                }
-                //txml.appendChild(essen);
-                
-                root.appendChild(txml);
-            }
-            //root.appendChild(tagesMs);
+				root.appendChild(txml);
+			}
+			// root.appendChild(tagesMs);
 
-           Validator validator = schema.newValidator();
-           validator.validate(new DOMSource(doc));
-            
+			Validator validator = schema.newValidator();
+			validator.validate(new DOMSource(doc));
 
-            //Output the XML
-            //set up a transformer
-            TransformerFactory transfac = TransformerFactory.newInstance();
-            Transformer trans = transfac.newTransformer();
-            trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-            trans.setOutputProperty(OutputKeys.INDENT, "yes");
+			// Output the XML
+			// set up a transformer
+			TransformerFactory transfac = TransformerFactory.newInstance();
+			Transformer trans = transfac.newTransformer();
+			trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+			trans.setOutputProperty(OutputKeys.INDENT, "yes");
 
-            //create string from xml tree - updated 2010-09-25 to use utf8, thanks dschaudel!
-            OutputStreamWriter sw = new OutputStreamWriter(os, Charset.forName("UTF-8"));
-            StreamResult result = new StreamResult(sw);
-            DOMSource source = new DOMSource(doc);
-            trans.transform(source, result);
-            sw.close();
-        } catch (ParserConfigurationException pcex) {
-            logger.log(Level.SEVERE, "Parser config Exception while exporting to xml", pcex);
-            throw new NamNamExportException("Parser config Exception while exporting to xml", pcex);
-        } catch (TransformerConfigurationException tcex) {
-            logger.log(Level.SEVERE, "Transformer config Exception while exporting to xml", tcex);
-            throw new NamNamExportException("Transformer config Exception while exporting to xml", tcex);
-        } catch (TransformerException tex) {
-            logger.log(Level.SEVERE, "Transfomer Exception while exporting to xml", tex);
-            throw new NamNamExportException("Transfomer Exception while exporting to xml", tex);
-        } catch (IOException ioex) {
-            logger.log(Level.SEVERE, "IO Exception while exporting to xml", ioex);
-            throw new NamNamExportException("IO Exception while exporting to xml", ioex);
-        } catch (SAXException saxex) {
-            logger.log(Level.SEVERE, "SAX Exception while exporting to xml", saxex);
-            throw new NamNamExportException("SAX Exception while exporting to xml", saxex);
-        }
+			// create string from xml tree - updated 2010-09-25 to use utf8,
+			// thanks dschaudel!
+			OutputStreamWriter sw = new OutputStreamWriter(os,
+					Charset.forName("UTF-8"));
+			StreamResult result = new StreamResult(sw);
+			DOMSource source = new DOMSource(doc);
+			trans.transform(source, result);
+			sw.close();
+		} catch (ParserConfigurationException pcex) {
+			logger.log(Level.SEVERE,
+					"Parser config Exception while exporting to xml", pcex);
+			throw new NamNamExportException(
+					"Parser config Exception while exporting to xml", pcex);
+		} catch (TransformerConfigurationException tcex) {
+			logger.log(Level.SEVERE,
+					"Transformer config Exception while exporting to xml", tcex);
+			throw new NamNamExportException(
+					"Transformer config Exception while exporting to xml", tcex);
+		} catch (TransformerException tex) {
+			logger.log(Level.SEVERE,
+					"Transfomer Exception while exporting to xml", tex);
+			throw new NamNamExportException(
+					"Transfomer Exception while exporting to xml", tex);
+		} catch (IOException ioex) {
+			logger.log(Level.SEVERE, "IO Exception while exporting to xml",
+					ioex);
+			throw new NamNamExportException(
+					"IO Exception while exporting to xml", ioex);
+		} catch (SAXException saxex) {
+			logger.log(Level.SEVERE, "SAX Exception while exporting to xml",
+					saxex);
+			throw new NamNamExportException(
+					"SAX Exception while exporting to xml", saxex);
+		}
 
-    }
+	}
 
-    private Element getDateElem(Document doc, String elemName, Date theDate) {
-        Element child = doc.createElement(elemName);
-        Text date = doc.createTextNode(sdf.format(theDate));
-        child.appendChild(date);
-        return child;
-    }
+	private Element getDateElem(Document doc, String elemName, Date theDate) {
+		Element child = doc.createElement(elemName);
+		Text date = doc.createTextNode(sdf.format(theDate));
+		child.appendChild(date);
+		return child;
+	}
 
-    private Element getPriceElem(Document doc, String elemName, Integer thePrice) {
-        Element priceElem = doc.createElement(elemName);
-        Text priceText = doc.createTextNode(thePrice.toString());
-        priceElem.appendChild(priceText);
-        return priceElem;
-    }
+	private Element getPriceElem(Document doc, String elemName, Integer thePrice) {
+		Element priceElem = doc.createElement(elemName);
+		Text priceText = doc.createTextNode(thePrice.toString());
+		priceElem.appendChild(priceText);
+		return priceElem;
+	}
 
-    @Override
-    public String getFileName() {
-        return mensa.getName() + ".xml";
-    }
+	@Override
+	public String getFileName() {
+		return mensa.getName() + ".xml";
+	}
 }

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.bytewerk.namnam.export.NamNamExportException;
 import org.bytewerk.namnam.export.NamNamExporter;
 import org.bytewerk.namnam.model.Mensaessen;
@@ -51,9 +52,9 @@ public class NamNamJSONExporter extends NamNamExporter {
                     jm.put("beschreibung", m.getBeschreibung());
                     jm.put("studentenPreis", m.getStudentenPreis().getCents());
                     jm.put("normalerPreis", m.getPreis().getCents());
-                    jm.put("moslem",m.isMoslem());
-                    jm.put("rind",m.isBeef());
-                    jm.put("vegetarisch",m.isVegetarian());
+                    if(m.getToken() != null){
+                    	jm.put("tokens", m.getToken().getTokenValue());
+                    }
                     foodAr.put(jm);
                 }
                 jtm.put("Mensaessen", foodAr);

@@ -14,9 +14,8 @@ public class Mensaessen extends Essen {
     private Preis studentenPreis;
 
     public Mensaessen() {
-        super();
+    	//Empty for JSON
     }
-
     /**
      * initialisert ein mensaessen-objekt mit beschreibung und beiden preisen in cent
      * bis zu 2stellige zahlen am ende der beschreibung werden abgeschnitten,
@@ -24,13 +23,13 @@ public class Mensaessen extends Essen {
      * und ein R als mit Rind.
      *
      * @param desc die beschreibung des essens, aus der die vegetarisch/k. schweinefl./rind daten extrahiert werden
-     * @param bPreis der normale, nicht verguenstigte preis des essens in cent
-     * @param sPreis der beguenstigte studentenpreis des essens in cent
+     * @param employeePriceInCents der normale, nicht verguenstigte preis des essens in cent
+     * @param studentPriceInCents der beguenstigte studentenpreis des essens in cent
      */
 
-    public Mensaessen(String desc, Integer bPreis, Integer sPreis) {
-        super(desc,bPreis);
-        this.studentenPreis = new Preis(sPreis);
+    public Mensaessen(String desc, int employeePriceInCents, int studentPriceInCents, MealToken token) {
+        super(desc,employeePriceInCents, token);
+        this.studentenPreis = new Preis(studentPriceInCents);
     }
 
     /**

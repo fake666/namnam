@@ -8,10 +8,7 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.bytewerk.namnam.export.NamNamExportException;
-import org.bytewerk.namnam.export.NamNamExporter;
-import org.bytewerk.namnam.model.Mensaessen;
-import org.bytewerk.namnam.model.Tagesmenue;
+
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.Date;
@@ -27,6 +24,11 @@ import net.fortuna.ical4j.model.property.ProdId;
 import net.fortuna.ical4j.model.property.Uid;
 import net.fortuna.ical4j.model.property.Version;
 import net.fortuna.ical4j.util.UidGenerator;
+
+import org.bytewerk.namnam.export.NamNamExportException;
+import org.bytewerk.namnam.export.NamNamExporter;
+import org.bytewerk.namnam.model.Mensaessen;
+import org.bytewerk.namnam.model.Tagesmenue;
 
 /**
  * module to export a mensa object to an ical ics file
@@ -76,13 +78,9 @@ public class NamNamICALExporter extends NamNamExporter {
                     String preis = "Studenten: " + m.getStudentenPreis() + " €\n" + "Regulär: "+ m.getPreis() + " €";
 
                     String descStr = "";
-                    if(m.isBeef()) {
-                        descStr = "(mit Rindfleisch)\n";
-                    } else if(m.isMoslem()) {
-                        descStr = "(kein Schweinefleisch)\n";
-                    } else if(m.isVegetarian()) {
-                        descStr = "(vegetarisch)\n";
-                    }
+                    if(m.getToken() != null) {
+                        descStr = m.getToken().getDescription()+"\n";
+                    } 
                     descStr += preis;
 
                     Description desc = new Description(descStr);
@@ -110,7 +108,7 @@ public class NamNamICALExporter extends NamNamExporter {
     private Uid genUUID(Date tag, Mensaessen essen) {
         String uid = tag.toString();
         uid+=essen.getBeschreibung().hashCode()+"";
-        uid+=(essen.isBeef()?"R":"")+(essen.isMoslem()?"X":"")+(essen.isVegetarian()?"V":"");
+        uid+=(essen.getToken() != null ? essen.getToken().getTokenValue() : "");
         return new Uid(uid);
     }
 
