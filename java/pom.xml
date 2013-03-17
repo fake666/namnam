@@ -1,0 +1,20 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.bytewerk</groupId>
+	<artifactId>namnam</artifactId>
+	<version>2.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>namnam</name>
+
+	<properties>
+		<namnam.version>${project.version}</namnam.version>
+        </properties>
+
+
+	<modules>
+		<module>namnammodel</module>
+		<module>namnamparser</module>
+		<module>namnamgui</module>
+		<module>namnamtwitterer</module>
+	</modules>
+</project>

@@ -3,3 +3,7 @@
 .settings/
 target/
 classes/
+.DS_Store
+xcuserdata
+.idea
+project.xcworkspace
