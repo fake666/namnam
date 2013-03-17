@@ -87,12 +87,8 @@ public class NamNamTwitterer {
                 Mensaessen me = mIt.next();
                 String date = df.format(theDate) + ": ";
                 String end = " (" + me.getStudentenPreis() + " €/" + me.getPreis() + " €)" ;
-                if(me.isBeef()) {
-                    end = " (mit Rindfl.)" + end;
-                } else if(me.isMoslem()) {
-                    end = " (k. Schweinefl.)" + end;
-                } else if(me.isVegetarian()) {
-                    end = " (vegetarisch)" + end;
+                if(me.getToken() != null) {
+                    end = me.getToken().getDescription() + end;
                 }
                 String status = date + me.getBeschreibung() + end;
 

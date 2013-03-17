@@ -50,8 +50,7 @@ public class Essen {
 	 * @param description
 	 *            the description of that meal you want to create.
 	 * @param priceInCents
-	 * @param which
-	 *            token does this meal have? For example it's vegan or with
+	 * @param token which token does this meal have? For example it's vegan or with
 	 *            pork. All tokens are defined in {@link MealToken}.
 	 *            <code>null</code> is a valid value if no token should be
 	 *            setted for this meal.
@@ -89,7 +88,7 @@ public class Essen {
 	 * This describes the type of the meal. For example beef or pork.
 	 * 
 	 * @return the token. You may notice that this method could return
-	 *         <code>null</code> if no token is setted.
+	 *         <code>null</code> if no token is set.
 	 */
 	public MealToken getToken() {
 		return token;

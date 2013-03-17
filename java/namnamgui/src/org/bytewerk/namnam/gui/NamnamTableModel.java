@@ -47,12 +47,8 @@ public class NamnamTableModel extends AbstractTableModel {
 				tbldata[i][1] = new String((new StringBuilder(String.valueOf(this.getStudentenPreis(essen)))).append(" \u20AC / ").append(this.getPreis(essen)).append(" \u20AC").toString());
 				
 				/* Füge Anmerkung für vegetarisch, ohne Schweinefleisch bzw. mit Rindfleisch dazu */
-				if(essen.isBeef()) {
-					tbldata[i][2] = "mit lecker Rind!";
-				} else if(essen.isMoslem()) {
-					tbldata[i][2] =	"ohne Schweinefleisch"; 
-				} else if(essen.isVegetarian()) {
-					tbldata[i][2] = "Vegetarisch";
+				if(essen.getToken() != null) {
+					tbldata[i][2] = essen.getToken().getDescription();
 				} else {
 					tbldata[i][2] = "";
 				}
