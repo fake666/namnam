@@ -28,8 +28,11 @@
 	ret.beschreibung = [[dict objectForKey:@"beschreibung"] copy]; 
 	
 	ret.vegetarian = [[dict objectForKey:@"vegetarian"] isEqualToString:@"YES"];
-	ret.moslem = [[dict objectForKey:@"moslem"] isEqualToString:@"YES"];
+	ret.vegan = [[dict objectForKey:@"vegan"] isEqualToString:@"YES"];
 	ret.beef = [[dict objectForKey:@"beef"] isEqualToString:@"YES"];
+	ret.pork = [[dict objectForKey:@"pork"] isEqualToString:@"YES"];
+	ret.poultry = [[dict objectForKey:@"poultry"] isEqualToString:@"YES"];
+	ret.fish = [[dict objectForKey:@"fish"] isEqualToString:@"YES"];
 	
 	ret.studentenPreis = [[dict objectForKey:@"studentenPreis"] integerValue];
 	

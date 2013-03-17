@@ -16,16 +16,22 @@
 	NSString* beschreibung;
 	
 	BOOL vegetarian;
-	BOOL moslem;
+	BOOL vegan;
+	BOOL pork;
+	BOOL poultry;
 	BOOL beef;
-
+	BOOL fish;
 }
 
 @property int preis;
 @property (nonatomic, strong) NSString *beschreibung;
+
 @property BOOL vegetarian;
-@property BOOL moslem;
+@property BOOL vegan;
+@property BOOL pork;
+@property BOOL poultry;
 @property BOOL beef;
+@property BOOL fish;
 
 -(NSDictionary*)serialize;
 + (Essen*)deserialize:(NSDictionary*)dict;
