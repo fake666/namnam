@@ -98,18 +98,12 @@ public class NamNamXMLExporter extends NamNamExporter {
                     desc.appendChild(descT);
                     mxml.appendChild(desc);
 
-                    Element tokens = doc.createElement("Tokens");
-                    if (m.getToken() != null) {
-                        Element token = doc.createElement("Token");
-                        Text tokenText = doc.createTextNode(m.getToken()
-                                .getDescription());
-                        token.appendChild(tokenText);
-                    }
+                    mxml.appendChild(getPriceElem(doc, "studentenPreis", m.getStudentenPreis().getCents()));
+                    mxml.appendChild(getPriceElem(doc, "normalerPreis", m.getPreis().getCents()));
 
-                    mxml.appendChild(getPriceElem(doc, "studentenPreis", m
-                            .getStudentenPreis().getCents()));
-                    mxml.appendChild(getPriceElem(doc, "normalerPreis", m
-                            .getPreis().getCents()));
+                    if (m.getToken() != null) {
+                        mxml.appendChild(getTokenElem(doc, "token", m.getToken().getDescription()));
+                    }
 
                     txml.appendChild(mxml);
                 }
@@ -178,6 +172,13 @@ public class NamNamXMLExporter extends NamNamExporter {
         Text priceText = doc.createTextNode(thePrice.toString());
         priceElem.appendChild(priceText);
         return priceElem;
+    }
+
+    private Element getTokenElem(Document doc, String elemName, String theToken) {
+        Element tokenElem = doc.createElement(elemName);
+        Text tokenText = doc.createTextNode(theToken);
+        tokenElem.appendChild(tokenText);
+        return tokenElem;
     }
 
     @Override
