@@ -5,6 +5,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -255,6 +256,43 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
 			return null;
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.");
-		return sdf.parse(d.substring(3));
+		Date ret = sdf.parse(d.substring(3));
+
+        /*
+            foo logic: set the closest year for the month
+
+            so, if it is the 15th of december, and we get 12th of january, we set the next year.
+            if it is the 15th of january, and we get the 12th of december, we set the last year.
+            if it is the 15th of february, and we get the 12th of march, we set the current year.
+         */
+
+        Calendar current = Calendar.getInstance();
+
+        Calendar menuCalThisYear = Calendar.getInstance();
+        menuCalThisYear.setTime(ret);
+        menuCalThisYear.set(Calendar.YEAR, current.get(Calendar.YEAR));
+
+        Calendar menuCalNextYear = Calendar.getInstance();
+        menuCalNextYear.setTime(ret);
+        menuCalNextYear.set(Calendar.YEAR, current.get(Calendar.YEAR)+1);
+
+        Calendar menuCalLastYear = Calendar.getInstance();
+        menuCalLastYear.setTime(ret);
+        menuCalLastYear.set(Calendar.YEAR, current.get(Calendar.YEAR)-1);
+
+        long diffThis = Math.abs(menuCalThisYear.getTimeInMillis() - current.getTimeInMillis());
+        long diffNext = Math.abs(menuCalNextYear.getTimeInMillis() - current.getTimeInMillis());
+        long diffLast = Math.abs(menuCalLastYear.getTimeInMillis() - current.getTimeInMillis());
+
+        if(diffThis < diffNext && diffThis < diffLast) {
+            return menuCalThisYear.getTime();
+        } else if (diffNext < diffThis && diffNext < diffLast) {
+            return menuCalNextYear.getTime();
+        } else if (diffLast < diffThis && diffLast < diffNext) {
+            return menuCalLastYear.getTime();
+        } else {
+            System.err.println("could not determine year for date. returning for 1970.");
+            return ret;
+        }
 	}
 }

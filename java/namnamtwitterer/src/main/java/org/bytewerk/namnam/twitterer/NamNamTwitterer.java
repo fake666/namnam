@@ -93,7 +93,7 @@ public class NamNamTwitterer {
                 String date = df.format(theDate) + ": ";
                 String end = " (" + me.getStudentenPreis() + " €/" + me.getPreis() + " €)";
                 if (me.getToken() != null) {
-                    end = me.getToken().getDescription() + end;
+                    end = " - " + me.getToken().getDescription() + end;
                 }
                 String status = date + me.getBeschreibung() + end;
 
