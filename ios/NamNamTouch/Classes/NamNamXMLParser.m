@@ -140,9 +140,7 @@ static NSString *kName_lastDate = @"lastDate";
 static NSString *kName_tag = @"tag";
 static NSString *kName_nameAttr = @"name";
 static NSString *kName_beschreibung = @"beschreibung";
-static NSString *kName_moslemAttr = @"moslem";
-static NSString *kName_rindAttr = @"rind";
-static NSString *kName_vegetarischAttr = @"vegetarisch";
+static NSString *kName_token = @"token";
 static NSString *kName_studentenPreis = @"studentenPreis";
 static NSString *kName_normalerPreis = @"normalerPreis";
 
@@ -155,11 +153,8 @@ static NSString *kName_normalerPreis = @"normalerPreis";
 		self.currentTagesmenue = [[Tagesmenue alloc] init];
 	} else if ([elementName isEqualToString:kName_Mensaessen]) {
 		self.currentMensaessen = [[Mensaessen alloc] init];
-		self.currentMensaessen.vegetarian = [[attributeDict objectForKey:kName_vegetarischAttr] isEqualToString:@"true"];
-		self.currentMensaessen.beef = [[attributeDict objectForKey:kName_rindAttr] isEqualToString:@"true"];
-		self.currentMensaessen.moslem = [[attributeDict objectForKey:kName_moslemAttr] isEqualToString:@"true"];
     } else if ([elementName isEqualToString:kName_firstDate] || [elementName isEqualToString:kName_lastDate] || [elementName isEqualToString:kName_tag] ||
-			   [elementName isEqualToString:kName_beschreibung] || [elementName isEqualToString:kName_studentenPreis] || [elementName isEqualToString:kName_normalerPreis]) {
+			   [elementName isEqualToString:kName_beschreibung] || [elementName isEqualToString:kName_studentenPreis] || [elementName isEqualToString:kName_normalerPreis] || [elementName isEqualToString:kName_token]) {
         [currentString setString:@""];
         storingCharacters = YES;
     }
@@ -178,6 +173,20 @@ static NSString *kName_normalerPreis = @"normalerPreis";
         currentMensaessen.studentenPreis = [[numberFormatter numberFromString:currentString] intValue];
     } else if ([elementName isEqualToString:kName_normalerPreis]) {
         currentMensaessen.preis = [[numberFormatter numberFromString:currentString] intValue];
+    } else if ([elementName isEqualToString:kName_token]) {
+        if([currentString isEqualToString:@"Vegetarisch"]) {
+            self.currentMensaessen.vegetarian = YES;
+        } else if([currentString isEqualToString:@"Vegan"]) {
+            self.currentMensaessen.vegan = YES;
+        } else if([currentString isEqualToString:@"Rind"]) {
+            self.currentMensaessen.beef = YES;
+        } else if([currentString isEqualToString:@"Schwein"]) {
+            self.currentMensaessen.pork = YES;
+        } else if([currentString isEqualToString:@"Gefluegel"]) {
+            self.currentMensaessen.poultry = YES;
+        } else if([currentString isEqualToString:@"Fisch"]) {
+            self.currentMensaessen.fish = YES;
+        }
     } else if ([elementName isEqualToString:kName_Mensaessen]) {
 		[currentMenues addObject:currentMensaessen];
     } else if ([elementName isEqualToString:kName_Tagesmenue]) {

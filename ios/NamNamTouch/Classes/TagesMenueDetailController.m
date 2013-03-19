@@ -15,7 +15,7 @@
 
 @implementation TagesMenueDetailController
 
-@synthesize  tmpCell, veggie, nopork, beef,  model;
+@synthesize  tmpCell, veggie, pork, beef,  model, poultry, vegan, fish;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -25,10 +25,13 @@
 	
 	model = [ModelLocator sharedInstance];
 	
-	self.veggie = [UIImage imageNamed:@"veggie.png"];
-	self.nopork = [UIImage imageNamed:@"nopork.png"];
-	self.beef = [UIImage imageNamed:@"rind.png"];
-
+	self.veggie = [UIImage imageNamed:@"vegetarian.png"];
+	self.pork = [UIImage imageNamed:@"pork.png"];
+	self.beef = [UIImage imageNamed:@"beef.png"];
+    self.poultry = [UIImage imageNamed:@"poultry.png"];
+    self.vegan = [UIImage imageNamed:@"vegan.png"];
+    self.fish = [UIImage imageNamed:@"fish.png"];
+    
 	UIBarButtonItem *currentButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Aktuell" style:UIBarButtonItemStyleBordered target:self action:@selector(scrollToCurrentTagesmenue) ];
 	self.navigationItem.rightBarButtonItem = currentButtonItem;
 	
@@ -197,29 +200,18 @@
 	
 	if(essen.vegetarian) {
 		cell.token1.image = veggie;
-		[cell.token1 sizeToFit];
+	} else if (essen.pork) {
+		cell.token1.image = pork;
+	} else if(essen.beef) {
+        cell.token1.image = beef;
+	} else if(essen.vegan) {
+        cell.token1.image = vegan;
+	} else if(essen.poultry) {
+        cell.token1.image = poultry;
+	} else if(essen.fish) {
+        cell.token1.image = fish;
 	}
-	if(essen.moslem) {
-		if(cell.token1.image == nil) {
-			cell.token1.image = nopork;
-			[cell.token1 sizeToFit];
-		} else {
-			cell.token2.image = nopork;
-			[cell.token2 sizeToFit];
-		}
-	}
-	if(essen.beef) {
-		if(cell.token1.image == nil) {
-			cell.token1.image = beef;
-			[cell.token1 sizeToFit];
-		} else if(cell.token2.image == nil) {
-			cell.token2.image = beef;
-			[cell.token2 sizeToFit];
-		} else {
-			cell.token3.image = beef;
-			[cell.token3 sizeToFit];
-		}
-	}
+    //[cell.token1 sizeToFit];
 		
     return cell;
 }
