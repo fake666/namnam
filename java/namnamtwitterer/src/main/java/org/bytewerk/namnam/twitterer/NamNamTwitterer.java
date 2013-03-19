@@ -34,13 +34,15 @@ public class NamNamTwitterer {
 
     public static final Logger logger = Logger.getLogger(NamNamTwitterer.class.getName());
 
-    public NamNamTwitterer(String fileName, String cKey, String cSecret, String aToken, String aSecret) throws IOException {
+    public NamNamTwitterer(String fileName, String cKey, String cSecret, String aToken, String aSecret, boolean doTwitter) throws IOException {
         df = new SimpleDateFormat("E dd.MM.", Locale.GERMAN);
 
         xmlFile = new File(fileName);
         if (!xmlFile.canRead()) {
             throw new IOException("unable to read file!");
         }
+
+	this.doTwitter = doTwitter;
 
         if(isDoTwitter()) {
             myTwitter = new TwitterFactory().getInstance();

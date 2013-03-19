@@ -84,7 +84,7 @@ public class Main {
 
         try {
             logger.log(Level.INFO, (!doTwitter?"not ":"")+"twittering:");
-            NamNamTwitterer nnt = new NamNamTwitterer(file,twitterCKey,twitterCSecret, twitterAToken, twitterASecret);
+            NamNamTwitterer nnt = new NamNamTwitterer(file,twitterCKey,twitterCSecret, twitterAToken, twitterASecret, doTwitter);
             nnt.setDoTwitter(doTwitter);
             nnt.sendMenue(date.getTime());
         } catch (IOException ioex) {
