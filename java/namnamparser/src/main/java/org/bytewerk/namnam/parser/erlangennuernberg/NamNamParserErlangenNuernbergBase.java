@@ -247,7 +247,8 @@ public abstract class NamNamParserErlangenNuernbergBase implements NamNamParser 
 			return null;
 		}
 		String tmp = m.group();
-		return new Double(df.parse(tmp.substring(0, tmp.indexOf(',') + 2))
+
+		return new Double(df.parse(tmp.substring(0, tmp.indexOf(',') + 3))
 				.doubleValue() * 100).intValue();
 	}
 
